@@ -22,7 +22,7 @@ class UsersController extends Controller
 
         $data['student'] = User::where('id', Auth::user()->id)->first();
         // Get all the departments
-        $data['departments'] =  Program::find( Auth::user()->program_id)->departments;
+        $data['departments'] =  Program::with('programs')->find( Auth::user()->program_id)->departments;
 
         if (Auth::user()->id =! $data['student']->id) return abort(404);
         // Using PHP 8 match method
@@ -56,13 +56,13 @@ class UsersController extends Controller
         //         break;
         // }
     }
-    public function getCourses($department_id): object
+    public function getCourses(int $department_id): object
     {
         // Get the Courses of that Department
 
         $courses =Course::where(['program_id' =>Auth::user()
         ->program_id,'department_id'=> $department_id])
-        ->get();
+        ->get(['id','name']);
 
         return  response()->json($courses);
     }
