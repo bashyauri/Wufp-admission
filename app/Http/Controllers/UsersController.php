@@ -21,8 +21,9 @@ class UsersController extends Controller
     public function index(){
 
         $data['student'] = User::where('id', Auth::user()->id)->first();
+
         // Get all the departments
-        $data['departments'] =  Program::with('programs')->find( Auth::user()->program_id)->departments;
+        $data['departments'] =  Program::with('departments')->find( Auth::user()->program_id)->departments;
 
         if (Auth::user()->id =! $data['student']->id) return abort(404);
         // Using PHP 8 match method
@@ -83,12 +84,12 @@ class UsersController extends Controller
     public function validateOne(Request $request)
     {
         $validatedData = $request->validate([
-            'first_name' => ['required', 'max:50'],
-            'last_name' => ['max:50'],
-            'role_id' => ['required'],
-            'company' => ['max:150'],
-            'email' => ['required', 'email', 'max:50', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:5', 'max:20', 'confirmed'],
+            // 'first_name' => ['required', 'max:50'],
+            // 'last_name' => ['max:50'],
+            // 'role_id' => ['required'],
+            // 'company' => ['max:150'],
+            // 'email' => ['required', 'email', 'max:50', Rule::unique('users', 'email')],
+            // 'password' => ['required', 'min:5', 'max:20', 'confirmed'],
         ]);
 
         if(empty($request->session()->get('user'))){

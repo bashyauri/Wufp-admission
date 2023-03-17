@@ -74,7 +74,6 @@ class CourseSeeder extends Seeder
             ['program_id' => 2,'department_id' => 14, 'name' =>'ND Urban and Regional Planning'],
             ['program_id' => 3, 'department_id' => 14,'name' =>'NDS Urban and Regional Planning'],
             ['program_id' => 1,'department_id' => 14, 'name' =>'HND Urban and Regional Planning'],
-            ['program_id' => 2, 'department_id' => 14,'name' =>'ND Urban and Regional Planning'],
             ['program_id' => 1, 'department_id' => 15,'name' =>'HND Quantity Surveying'],
             ['program_id' => 2, 'department_id' => 15, 'name' =>'ND Quantity Surveying'],
             ['program_id' => 3,  'department_id' => 15,'name' =>'NDS Quantity Surveying'],
@@ -86,10 +85,27 @@ class CourseSeeder extends Seeder
             ['program_id' => 1, 'department_id' => 17, 'name' =>'HND Surveying and Geo-Informatics'],
             ['program_id' => 2,  'department_id' => 17,'name' =>'ND Surveying and Geo-Informatics'],
             ['program_id' => 3,  'department_id' => 17,'name' =>'NDS Surveying and Geo-Informatics'],
-
-
-
-
+            ['program_id' => 4,  'department_id' => 18,'name' =>'Industrial Education(NCE)'],
+            ['program_id' => 4,  'department_id' => 19,'name' =>'Business Education(NCE)'],
+            ['program_id' => 1,  'department_id' => 20,'name' =>'HND Computer Science'],
+            ['program_id' => 2,  'department_id' => 20,'name' =>'ND Computer Science'],
+            ['program_id' => 3,  'department_id' => 20,'name' =>'NDS Computer Science'],
+            ['program_id' => 1,  'department_id' => 21,'name' =>'HND Statistics'],
+            ['program_id' => 2,  'department_id' => 21,'name' =>'ND Statistics'],
+            ['program_id' => 3,  'department_id' => 21,'name' =>'HND Statistics'],
+            ['program_id' => 5,  'department_id' => 21,'name' =>'PD Statistics'],
+            ['program_id' => 1,  'department_id' => 22,'name' =>'HND SLT Physics with Electronics'],
+            ['program_id' => 1,  'department_id' => 22,'name' =>'HND SLT Microbiology/Biochemistry'],
+            ['program_id' => 1,  'department_id' => 22,'name' =>'HND SLT Chemistry'],
+            ['program_id' => 1,  'department_id' => 22,'name' =>'HND SLT(BIOLOGY/MICROBIOLOGY)'],
+            ['program_id' => 1,  'department_id' => 22,'name' =>'HND MICROBIOLOGY OPTION'],
+            ['program_id' => 2,  'department_id' => 22,'name' =>'ND Science Laboratory Technology'],
+            ['program_id' => 2,  'department_id' => 23,'name' =>'ND Social Development'],
+            ['program_id' => 3,  'department_id' => 23,'name' =>'NDS Social Development'],
+            ['program_id' => 5,  'department_id' => 23,'name' =>'PD Social Development'],
+            ['program_id' => 5,  'department_id' => 24,'name' =>'Diploma Sharia and Civil Law'],
+            ['program_id' => 5,  'department_id' => 26,'name' =>'Diploma Mass Communication'],
+            ['program_id' => 2,  'department_id' => 27,'name' =>'ND Library and Information Science'],
 
         ];
         DB::table('courses')->insert($courses);

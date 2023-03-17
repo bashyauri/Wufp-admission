@@ -92,7 +92,7 @@
 @endsection
 
   @push('js')
-    <script src="{{ URL::asset('assets/js/plugins/datatables.js') }}"></script>  
+    <script src="{{ URL::asset('assets/js/plugins/datatables.js') }}"></script>
     <script>
       if (document.getElementById('users-list')) {
         const dataTableSearch = new simpleDatatables.DataTable("#users-list", {

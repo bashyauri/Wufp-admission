@@ -254,8 +254,9 @@
                         <div class="form-group">
                             <label for="departments">Select Department</label>
                             <select class="form-control" id="department">
+                                <option value="">-- Select Department--</option>
                                 @foreach ($departments as $department)
-                                <option>{{$department->name}}</option>
+                                <option value="{{ $department->id}}">{{$department->name}}</option>
 
 
                               @endforeach
@@ -263,10 +264,10 @@
                         </div>
                         <div class="form-group">
                             <label for="departments">Select Course</label>
-                            <select class="form-control" id="department">
+                            <select class="form-control" id="courses">
 
 
-                                @endforeach
+
                             </select>
                         </div>
                         <div class="button-row d-flex mt-4">
