@@ -8,7 +8,7 @@
       <div class="multisteps-form mb-5">
         <!--progress bar-->
         <div class="row">
-          <div class="col-12 col-lg-8 mx-auto my-5">
+          <div class="col-12 col-lg-8 mx-auto my-6">
             <div class="multisteps-form__progress">
               <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
                 <span>User Info</span>
@@ -42,22 +42,20 @@
                     <div class="col-sm-auto col-8 my-auto">
                         <div class="h-100">
                         <h5 class="mb-1 font-weight-bolder">
-                            Alec Thompson
+                          {{$student->first_name .' ' . $student->last_name. ' ' . $student->middle_name}}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
-                            CEO / Co-Founder
+                        {{$programs->name}}
                         </p>
                         </div>
                     </div>
                     <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
                         <label class="form-check-label mb-0">
-                        <small id="profileVisibility">
-                            Switch to invisible
-                        </small>
+
                         </label>
-                        <div class="form-check form-switch ms-2">
+                        {{-- <div class="form-check form-switch ms-2">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23" checked onchange="visible()">
-                        </div>
+                        </div> --}}
                     </div>
                     </div>
                 </div>
@@ -65,40 +63,73 @@
               @csrf
 
 
-
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" id="parsley-form" data-animation="FadeIn">
-
-                <h5 class="font-weight-bolder mb-0">About me</h5>
-                <p class="mb-0 text-sm">Mandatory informations</p>
                 <div class="multisteps-form__content">
+                  <input class="multisteps-form__input form-control field"  type="file" name="first_name" id="first_name" value="{{ old('first_name') ?? ''}}" ?? '' placeholder="eg. Michael"/>
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">
-                        <label>First Name</label>
-                        <input class="multisteps-form__input form-control field"  type="text" name="first_name" id="first_name" value="{{ old('first_name') ?? ''}}" ?? '' placeholder="eg. Michael"/>
+
+                        <label>Department</label>
+                        <select class="multisteps-form__input form-control" id="department">
+                            <option value="">-- Select Department--</option>
+
+                            @foreach ($programs->departments as $department)
+                            <option value="{{ $department->id}}">{{$department->name}}</option>
+
+
+                          @endforeach
+                        </select>
                         @error('first_name')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <label>Last Name</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('last_name') ?? ''}}" ?? '' type="text" id="last_name" name="last_name" placeholder="eg. Prior" />
+                        <label>Course</label>
+                        <select class="multisteps-form__input form-control field" id="courses">
+
+
+                        </select>
                         @error('last_name')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                   </div>
                   <div class="row mt-3">
-                      <div class=" ">
-                          <select class="form-control field" name="role_id" id="role_id" name="role_id">
-                              <option value="" selected hidden>Choose</option>
-                              {{-- @foreach ($roles as $role)
-                                <option value="{{ $role->id}}" {{ old('role_id') == $role->id ? 'selected' : ''}} >{{ $role->name }}</option>
-                              @endforeach --}}
-                          </select>
-                          @error('role_id')
+                    <div class="col-12 col-sm-6">
+
+                        <label>Phone Number</label>
+                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no" value="{{ auth()->user()->phone_no ? $student->phone_no : old('phone') ?? ''}}" ?? '' placeholder="eg. Michael"/>
+                        @error('phone_name')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                          @enderror
-                      </div>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                        <label>Email</label>
+                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? $student->email : old('email') ?? ''}}" ?? '' type="text" id="email" name="email" placeholder="eg. basharu@screening.com" />
+                        @error('email')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-sm-4 col-4">
+                        <label class="form-label mt-4">&nbsp;</label>
+                        <select class="multisteps-form__input form-control" name="choices-day" id="choices-day">
+                            <option value="">Day</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 col-4">
+                        <label class="form-label mt-4">Birth Date</label>
+                        <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
+                            <option value="">Month</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 col-4">
+                        <label class="form-label mt-4">&nbsp;</label>
+                        <select class="multisteps-form__input form-control" name="choices-year" id="choices-year">
+                            <option value="">Year</option>
+                        </select>
+                    </div>
                   </div>
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">

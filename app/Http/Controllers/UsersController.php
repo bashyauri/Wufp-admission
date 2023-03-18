@@ -23,7 +23,8 @@ class UsersController extends Controller
         $data['student'] = User::where('id', Auth::user()->id)->first();
 
         // Get all the departments
-        $data['departments'] =  Program::with('departments')->find( Auth::user()->program_id)->departments;
+        $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id)->first();
+
 
         if (Auth::user()->id =! $data['student']->id) return abort(404);
         // Using PHP 8 match method
