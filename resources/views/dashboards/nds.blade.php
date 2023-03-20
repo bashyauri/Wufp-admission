@@ -42,7 +42,7 @@
                     <div class="col-sm-auto col-8 my-auto">
                         <div class="h-100">
                         <h5 class="mb-1 font-weight-bolder">
-                          {{$student->first_name .' ' . $student->last_name. ' ' . $student->middle_name}}
+                          {{auth()->user()->first_name .' ' . auth()->user()->last_name. ' ' . auth()->user()->middle_name}}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
                         {{$programs->name}}
@@ -98,14 +98,31 @@
                     <div class="col-12 col-sm-6">
 
                         <label>Phone Number</label>
-                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no" value="{{ auth()->user()->phone_no ? $student->phone_no : old('phone') ?? ''}}" ?? '' placeholder="eg. Michael"/>
+                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no" value="{{ auth()->user()->phone_no ? auth()->user()->phone_no : old('phone') ?? ''}}" ?? '' placeholder="eg. Michael"/>
                         @error('phone_name')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Email</label>
-                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? $student->email : old('email') ?? ''}}" ?? '' type="text" id="email" name="email" placeholder="eg. basharu@screening.com" />
+                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" name="email" placeholder="eg. basharu@screening.com" />
+                        @error('email')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-12 col-sm-6">
+
+                        <label>Gender</label>
+                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no" value="{{ auth()->user()->phone_no ? auth()->user()->phone_no : old('phone') ?? ''}}" ?? '' placeholder="eg. Michael"/>
+                        @error('phone_name')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                        <label>Marital Status</label>
+                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" name="email" placeholder="eg. basharu@screening.com" />
                         @error('email')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -113,13 +130,14 @@
                   </div>
                   <div class="row mt-3">
                     <div class="col-sm-4 col-4">
-                        <label class="form-label mt-4">&nbsp;</label>
+                        <label class="form-label mt-3">Birth Date</label>
                         <select class="multisteps-form__input form-control" name="choices-day" id="choices-day">
                             <option value="">Day</option>
                         </select>
                     </div>
                     <div class="col-sm-4 col-4">
-                        <label class="form-label mt-4">Birth Date</label>
+                        <label class="form-label mt-3">&nbsp;</label>
+
                         <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
                             <option value="">Month</option>
                         </select>
@@ -133,21 +151,22 @@
                   </div>
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">
-                        <label>Company</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('company') ?? ''}}" ?? '' type="text" name="company" placeholder="eg. Creative Tim" />
-                        @error('company')
+                        <label>Next of Kin</label>
+                        <input class="multisteps-form__input form-control"
+                         value="{{  auth()->user()->email ? auth()->user()->email : old('next_of_kin') ?? ''}}" ?? '' type="text" name="next_of_kin" placeholder="eg. Creative Tim" />
+                        @error('next_of_kin')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <label>Email Address</label>
-                        <input class="multisteps-form__input form-control field" type="email" value="{{ old('email') ?? ''}}" ?? '' id="email" name="email" placeholder="eg. soft@dashboard.com"/>
-                        @error('email')
+                        <label>Next of Kin Phone</label>
+                        <input class="multisteps-form__input form-control field" type="text" value="{{ old('next_of_kin_phone') ?? ''}}" ?? '' id="next_of_kin_phone" name="next_of_kin_phone" placeholder="eg. your Dad"/>
+                        @error('next_of_kin_phone')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                   </div>
-                  <div class="row mt-3">
+                  {{-- <div class="row mt-3">
                     <div class="col-12 col-sm-6">
                         <label>Password</label>
                         <input class="multisteps-form__input form-control field password" value="{{ old('password') ?? ''}}" ?? '' type="password" name="password" id="password" placeholder="******"/>
@@ -162,7 +181,7 @@
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                  </div>
+                  </div> --}}
                   <div class="button-row d-flex mt-4">
                     <button class="btn bg-gradient-dark ms-auto mb-0" id="next" type="submit" title="Next">Next</button>
                   </div>

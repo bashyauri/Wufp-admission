@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,13 +21,13 @@ class UsersController extends Controller
 
     public function index(){
 
-        $data['student'] = User::where('id', Auth::user()->id)->first();
+
 
         // Get all the departments
         $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id)->first();
 
 
-        if (Auth::user()->id =! $data['student']->id) return abort(404);
+        // if (Auth::user()->id =! $data['student']->id) return abort(404);
         // Using PHP 8 match method
        $dashboard = match(Auth::user()->program_id){
             1 => 'dashboards.hnd',
