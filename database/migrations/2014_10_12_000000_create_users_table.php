@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('program_id');
             $table->string('first_name');
             $table->string('last_name');
@@ -26,21 +27,22 @@ class CreateUsersTable extends Migration
             $table->string('verify_password');
             $table->string('file')->nullable()->default('default/default.jpg');
             $table->string('gender')->nullable();
-            $table->date('birthday')->nullable();
-            $table->string('company')->nullable();
-            $table->integer('phone')->nullable();
-            $table->string('Address_1')->nullable();
-            $table->string('Address_2')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->integer('zip_code')->nullable();
-            $table->string('language')->nullable();
-            $table->string('skills')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('public_email')->unique()->nullable();
-            $table->string('biography')->nullable();
+            $table->date('marital_status')->nullable();
+            $table->string('nationality')->nullable();
+            $table->integer('state_id')->nullable();
+            $table->integer('lga_id')->nullable();
+            $table->string('home_address')->nullable();
+            $table->string('cor_address')->nullable();
+            $table->string('home_town')->nullable();
+            $table->string('sponsor')->nullable();
+            $table->string('kin_name')->nullable();
+            $table->string('kin_gsm')->nullable();
+            $table->integer('kin_address')->nullable();
+            $table->integer('department_id')->nullable();
+            $table->integer('course_id')->nullable();
+            $table->string('remark')->nullable();
+            $table->string('recommendation')->nullable();
+            $table->string('comment')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

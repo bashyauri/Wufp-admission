@@ -175,6 +175,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::get('/index', [UsersController::class, 'index']);
 
     Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
+    Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLGAS']);
 
 
     // Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);

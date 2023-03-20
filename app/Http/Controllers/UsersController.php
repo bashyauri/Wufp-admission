@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\Program;
+use App\Models\State;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class UsersController extends Controller
 
         // Get all the departments
         $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id)->first();
+        $data['states'] = State::all();
 
 
         // if (Auth::user()->id =! $data['student']->id) return abort(404);
