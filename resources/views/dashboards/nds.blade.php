@@ -14,7 +14,7 @@
                 <span>User Info</span>
               </button>
               <button class="multisteps-form__progress-btn" type="button" title="Address">Adress</button>
-              <button class="multisteps-form__progress-btn" type="button" title="Socials">Socials</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Socials">Academic</button>
               <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
             </div>
           </div>
