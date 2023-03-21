@@ -95,6 +95,7 @@ class UsersController extends Controller
             // 'email' => ['required', 'email', 'max:50', Rule::unique('users', 'email')],
             // 'password' => ['required', 'min:5', 'max:20', 'confirmed'],
         ]);
+        $validatedData['birthday'] = $request->get('choices-year').'-'.$request->get('choices-month').'-'.$request->get('choices-day');
 
         if(empty($request->session()->get('user'))){
             $user = new User();
