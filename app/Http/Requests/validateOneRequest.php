@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class validateOne extends FormRequest
+use Illuminate\Http\Exceptions\HttpResponseException;
+class validateOneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,20 +24,22 @@ class validateOne extends FormRequest
      */
     public function rules()
     {
+
         return [
-             'first_name' => ['required', 'max:50'],
-            'last_name' => ['required','max:50'],
-            'middle_name' => ['max:50'],
-            'program_id' => ['required'],
+            'user_img' => ['required','mimes:jpg,png'],
             'gender' => ['required'],
             'marital_status' => ['required'],
-
-
+            'next_of_kin' => ['required'],
+            'next_of_kin_phone' => ['required','digits:11'],
             'department' => ['required'],
             'courses' => ['required'],
-            'phone_no' => ['required','exact:11'],
-            'choices' => ['required','email'],
-            'password' => ['required', 'min:6', 'max:20', 'confirmed'],
+            'choices-day' => ['required'],
+            'choices-month' => ['required'],
+            'choices-year' => ['required'],
+            'phone_no' => ['required','digits:11'],
+
+
         ];
+
     }
 }

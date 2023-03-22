@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\validateOneRequest;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\Program;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -85,27 +87,46 @@ class UsersController extends Controller
         return view('laravel-examples/users/add-step-one',compact('user', 'roles'));
     }
 
-    public function validateOne(Request $request)
+    public function validateOne(validateOneRequest $request)
     {
-        $validatedData = $request->validate([
-            // 'first_name' => ['required', 'max:50'],
-            // 'last_name' => ['max:50'],
-            // 'role_id' => ['required'],
-            // 'company' => ['max:150'],
-            // 'email' => ['required', 'email', 'max:50', Rule::unique('users', 'email')],
-            // 'password' => ['required', 'min:5', 'max:20', 'confirmed'],
-        ]);
-        $validatedData['birthday'] = $request->get('choices-year').'-'.$request->get('choices-month').'-'.$request->get('choices-day');
 
-        if(empty($request->session()->get('user'))){
-            $user = new User();
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
-        }else{
-            $user = $request->session()->get('user');
-            $user->fill($validatedData);
-            $request->session()->put('user', $user);
+        $validatedData = $request->validated();
+
+
+        $validatedData['birthday'] = $request->get('choices-day').'-'.$request->get('choices-month').'-'.$request->get('choices-year');
+        if(!empty($request->file('user_img'))) {
+            $validatedData['uniqueFileName'] = uniqid().$request->file('user_img')->getClientOriginalName();
+            $request->file('user_img')->move(public_path('/assets/img/users/'), $validatedData['uniqueFileName']);
         }
+        else{
+            $validatedData['uniqueFileName'] = auth()->user()->file;
+        }
+
+        User::where('id','=',auth()->user()->id)
+            ->update([
+                'file' => $validatedData['uniqueFileName'],
+                'gender' => $validatedData['gender'],
+                'marital_status' => $validatedData['marital_status'],
+                'kin_name' => $validatedData['next_of_kin'],
+                'kin_gsm' => $validatedData['next_of_kin_phone'],
+                'department_id' => $validatedData['department'],
+                'course_id' => $validatedData['courses'],
+                'birthday' => $validatedData['birthday'],
+
+            ]);
+
+
+        // if(empty($request->session()->get('user'))){
+        //     $user = new User();
+
+        //     $user->fill($validatedData);
+        //     $request->session()->put('user', $user);
+        // }else{
+        //     $user = $request->session()->get('user');
+
+        //     $user->fill($validatedData);
+        //     $request->session()->patch('user', $user);
+        // }
 
         return redirect()->route('users.create.step.two');
     }

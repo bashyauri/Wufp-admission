@@ -59,13 +59,13 @@
                     </div>
                     </div>
                 </div>
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="/student/validate-step-one" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.one')}}" enctype="multipart/form-data">
               @csrf
 
 
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" id="parsley-form" data-animation="FadeIn">
                 <div class="multisteps-form__content">
-                  <input class="multisteps-form__input form-control field"  type="file" name="first_name" id="first_name" value="{{ old('first_name') ?? ''}}" ?? '' placeholder="eg. Michael"/>
+                  <input class="multisteps-form__input form-control field"  type="file" name="user_img" id="" value="{{ old('user_img') ?? ''}}" ?? '' placeholder="eg. Michael"/>
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">
 
@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Email</label>
-                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" name="email" placeholder="eg. basharu@screening.com" />
+                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" type="email" name="email" placeholder="eg. basharu@screening.com" />
                         @error('email')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
