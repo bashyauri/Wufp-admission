@@ -70,7 +70,7 @@
                     <div class="col-12 col-sm-6">
 
                         <label>Department</label>
-                        <select class="multisteps-form__input form-control" id="department">
+                        <select class="multisteps-form__input form-control" id="department" name = "department">
                             <option value="">-- Select Department--</option>
 
                             @foreach ($programs->departments as $department)
@@ -79,17 +79,17 @@
 
                           @endforeach
                         </select>
-                        @error('first_name')
+                        @error('department')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Course</label>
-                        <select class="multisteps-form__input form-control field" id="courses">
+                        <select class="multisteps-form__input form-control field" id="courses" name="courses">
 
 
                         </select>
-                        @error('last_name')
+                        @error('courses')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
@@ -98,8 +98,8 @@
                     <div class="col-12 col-sm-6">
 
                         <label>Phone Number</label>
-                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no" value="{{ auth()->user()->phone_no ? auth()->user()->phone_no : old('phone') ?? ''}}" ?? '' placeholder="eg. Michael"/>
-                        @error('phone_name')
+                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no" value="{{ auth()->user()->phone_no ? auth()->user()->phone_no : old('phone_no') ?? ''}}" ?? '' placeholder="eg. 08038272560"/>
+                        @error('phone_no')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
@@ -113,13 +113,15 @@
                   </div>
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">
-
                         <label>Gender</label>
                         <select class="multisteps-form__input form-control field" name="gender">
+                            @if (auth()->user()->gender)
+                            <option value="{{auth()->user()->gender}}">{{auth()->user()->gender}}</option>
+                            @else
                             <option value="">-- Select Gender--</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
-
+                            @endif
                         </select>
                         @error('gender')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
@@ -128,11 +130,16 @@
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Marital Status</label>
                         <select class="multisteps-form__input form-control field" name="marital_status">
+                            @if (auth()->user()->marital_status)
+                            <option value="{{auth()->user()->marital_status}}">{{auth()->user()->marital_status}}</option>
+                            @else
                             <option value="">--Marital Status--</option>
                             <option value="Married">Married</option>
                             <option value="Single">Single</option>
+                            @endif
+
                         </select>
-                        @error('gender')
+                        @error('marital_status')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
@@ -162,7 +169,7 @@
                     <div class="col-12 col-sm-6">
                         <label>Next of Kin</label>
                         <input class="multisteps-form__input form-control"
-                         value="{{  auth()->user()->email ? auth()->user()->email : old('next_of_kin') ?? ''}}" ?? '' type="text" name="next_of_kin" placeholder="eg. Creative Tim" />
+                         value="{{  auth()->user()->email ? auth()->user()->email : old('next_of_kin') ?? ''}}" ?? '' type="text" name="next_of_kin" placeholder="eg. Umar" />
                         @error('next_of_kin')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror

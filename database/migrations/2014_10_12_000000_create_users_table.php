@@ -24,10 +24,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('phone_no')->unique();
             $table->string('password');
+            $table->date('birthday')->nullable();
             $table->string('verify_password');
             $table->string('file')->nullable()->default('default/default.jpg');
             $table->string('gender')->nullable();
-            $table->date('marital_status')->nullable();
+            $table->string('marital_status')->nullable();
             $table->string('nationality')->nullable();
             $table->integer('state_id')->nullable();
             $table->integer('lga_id')->nullable();
