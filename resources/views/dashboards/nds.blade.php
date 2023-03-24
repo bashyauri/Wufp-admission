@@ -71,10 +71,8 @@
 
                         <label>Department</label>
                         <select class="multisteps-form__input form-control" id="department" name = "department">
-                            @if (auth()->user()->de)
-                                
-                            @else
-                                
+                            @if (auth()->user()->department_id)
+                            <option value="{{ $studentDepartment->id}}">{{$studentDepartment->name}}</option>
                             @endif
                             <option value="">-- Select Department--</option>
 
@@ -91,6 +89,10 @@
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Course</label>
                         <select class="multisteps-form__input form-control field" id="courses" name="courses">
+
+                           @if ($studentCourse)
+                           <option value="{{ $studentCourse->id}}">{{$studentCourse->name}}</option>
+                           @endif
 
 
                         </select>
