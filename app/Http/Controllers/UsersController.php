@@ -31,6 +31,12 @@ class UsersController extends Controller
        // Get all the departments
         $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id)->first();
         $data['states'] = State::all();
+        $data['studentCourse'] = Course::find(Auth::user()->course_id);
+        $data['studentDepartment'] = Department::find(Auth::user()->department_id);
+
+
+
+
         // if (Auth::user()->id =! $data['student']->id) return abort(404);
         // Using PHP 8 match method
        $dashboard = match(Auth::user()->program_id){
@@ -94,10 +100,10 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateOne($validatedData);
-            return redirect()->route('users.create.step.two');
+            return redirect()->route('users.create.step.two')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
-            return $ex->getMessage();
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
         }
     }
 
@@ -105,7 +111,7 @@ class UsersController extends Controller
     {
         $user = $request->session()->get('user');
 
-        return view('laravel-examples/users/add-step-two',compact('user'));
+        return view('dashboards/student/nds/add-step-two',compact('user'));
     }
 
     public function validateTwo(Request $request)
