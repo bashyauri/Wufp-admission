@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use App\Services\User\UserService;
+
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Log;
@@ -21,16 +23,14 @@ use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
+    public function __construct(
+        public $userService = new UserService,
+    ) {}
 
     public function index(){
-
-
-
-        // Get all the departments
+       // Get all the departments
         $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id)->first();
         $data['states'] = State::all();
-
-
         // if (Auth::user()->id =! $data['student']->id) return abort(404);
         // Using PHP 8 match method
        $dashboard = match(Auth::user()->program_id){
@@ -92,31 +92,13 @@ class UsersController extends Controller
 
         $validatedData = $request->validated();
 
-
-        $validatedData['birthday'] = $request->get('choices-year').'-'.$request->get('choices-month').'-'.$request->get('choices-day');
-        if(!empty($request->file('user_img'))) {
-            $validatedData['uniqueFileName'] = uniqid().$request->file('user_img')->getClientOriginalName();
-            $request->file('user_img')->move(public_path('/assets/img/users/'), $validatedData['uniqueFileName']);
+        try {
+            $this->userService->validateOne($validatedData);
+            return redirect()->route('users.create.step.two');
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return $ex->getMessage();
         }
-        else{
-            $validatedData['uniqueFileName'] = auth()->user()->file;
-        }
-
-        User::where('id','=',auth()->user()->id)
-            ->update([
-                'file' => $validatedData['uniqueFileName'],
-                'gender' => $validatedData['gender'],
-                'marital_status' => $validatedData['marital_status'],
-                'kin_name' => $validatedData['next_of_kin'],
-                'kin_gsm' => $validatedData['next_of_kin_phone'],
-                'department_id' => $validatedData['department'],
-                'course_id' => $validatedData['courses'],
-                'birthday' => $validatedData['birthday'],
-
-            ]);
-
-
-        return redirect()->route('users.create.step.two');
     }
 
     public function createTwo(Request $request)
