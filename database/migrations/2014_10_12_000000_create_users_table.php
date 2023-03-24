@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Course;
+use App\Models\Department;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -39,8 +41,9 @@ class CreateUsersTable extends Migration
             $table->string('kin_name')->nullable();
             $table->string('kin_gsm')->nullable();
             $table->integer('kin_address')->nullable();
-            $table->integer('department_id')->nullable();
-            $table->integer('course_id')->nullable();
+            $table->foreignIdFor(Department::class)->nullable();
+            $table->foreignIdFor(Course::class)->nullable();
+
             $table->string('remark')->nullable();
             $table->string('recommendation')->nullable();
             $table->string('comment')->nullable();

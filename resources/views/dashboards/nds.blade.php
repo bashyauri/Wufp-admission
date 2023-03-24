@@ -71,6 +71,11 @@
 
                         <label>Department</label>
                         <select class="multisteps-form__input form-control" id="department" name = "department">
+                            @if (auth()->user()->de)
+                                
+                            @else
+                                
+                            @endif
                             <option value="">-- Select Department--</option>
 
                             @foreach ($programs->departments as $department)

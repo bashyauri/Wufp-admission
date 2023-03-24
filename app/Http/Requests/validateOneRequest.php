@@ -37,8 +37,6 @@ class validateOneRequest extends FormRequest
             'choices-month' => ['required'],
             'choices-year' => ['required'],
             'phone_no' => ['required','digits:11'],
-
-
         ];
 
     }

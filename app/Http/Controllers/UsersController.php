@@ -93,7 +93,7 @@ class UsersController extends Controller
         $validatedData = $request->validated();
 
 
-        $validatedData['birthday'] = $request->get('choices-day').'-'.$request->get('choices-month').'-'.$request->get('choices-year');
+        $validatedData['birthday'] = $request->get('choices-year').'-'.$request->get('choices-month').'-'.$request->get('choices-day');
         if(!empty($request->file('user_img'))) {
             $validatedData['uniqueFileName'] = uniqid().$request->file('user_img')->getClientOriginalName();
             $request->file('user_img')->move(public_path('/assets/img/users/'), $validatedData['uniqueFileName']);
@@ -115,18 +115,6 @@ class UsersController extends Controller
 
             ]);
 
-
-        // if(empty($request->session()->get('user'))){
-        //     $user = new User();
-
-        //     $user->fill($validatedData);
-        //     $request->session()->put('user', $user);
-        // }else{
-        //     $user = $request->session()->get('user');
-
-        //     $user->fill($validatedData);
-        //     $request->session()->patch('user', $user);
-        // }
 
         return redirect()->route('users.create.step.two');
     }
