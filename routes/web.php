@@ -138,7 +138,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
 
     Route::get('/laravel-new-user', [UsersController::class, 'createOne'])->name('users.create.step.one');
 
-    Route::get('/laravel-create-step-two', [UsersController::class, 'createTwo'])->name('users.create.step.two');
+
     Route::post('/validate-step-two', [UsersController::class, 'validateTwo'])->name('users.validate.step.two');
     Route::get('/laravel-create-step-three', [UsersController::class, 'createThree'])->name('users.create.step.three');
     Route::post('/validate-step-three', [UsersController::class, 'validateThree'])->name('users.validate.step.three');
@@ -174,6 +174,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
       // User
     Route::get('/index', [UsersController::class, 'index']);
     Route::post('/validate-step-one', [UsersController::class, 'validateOne'])->name('users.validate.step.one');
+    Route::get('/nds-create-step-two', [UsersController::class, 'createTwo'])->name('users.create.step.two');
 
     Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
     Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLGAS']);

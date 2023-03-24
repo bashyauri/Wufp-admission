@@ -1,4 +1,4 @@
-@extends('user_type.auth', ['parentFolder' => 'laravel', 'childFolder' => 'users-laravel'])
+@extends('user_type.auth', ['parentFolder' => 'nds', 'childFolder' =>''])
 
 @section('content')
 
@@ -73,7 +73,7 @@
                     </div>
                   </div>
                   <div class="button-row d-flex mt-4">
-                    <a href="{{ route('users.create.step.one') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                    <a href="index" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>
                   </div>
                 </div>
@@ -86,7 +86,7 @@
   </div>
 
 @endsection
-  
+
   @push('js')
     <script src="{{ URL::asset('assets/js/plugins/choices.min.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -102,7 +102,7 @@
       var country = document.getElementById('role_id');
       const example = new Choices(country);
       }
-    
+
     var upload = document.getElementById('imgDisplay');
     var imgInp = document.getElementById('file-input');
     imgInp.onchange = evt => {
@@ -112,5 +112,5 @@
         }
     }
   </script>
-  
+
   @endpush
