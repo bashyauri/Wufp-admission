@@ -1,4 +1,4 @@
-@extends('user_type.auth', ['parentFolder' => 'laravel', 'childFolder' => 'none'])
+s@extends('user_type.auth', ['parentFolder' => 'laravel', 'childFolder' => 'none'])
 
 @section('content')
 <main class="main-content mt-1 border-radius-lg">
@@ -121,7 +121,7 @@
                                 <label class="form-label mt-4">Email</label>
                                 <div class="input-group">
                                     <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ auth()->user()->email }}">
-                                </div> 
+                                </div>
                                 @error('email')
                                         <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                                     @enderror
@@ -173,7 +173,7 @@
     </div>
 </main>
 @endsection
-@push('js')  
+@push('js')
     <script src="{{ URL::asset('assets/js/plugins/choices.min.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
@@ -201,7 +201,7 @@
         var optn = document.createElement("OPTION");
         optn.text = y;
         optn.value = y;
-        
+
         if(selectedYear > 0)
         {
             if (y == selectedYear) {
@@ -277,20 +277,22 @@
         }
       }
     }
+
     </script>
+
     <script>
      function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            
+
             reader.onload = function (e) {
                 $('#imgDisplay').attr('src', e.target.result);
             }
-            
+
             reader.readAsDataURL(input.files[0]);
         }
     }
-    
+
     $("#file-input").change(function(){
         readURL(this);
     });

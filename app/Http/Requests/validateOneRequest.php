@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -26,7 +27,7 @@ class validateOneRequest extends FormRequest
     {
 
         return [
-            'user_img' => ['required','mimes:jpg,png'],
+            'user_img' => [Rule::requiredIf(!auth()->user()->file),'image','mimes:jpg,png'],
             'gender' => ['required'],
             'marital_status' => ['required'],
             'next_of_kin' => ['required'],

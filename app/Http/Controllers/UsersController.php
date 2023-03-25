@@ -29,7 +29,7 @@ class UsersController extends Controller
 
     public function index(){
        // Get all the departments
-        $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id)->first();
+        $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id);
         $data['states'] = State::all();
         $data['studentCourse'] = Course::find(Auth::user()->course_id);
         $data['studentDepartment'] = Department::find(Auth::user()->department_id);

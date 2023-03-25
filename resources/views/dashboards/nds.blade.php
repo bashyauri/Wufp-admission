@@ -9,13 +9,16 @@
         <!--progress bar-->
         <div class="row">
           <div class="col-12 col-lg-8 mx-auto my-6">
+
             <div class="multisteps-form__progress">
               <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
                 <span>User Info</span>
               </button>
-              <button class="multisteps-form__progress-btn" type="button" title="Address">Adress</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
               <button class="multisteps-form__progress-btn" type="button" title="Socials">Academic</button>
               <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
+                 <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
+                    <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
             </div>
           </div>
         </div>
@@ -65,7 +68,7 @@
 
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" id="parsley-form" data-animation="FadeIn">
                 <div class="multisteps-form__content">
-                  <input class="multisteps-form__input form-control field"  type="file" name="user_img" id="" value="{{ old('user_img') ?? ''}}" ?? '' placeholder="eg. Michael"/>
+                  {{-- <input class="multisteps-form__input form-control field"  type="file" name="user_img" id="imgDisplay" value="{{ auth()->user()->file ? auth()->user()->file : old('user_img') ?? ''}}" ?? '' /> --}}
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">
 
@@ -86,6 +89,10 @@
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
+                    <input type="file" id="file-input" name="user_img" accept="image/*" class="d-none" value="{{ auth()->user()->file ? auth()->user()->file : old('user_img') ?? ''}}" ?? ''>
+                     @error('user_img')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Course</label>
                         <select class="multisteps-form__input form-control field" id="courses" name="courses">
@@ -155,6 +162,7 @@
                     <div class="col-sm-4 col-4">
                         <label class="form-label mt-3">Birth Date</label>
                         <select class="multisteps-form__input form-control" name="choices-day" id="choices-day">
+
                             <option value="">Day</option>
                         </select>
                     </div>
@@ -183,7 +191,7 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Next of Kin Phone</label>
-                        <input class="multisteps-form__input form-control field" type="text" value="{{ old('next_of_kin_phone') ?? ''}}" ?? '' id="next_of_kin_phone" name="next_of_kin_phone" placeholder="eg. your Dad"/>
+                        <input class="multisteps-form__input form-control field" type="text" value="{{  auth()->user()->kin_gsm ? auth()->user()->kin_gsm : old('next_of_kin_phone') ?? ''}}" ?? '' id="next_of_kin_phone" name="next_of_kin_phone" placeholder="eg. your Dads Phone Number"/>
                         @error('next_of_kin_phone')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -393,7 +401,9 @@
         }
       }
     }
+
     </script>
+
     <script>
      function readURL(input) {
         if (input.files && input.files[0]) {
@@ -419,7 +429,6 @@
         });
     </script>
 @endpush
-
 
 
 
