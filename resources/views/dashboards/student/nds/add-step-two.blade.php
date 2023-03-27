@@ -27,6 +27,39 @@
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                 <h5 class="font-weight-bolder">Address</h5>
                 <div class="multisteps-form__content">
+                    <div class="row mt-3">
+                        <div class="col-12 col-sm-6">
+                            <label>Nationality</label>
+                            <select class="multisteps-form__select form-control" name="state">
+                                <option selected="selected">...</option>
+                                <option value="Nigerian">Nigerian</option>
+                                <option value="Non Nigerian">Non Nigerian</option>
+                            </select>
+                            @error('nationality')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-6 col-sm-3 mt-3 mt-sm-0">
+                            <label>State</label>
+                            <select class="multisteps-form__select form-control" name="state">
+                                <option selected="selected">...</option>
+                                @foreach ($states as $state)
+                                <option value="{{$state->id}}">{{$state->name}}</option>
+                                @endforeach
+
+                            </select>
+                            @error('state')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-6 col-sm-3 mt-3 mt-sm-0">
+                            <label>Zip</label>
+                            <input class="multisteps-form__input form-control" value="{{ old('zip_code') ?? ''}}" ?? '' type="text" name="zip_code" placeholder="7 letters" />
+                            @error('zip_code')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                      </div>
                   <div class="row mt-3">
                     <div class="col">
                         <label>Address 1</label>
@@ -45,33 +78,7 @@
                         @enderror
                     </div>
                   </div>
-                  <div class="row mt-3">
-                    <div class="col-12 col-sm-6">
-                        <label>City</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('city') ?? ''}}" ?? '' type="text" name="city" placeholder="eg. Tokyo" />
-                        @error('city')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-6 col-sm-3 mt-3 mt-sm-0">
-                        <label>State</label>
-                        <select class="multisteps-form__select form-control" name="state">
-                            <option selected="selected">...</option>
-                            <option value="1">State 1</option>
-                            <option value="2">State 2</option>
-                        </select>
-                        @error('state')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-6 col-sm-3 mt-3 mt-sm-0">
-                        <label>Zip</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('zip_code') ?? ''}}" ?? '' type="text" name="zip_code" placeholder="7 letters" />
-                        @error('zip_code')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div>
+
                   <div class="button-row d-flex mt-4">
                     <a href="index" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>

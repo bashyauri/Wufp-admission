@@ -30,7 +30,7 @@ class UsersController extends Controller
     public function index(){
        // Get all the departments
         $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id);
-        $data['states'] = State::all();
+
         $data['studentCourse'] = Course::find(Auth::user()->course_id);
         $data['studentDepartment'] = Department::find(Auth::user()->department_id);
 
@@ -45,29 +45,10 @@ class UsersController extends Controller
             3 => 'dashboards.nds',
             4 => 'dashboards.nce',
             5 => 'dashboards.pd',
+
         };
         return view($dashboard)->with($data);
-        // switch (Auth::user()->program_id) {
-        //     case 1:
-        //         return view('dashboards.hnd')->with($data);
-        //         break;
-        //     case 2:
-        //         return  view('dashboards.nd')->with($data);
-        //         break;
-        //     case 3:
-        //         return view('dashboards.nds')->with($data);
-        //         break;
-        //     case 4:
-        //         return view('dashboards.nce')->with($data);
-        //         break;
-        //     case 5:
-        //         return view('dashboards.pd')->with($data);
-        //         break;
 
-        //     default:
-        //        dd("Select an option");
-        //         break;
-        // }
     }
     public function getCourses(int $department_id): object
     {
@@ -109,9 +90,10 @@ class UsersController extends Controller
 
     public function createTwo(Request $request)
     {
+        $states = State::all();
         $user = $request->session()->get('user');
 
-        return view('dashboards/student/nds/add-step-two',compact('user'));
+        return view('dashboards/student/nds/add-step-two',compact('user','states'));
     }
 
     public function validateTwo(Request $request)

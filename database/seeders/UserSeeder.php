@@ -44,8 +44,8 @@ class UserSeeder extends Seeder
         DB::table('student_tb')->insert([
             'id' => 3,
             'program_id' => 3,
-            'first_name' => 'member',
-            'last_name' => 'member',
+            'first_name' => 'Bashar',
+            'last_name' => 'Umar',
             'file' => 'team-3.jpg',
             'email' => 'member@softui.com',
             'phone_no' => '08038272560',

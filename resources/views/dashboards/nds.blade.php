@@ -131,11 +131,11 @@
                         <select class="multisteps-form__input form-control field" name="gender">
                             @if (auth()->user()->gender)
                             <option value="{{auth()->user()->gender}}">{{auth()->user()->gender}}</option>
-                            @else
+                            @endif
                             <option value="">-- Select Gender--</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
-                            @endif
+
                         </select>
                         @error('gender')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
@@ -146,11 +146,11 @@
                         <select class="multisteps-form__input form-control field" name="marital_status">
                             @if (auth()->user()->marital_status)
                             <option value="{{auth()->user()->marital_status}}">{{auth()->user()->marital_status}}</option>
-                            @else
+                               @endif
                             <option value="">--Marital Status--</option>
                             <option value="Married">Married</option>
                             <option value="Single">Single</option>
-                            @endif
+
 
                         </select>
                         @error('marital_status')
@@ -209,22 +209,7 @@
                         @enderror
                     </div>
                   </div>
-                  {{-- <div class="row mt-3">
-                    <div class="col-12 col-sm-6">
-                        <label>Password</label>
-                        <input class="multisteps-form__input form-control field password" value="{{ old('password') ?? ''}}" ?? '' type="password" name="password" id="password" placeholder="******"/>
-                        @error('password')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <label>Repeat Password</label>
-                        <input class="multisteps-form__input form-control field password_confirmation" name="password_confirmation" type="password" placeholder="******" data-parsley-equalto="#password"/>
-                        @error('password_confirmation')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div> --}}
+
                   <div class="button-row d-flex mt-4">
                     <button class="btn bg-gradient-dark ms-auto mb-0" id="next" type="submit" title="Next">Next</button>
                   </div>
