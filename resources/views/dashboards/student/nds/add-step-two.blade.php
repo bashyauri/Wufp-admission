@@ -75,7 +75,7 @@
                   <div class="row mt-3">
                     <div class="col-6 col-sm-6 mt-3 mt-sm-0">
                         <label>Home Address</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('home_address') ?? ''}}" ?? '' type="text" name="home_address" placeholder="eg. Street 221" />
+                        <input class="multisteps-form__input form-control" value="{{ old('home_address') ?? ''}}" ?? '' type="text" name="home_address" placeholder="eg. Yauri" />
                         @error('home_address')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
