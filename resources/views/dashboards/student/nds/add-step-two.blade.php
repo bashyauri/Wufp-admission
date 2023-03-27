@@ -30,7 +30,7 @@
                     <div class="row mt-3">
                         <div class="col-12 col-sm-6">
                             <label>Nationality</label>
-                            <select class="multisteps-form__select form-control" name="state">
+                            <select class="multisteps-form__select form-control" name="nationality">
                                 <option selected="selected">...</option>
                                 <option value="Nigerian">Nigerian</option>
                                 <option value="Non Nigerian">Non Nigerian</option>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>State</label>
-                            <select class="multisteps-form__select form-control" name="state">
+                            <select class="multisteps-form__select form-control" name="state" id = "state">
                                 <option selected="selected">...</option>
                                 @foreach ($states as $state)
                                 <option value="{{$state->id}}">{{$state->name}}</option>
@@ -53,31 +53,58 @@
                             @enderror
                         </div>
                         <div class="col-6 col-sm-3 mt-3 mt-sm-0">
-                            <label>Zip</label>
-                            <input class="multisteps-form__input form-control" value="{{ old('zip_code') ?? ''}}" ?? '' type="text" name="zip_code" placeholder="7 letters" />
-                            @error('zip_code')
+                            <label>LGA</label>
+                            <select class="multisteps-form__select form-control" name="lga" id = "lga">
+
+                            </select>
+                            @error('lga')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
                       </div>
                   <div class="row mt-3">
                     <div class="col">
-                        <label>Address 1</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('Address_1') ?? ''}}" ?? '' type="text" name="Address_1" placeholder="eg. Street 111" />
-                        @error('Address_1')
+                        <label>Correspondent Address</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('cor_address') ?? ''}}" ?? '' type="text" name="cor_address" placeholder="eg. Street 111" />
+                        @error('cor_address')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-6 col-sm-6 mt-3 mt-sm-0">
+                        <label>Home Address</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('home_address') ?? ''}}" ?? '' type="text" name="home_address" placeholder="eg. Street 221" />
+                        @error('home_address')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-6 col-sm-6 mt-3 mt-sm-0">
+                        <label>Home Town</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('home_town') ?? ''}}" ?? '' type="text" name="home_town" placeholder="eg. Street 221" />
+                        @error('home_town')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                   </div>
                   <div class="row mt-3">
-                    <div class="col">
-                        <label>Address 2</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('Address_2') ?? ''}}" ?? '' type="text" name="Address_2" placeholder="eg. Street 221" />
-                        @error('Address_2')
+                    <div class="col-6 col-sm-6 mt-3 mt-sm-0">
+                        <label>Next of kin Address</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('kin_address') ?? ''}}" ?? '' type="text" name="kin_address" placeholder="eg. Street 221" />
+                        @error('kin_address')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-6 col-sm-6 mt-3 mt-sm-0">
+                        <label>Sponsor</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('sponsor') ?? ''}}" ?? '' type="text" name="sponsor" placeholder="eg. Street 221" />
+                        @error('sponsor')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                   </div>
+
 
                   <div class="button-row d-flex mt-4">
                     <a href="index" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
@@ -99,25 +126,21 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-    if (document.getElementById('choices-role')) {
-      var gender = document.getElementById('choices-role');
-      const example = new Choices(gender);
-    }
-    if (document.getElementById('role_id')) {
-      var country = document.getElementById('role_id');
-      const example = new Choices(country);
-      }
+  $(document).ready(function() {
+    $('#state').change(function() {
+        var stateId = $(this).val();
 
-    var upload = document.getElementById('imgDisplay');
-    var imgInp = document.getElementById('file-input');
-    imgInp.onchange = evt => {
-        const [file] = imgInp.files
-        if (file) {
-            upload.src = URL.createObjectURL(file)
-        }
-    }
+        $.get('get-lgas/' + stateId, function(data) {
+            $('#lga').empty();
+            $.each(data, function(index, lgas) {
+
+                $('#lga').append('<option value="' + lgas.id + '">' + lgas.name + '</option>');
+            });
+        });
+    });
+});
   </script>
 
   @endpush

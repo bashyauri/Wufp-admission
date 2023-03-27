@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\validateOneRequest;
 use App\Models\Course;
 use App\Models\Department;
+use App\Models\Lga;
 use App\Models\Program;
 use App\Models\State;
 use App\Models\User;
@@ -59,6 +60,13 @@ class UsersController extends Controller
         ->get(['id','name']);
 
         return  response()->json($courses);
+    }
+    public function getLgas(int $state_id): object
+    {
+        $lgas =Lga::where(['state_id'=> $state_id])
+        ->get(['id','name']);
+
+        return  response()->json($lgas);
     }
     public function create()
     {

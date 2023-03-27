@@ -177,8 +177,8 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::get('/nds-create-step-two', [UsersController::class, 'createTwo'])->name('users.create.step.two');
 
     Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
-    Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLGAS']);
-    Route::get('/get-lgas/{state_id}', [UsersController::class, '']);
+    Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLgas']);
+
 
 
     // Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
