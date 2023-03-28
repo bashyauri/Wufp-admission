@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\validateOneRequest;
+use App\Http\Requests\validateTwoRequest;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\Lga;
@@ -104,17 +105,12 @@ class UsersController extends Controller
         return view('dashboards/student/nds/add-step-two',compact('user','states'));
     }
 
-    public function validateTwo(Request $request)
+    public function validateTwo(validateTwoRequest $request)
     {
-        $validatedData = $request->validate([
-            'Address_1' => ['max:50'],
-            'Address_2' => ['max:50'],
-            'city' => ['max:50'],
-            'state' => ['max:50'],
-            'zip_code' => ['max:50'],
-        ]);
+        $validatedData = $request->validated();
 
-        $user = $request->session()->get('user');
+        $user = $request->session()->get('student_tb');
+        dd($request->session()->all());
         $user->fill($validatedData);
         $request->session()->put('user', $user);
 
@@ -125,7 +121,7 @@ class UsersController extends Controller
     {
         $user = $request->session()->get('user');
 
-        return view('laravel-examples/users/add-step-three',compact('user'));
+        return view('dashboards/student/nds/add-step-three',compact('user'));
     }
 
     public function validateThree(Request $request)
