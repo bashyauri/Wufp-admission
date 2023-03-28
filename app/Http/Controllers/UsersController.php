@@ -35,8 +35,7 @@ class UsersController extends Controller
 
         $data['studentCourse'] = Course::find(Auth::user()->course_id);
         $data['studentDepartment'] = Department::find(Auth::user()->department_id);
-        $data['studentState'] = State::find(Auth::user()->state_id);
-        $data['studentLga'] = Lga::find(Auth::user()->state_id);
+
 
 
 
@@ -101,11 +100,13 @@ class UsersController extends Controller
 
     public function createTwo(Request $request)
     {
-        $states = State::all();
+        $data['states'] = State::all();
+        $data['studentState'] = State::find(Auth::user()->state_id)->first();
+        $data['studentLga'] = Lga::find(Auth::user()->lga_id)->first();
 
         $user = $request->session()->get('user');
 
-        return view('dashboards/student/nds/add-step-two',compact('user','states'));
+        return view('dashboards/student/nds/add-step-two')->with($data);
     }
 
     public function validateTwo(validateTwoRequest $request)

@@ -31,7 +31,10 @@
                         <div class="col-12 col-sm-6">
                             <label>Nationality</label>
                             <select class="multisteps-form__select form-control" name="nationality">
-                                <option selected="selected">...</option>
+                                @if (auth()->user()->nationality)
+                                <option value="{{auth()->user()->nationality}}">{{auth()->user()->nationality}}</option>
+                                   @endif
+                                <option value="">...</option>
                                 <option value="Nigerian">Nigerian</option>
                                 <option value="Non Nigerian">Non Nigerian</option>
                             </select>
@@ -41,13 +44,15 @@
                         </div>
                         <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>State</label>
-                            <select class="multisteps-form__select form-control" name="state" id = "state">
 
-                                <option selected="selected">...</option>
+                            <select class="multisteps-form__select form-control" name="state" id = "state">
+                                @if (auth()->user()->state_id)
+                            <option value="{{ $studentState->id}}">{{$studentState->name}}</option>
+                                @endif
+                                <option value="">-- Select State--</option>
                                 @foreach ($states as $state)
                                 <option value="{{$state->id}}">{{$state->name}}</option>
                                 @endforeach
-
                             </select>
                             @error('state')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
@@ -56,6 +61,9 @@
                         <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>LGA</label>
                             <select class="multisteps-form__select form-control" name="lga" id = "lga">
+                                @if (auth()->user()->lga_id)
+                                <option value="{{ $studentLga->id}}">{{$studentLga->name}}</option>
+                                    @endif
 
                             </select>
                             @error('lga')
@@ -66,7 +74,10 @@
                   <div class="row mt-3">
                     <div class="col">
                         <label>Correspondent Address</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('cor_address') ?? ''}}" ?? '' type="text" name="cor_address" placeholder="eg. Street 111" />
+
+
+
+                        <input class="multisteps-form__input form-control" value="{{ auth()->user()->cor_address ? auth()->user()->cor_address : old('cor_address') ?? ''}}" ?? '' type="text" name="cor_address" placeholder="eg. Street 111" />
                         @error('cor_address')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -76,14 +87,14 @@
                   <div class="row mt-3">
                     <div class="col-6 col-sm-6 mt-3 mt-sm-0">
                         <label>Home Address</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('home_address') ?? ''}}" ?? '' type="text" name="home_address" placeholder="eg. Yauri" />
+                        <input class="multisteps-form__input form-control" value="{{ auth()->user()->home_address ? auth()->user()->home_address : old('home_address') ?? ''}}" ?? '' type="text" name="home_address" placeholder="eg. Yauri" />
                         @error('home_address')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-6 col-sm-6 mt-3 mt-sm-0">
                         <label>Home Town</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('home_town') ?? ''}}" ?? '' type="text" name="home_town" placeholder="eg. Street 221" />
+                        <input class="multisteps-form__input form-control" value="{{ auth()->user()->home_town ? auth()->user()->home_town : old('home_town') ?? ''}}" ?? '' type="text" name="home_town" placeholder="eg. Street 221" />
                         @error('home_town')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -92,14 +103,14 @@
                   <div class="row mt-3">
                     <div class="col-6 col-sm-6 mt-3 mt-sm-0">
                         <label>Next of kin Address</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('kin_address') ?? ''}}" ?? '' type="text" name="kin_address" placeholder="eg. Street 221" />
+                        <input class="multisteps-form__input form-control" value="{{ auth()->user()->kin_address ? auth()->user()->kin_address : old('kin_address') ?? ''}}" ?? '' type="text" name="kin_address" placeholder="eg. Street 221" />
                         @error('kin_address')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-6 col-sm-6 mt-3 mt-sm-0">
                         <label>Sponsor</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('sponsor') ?? ''}}" ?? '' type="text" name="sponsor" placeholder="eg. Street 221" />
+                        <input class="multisteps-form__input form-control" value="{{ auth()->user()->sponsor ? auth()->user()->sponsor : old('sponsor') ?? ''}}" ?? '' type="text" name="sponsor" placeholder="eg. Street 221" />
                         @error('sponsor')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
