@@ -40,7 +40,7 @@ class CreateUsersTable extends Migration
             $table->string('sponsor')->nullable();
             $table->string('kin_name')->nullable();
             $table->string('kin_gsm')->nullable();
-            $table->integer('kin_address')->nullable();
+            $table->string('kin_address')->nullable();
             $table->integer('department_id')->nullable();
             $table->integer('course_id')->nullable();
 

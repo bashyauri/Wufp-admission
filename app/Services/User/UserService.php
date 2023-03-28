@@ -35,4 +35,18 @@ class UserService
         ]);
 
     }
+    public function validateTwo(array $validatedData):void
+    {
+        User::where(['id' => auth()->user()->id])
+        ->update([
+            'nationality' => $validatedData['nationality'],
+            'state_id' => $validatedData['state'],
+            'lga_id' => $validatedData['lga'],
+            'home_town' => $validatedData['home_town'],
+            'home_address' => $validatedData['home_address'],
+            'cor_address' => $validatedData['cor_address'],
+            'kin_address' => $validatedData['kin_address'],
+            'sponsor' => $validatedData['sponsor'],
+        ]);
+    }
 }

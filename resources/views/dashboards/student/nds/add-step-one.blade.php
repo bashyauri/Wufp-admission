@@ -122,11 +122,11 @@
                         <select class="multisteps-form__input form-control field" name="gender">
                             @if (auth()->user()->gender)
                             <option value="{{auth()->user()->gender}}">{{auth()->user()->gender}}</option>
-                            @else
+                            @endif
                             <option value="">-- Select Gender--</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
-                            @endif
+
                         </select>
                         @error('gender')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>

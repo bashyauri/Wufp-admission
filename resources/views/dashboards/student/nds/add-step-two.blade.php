@@ -42,6 +42,7 @@
                         <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>State</label>
                             <select class="multisteps-form__select form-control" name="state" id = "state">
+
                                 <option selected="selected">...</option>
                                 @foreach ($states as $state)
                                 <option value="{{$state->id}}">{{$state->name}}</option>

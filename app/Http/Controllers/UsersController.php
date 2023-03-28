@@ -35,6 +35,8 @@ class UsersController extends Controller
 
         $data['studentCourse'] = Course::find(Auth::user()->course_id);
         $data['studentDepartment'] = Department::find(Auth::user()->department_id);
+        $data['studentState'] = State::find(Auth::user()->state_id);
+        $data['studentLga'] = Lga::find(Auth::user()->state_id);
 
 
 
@@ -100,6 +102,7 @@ class UsersController extends Controller
     public function createTwo(Request $request)
     {
         $states = State::all();
+
         $user = $request->session()->get('user');
 
         return view('dashboards/student/nds/add-step-two',compact('user','states'));
@@ -108,11 +111,13 @@ class UsersController extends Controller
     public function validateTwo(validateTwoRequest $request)
     {
         $validatedData = $request->validated();
-
-        $user = $request->session()->get('student_tb');
-        dd($request->session()->all());
-        $user->fill($validatedData);
-        $request->session()->put('user', $user);
+        try {
+            $this->userService->validateTwo($validatedData);
+            return redirect()->route('users.create.step.three')->with('success','Your account details have been saved/updated.');
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
+        }
 
         return redirect()->route('users.create.step.three');
     }
