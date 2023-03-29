@@ -74,9 +74,6 @@
                   <div class="row mt-3">
                     <div class="col">
                         <label>Correspondent Address</label>
-
-
-
                         <input class="multisteps-form__input form-control" value="{{ auth()->user()->cor_address ? auth()->user()->cor_address : old('cor_address') ?? ''}}" ?? '' type="text" name="cor_address" placeholder="eg. Street 111" />
                         @error('cor_address')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>

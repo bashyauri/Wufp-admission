@@ -21,31 +21,86 @@
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-8 m-auto">
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="/validate-step-three" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.three')}}" enctype="multipart/form-data">
               @csrf
               <!--single form panel-->
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                <h5 class="font-weight-bolder">Socials</h5>
+                <h5 class="font-weight-bolder">Academic Details</h5>
                 <div class="multisteps-form__content">
                   <div class="row mt-3">
-                    <div class="col-12">
-                        <label>Twitter Handle</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('twitter') ?? ''}}" ?? '' type="text" name="twitter" placeholder="@soft" />
-                        @error('twitter')
+                    <div class="col-8 col-sm-6 mt-3 mt-sm-0">
+                        <label>Primary School Attended</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('primary_school') ?? ''}}" ?? '' type="text" name="primary_school" placeholder="e. Salama model Pri school" />
+                        @error('primary_school')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="col-12 mt-3">
-                        <label>Facebook Account</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('facebook') ?? ''}}" ?? '' type="text" name="facebook" placeholder="https://..." />
-                        @error('facebook')
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Year</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('primary_school_year') ?? ''}}" ?? '' type="text" name="primary_school_year" placeholder="e.g 2016" />
+                        @error('primary_school_year')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="col-12 mt-3">
-                        <label>Instagram Account</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('instagram') ?? ''}}" ?? '' type="text" name="instagram" placeholder="https://..." />
-                        @error('instagram')
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-8 col-sm-6 mt-3 mt-sm-0">
+                        <label>Secondary School Attended</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school') ?? ''}}" ?? '' type="text" name="secondary_school" placeholder="e. Salama model Pri school" />
+                        @error('secondary_school')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Year</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e.g 2016" />
+                        @error('secondary_school_year')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Exam Type</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_type') ?? ''}}" ?? '' type="text" name="exam_type" placeholder="e. Salama model Pri school" />
+                        @error('exam_type')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Exam Number</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_number') ?? ''}}" ?? '' type="text" name="exam_number" placeholder="e.g 2016" />
+                        @error('exam_number')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Year</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_year') ?? ''}}" ?? '' type="text" name="twitter" placeholder="e.g 2016" />
+                        @error('exam_year')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Exam Type(optional)</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_type2') ?? ''}}" ?? '' type="text" name="exam_type2" placeholder="e. Salama model Pri school" />
+                        @error('exam_type2')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Exam Number</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_number2') ?? ''}}" ?? '' type="text" name="exam_number2" placeholder="e.g 2016" />
+                        @error('exam_number2')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Year</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('twitter') ?? ''}}" ?? '' type="text" name="twitter" placeholder="e.g 2016" />
+                        @error('exam_year2')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
