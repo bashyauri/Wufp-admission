@@ -1,4 +1,4 @@
-@extends('user_type.auth', ['parentFolder' => 'nds', 'childFolder' => ''])
+@extends('user_type.auth', ['parentFolder' => 'laravel', 'childFolder' => 'users-laravel'])
 
 @section('content')
 
@@ -70,7 +70,7 @@
   </div>
 
 @endsection
-
+  
   @push('js')
     <script src="{{ URL::asset('assets/js/plugins/choices.min.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -86,7 +86,7 @@
       var country = document.getElementById('role_id');
       const example = new Choices(country);
       }
-
+    
     var upload = document.getElementById('imgDisplay');
     var imgInp = document.getElementById('file-input');
     imgInp.onchange = evt => {

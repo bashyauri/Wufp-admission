@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Nds\validateThreeRequest;
 use App\Http\Requests\validateOneRequest;
 use App\Http\Requests\validateTwoRequest;
 use App\Models\Course;
@@ -130,26 +131,26 @@ class UsersController extends Controller
         return view('dashboards/student/nds/add-step-three',compact('user'));
     }
 
-    public function validateThree(Request $request)
+    public function validateThree(validateThreeRequest $request)
     {
-        $validatedData = $request->validate([
-            'twitter' => ['max:50'],
-            'facebook' => ['max:50'],
-            'instagram' => ['max:50'],
-        ]);
 
-        $user = $request->session()->get('user');
-        $user->fill($validatedData);
-        $request->session()->put('user', $user);
+        $validatedData = $request->validated();
 
-        return redirect()->route('users.create.step.four');
+        try {
+            $this->userService->validateThree($validatedData);
+            return redirect()->route('users.create.step.four')->with('success','Your account details have been saved/updated.');
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
+        }
+
     }
 
     public function createFour(Request $request)
     {
         $user = $request->session()->get('user');
 
-        return view('laravel-examples/users/add-step-four',compact('user'));
+        return view('dashboards/student/nds/add-step-four',compact('user'));
     }
 
     public function store(Request $request)

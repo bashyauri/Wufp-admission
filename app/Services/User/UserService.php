@@ -2,6 +2,7 @@
 
 namespace App\Services\User;
 
+use App\Models\AttendedSchool;
 use App\Models\User;
 
 use function PHPSTORM_META\type;
@@ -48,5 +49,24 @@ class UserService
             'kin_address' => $validatedData['kin_address'],
             'sponsor' => $validatedData['sponsor'],
         ]);
+    }
+    public function validateThree(array $validatedData):void
+    {
+        // foreach ($validatedData as $key => $value) {
+        //     'school_name' => $value['school_name'],
+        // }
+        // dd(count($validatedData));
+        // dd($validatedData['school_name'][2]);
+        for ($i=0; $i < count($validatedData)-1; $i++) {
+            AttendedSchool::create(
+                [
+                    'school_name' => $validatedData['school_name'][$i],
+                    'certificate_obtained' => $validatedData['certificate_obtained'][$i],
+                    'year' => $validatedData['year'][$i],
+                ]
+                );
+        }
+
+
     }
 }
