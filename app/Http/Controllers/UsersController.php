@@ -102,8 +102,8 @@ class UsersController extends Controller
     public function createTwo(Request $request)
     {
         $data['states'] = State::all();
-        $data['studentState'] = State::find(Auth::user()->state_id)->first();
-        $data['studentLga'] = Lga::find(Auth::user()->lga_id)->first();
+        $data['studentState'] = State::find(Auth::user()->state_id);
+        $data['studentLga'] = Lga::find(Auth::user()->lga_id);
 
         $user = $request->session()->get('user');
 

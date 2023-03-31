@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -63,6 +66,10 @@ class User extends Authenticatable
     public function department(): HasOne
     {
         return $this->hasOne(Department::class);
+    }
+    public function attendedSchool(): HasMany
+    {
+        return $this->hasMany(attendedSchool::class);
     }
 
     public function isHnd()

@@ -57,9 +57,11 @@ class UserService
         // }
         // dd(count($validatedData));
         // dd($validatedData['school_name'][2]);
+
         for ($i=0; $i < count($validatedData)-1; $i++) {
             AttendedSchool::create(
                 [
+                    'user_id' => auth()->user()->id,
                     'school_name' => $validatedData['school_name'][$i],
                     'certificate_obtained' => $validatedData['certificate_obtained'][$i],
                     'year' => $validatedData['year'][$i],
