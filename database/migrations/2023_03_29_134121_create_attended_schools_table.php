@@ -17,9 +17,12 @@ return new class extends Migration
         Schema::create('attended_schools', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->string('school_name');
-            $table->string('certificate_obtained');
-            $table->year('year',4);
+            $table->string('primary_school_name');
+            $table->string('secondary_school_name');
+            $table->string('tertiary_school_name')->nullable();
+            $table->year('primary_year',4);
+            $table->year('secondary_school_year',4);
+            $table->year('tertiary_school_year',4)->nullable();
             $table->timestamps();
         });
     }

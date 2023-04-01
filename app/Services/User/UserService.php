@@ -52,22 +52,16 @@ class UserService
     }
     public function validateThree(array $validatedData):void
     {
-        // foreach ($validatedData as $key => $value) {
-        //     'school_name' => $value['school_name'],
-        // }
-        // dd(count($validatedData));
-        // dd($validatedData['school_name'][2]);
 
-        for ($i=0; $i < count($validatedData)-1; $i++) {
-            AttendedSchool::create(
-                [
-                    'user_id' => auth()->user()->id,
-                    'school_name' => $validatedData['school_name'][$i],
-                    'certificate_obtained' => $validatedData['certificate_obtained'][$i],
-                    'year' => $validatedData['year'][$i],
-                ]
-                );
-        }
+
+            AttendedSchool::updateOrCreate(
+                ['primary_school_name' => $validatedData['primary_school_name'],
+                    'secondary_school_name' => $validatedData['secondary_school_name'],
+                    'primary_year' => $validatedData['primary_school_year'],
+                    'secondary_school_year' => $validatedData['secondary_school_year'],
+            ],['user_id' =>auth()->user()->id]);
+
+
 
 
     }

@@ -31,61 +31,40 @@
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                 <h5 class="font-weight-bolder">Academic Details</h5>
                 <div class="multisteps-form__content">
-                  <div class="row mt-3">
-                    <div class="col-6 col-sm-4 mt-3 mt-sm-0">
-                        <label>School Name</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('school_name') ?? ''}}" ?? '' type="text" name="school_name[]" placeholder="e. Salama model Pri school" />
-                        @error('school_name')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
-                        <label>certificate Obtained</label>
-                        <select class="multisteps-form__input form-control" id="certificate_obtained" name = "certificate_obtained[]">
-                            <option value="">---Select----</option>
-                            <option value="Primary Certificate">Primary Certificate</option>
-                            <option value="Secondary Certificate">Secondary Certificate</option>
-                        </select>
-                        @error('certificate_obtained')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-2 col-sm-2 mt-3 mt-sm-0">
-                        <label>Year</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('year') ?? ''}}" ?? '' type="text" name="year[]" placeholder="e.g 2016" />
-                        @error('year[]')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-6 col-sm-4 mt-3 mt-sm-0">
-                        <label>School Name</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('school_name') ?? ''}}" ?? '' type="text" name="school_name[]" placeholder="e. Salama model Pri school" />
-                        @error('school_name[]')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
-                        <label>certificate Obtained</label>
-                        <select class="multisteps-form__input form-control" id="certificate_obtained[]" name = "certificate_obtained[]">
-                            <option value="">---Select----</option>
-                            <option value="Primary Certificate">Primary Certificate</option>
-                            <option value="Secondary Certificate">Secondary Certificate</option>
-                        </select>
-                        @error('certificate_obtained')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-2 col-sm-2 mt-3 mt-sm-0">
-                        <label>Year</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('year') ?? ''}}" ?? '' type="text" name="year[]" placeholder="e.g 2016" />
-                        @error('year')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div>
+                    <div class="row mt-3">
+                        <div class="col-8 col-sm-8 mt-3 mt-sm-0">
+                            <label>Primary School Name</label>
+                            <input class="multisteps-form__input form-control" value="{{ old('primary_school_name') ?? ''}}" ?? '' type="text" name="primary_school_name" placeholder="e. Salama model Pri school" />
+                            @error('primary_school_name')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                            <label>Year</label>
+                            <input class="multisteps-form__input form-control" value="{{ old('primary_school_year') ?? ''}}" ?? '' type="text" name="primary_school_year" placeholder="e. Salama model Pri school" />
+                            @error('primary_school_year')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                      </div>
 
+
+                    <div class="row mt-3">
+                        <div class="col-8 col-sm-8 mt-3 mt-sm-0">
+                            <label>Secondary School Name</label>
+                            <input class="multisteps-form__input form-control" value="{{ old('secondary_school_name') ?? ''}}" ?? '' type="text" name="secondary_school_name" placeholder="e. Salama model Pri school" />
+                            @error('secondary_school_name')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                            <label>Year</label>
+                            <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
+                            @error('secondary_school_year')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                      </div>
 
                   <div class="row">
                     <div class="button-row d-flex mt-4 col-12">

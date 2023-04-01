@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class AttendedSchool extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','school_name','certificate_obtained','year'];
+    protected $fillable = ['user_id','primary_school_name','secondary_school_name','tertiary_school_name','primary_year','secondary_school_year','tertiary_school_year'];
 }
