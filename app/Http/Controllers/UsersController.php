@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Nds\validateFourRequest;
 use App\Http\Requests\Nds\validateThreeRequest;
 use App\Http\Requests\validateOneRequest;
 use App\Http\Requests\validateTwoRequest;
@@ -150,9 +151,23 @@ class UsersController extends Controller
 
     public function createFour(Request $request)
     {
-        $user = $request->session()->get('user');
+
 
         return view('dashboards/student/nds/add-step-four',compact('user'));
+    }
+    public function validateFour(validateFourRequest $request)
+    {
+
+        $validatedData = $request->validated();
+
+        try {
+            $this->userService->validateFour($validatedData);
+            return redirect()->route('users.create.step.five')->with('success','Your account details have been saved/updated.');
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
+        }
+
     }
 
     public function store(Request $request)

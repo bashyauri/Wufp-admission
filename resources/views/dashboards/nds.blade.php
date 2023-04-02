@@ -119,7 +119,11 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Email</label>
-                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" type="email" name="email" placeholder="eg. basharu@screening.com" />
+                        <input class="multisteps-form__input form-control"
+                            value="{{ old('email', auth()->user()->email ?? '') }}"
+                            type="email" id="email" name="email"
+                            placeholder="eg. basharu@screening.com" />
+                        {{-- <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" type="email" name="email" placeholder="eg. basharu@screening.com" /> --}}
                         @error('email')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror

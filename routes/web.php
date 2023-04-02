@@ -179,6 +179,8 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::get('/nds-create-step-three', [UsersController::class, 'createThree'])->name('users.create.step.three');
     Route::post('/validate-step-three', [UsersController::class, 'validateThree'])->name('users.validate.step.three');
     Route::get('/nds-create-step-four', [UsersController::class, 'createFour'])->name('users.create.step.four');
+    Route::post('/validate-step-four', [UsersController::class, 'validateFour'])->name('users.validate.step.four');
+    Route::get('/nds-create-step-five', [UsersController::class, 'createFive'])->name('users.create.step.five');
 
     Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
     Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLgas']);
