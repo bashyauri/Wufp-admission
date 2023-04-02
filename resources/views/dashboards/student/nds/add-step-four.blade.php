@@ -32,7 +32,7 @@
                   <div class="row mt-3">
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                         <label>Certificate</label>
-                        <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
+                        <select class="multisteps-form__input form-control" name="ssce_certificate1" id="ssce_certificate1">
                             <option value="">--select---</option>
                           <option value="Waec">Waec</option>
                           <option value="Neco">Neco</option>
@@ -40,21 +40,21 @@
                           <option value="Naptep">Naptep</option>
                           <option value="Others">Others</option>
                       </select>
-                        @error('certificate_name')
+                        @error('ssce_certificate1')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-5 col-sm-5 mt-3 mt-sm-0">
                         <label>Exam Number</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
-                        @error('secondary_school_year')
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_number1') ?? ''}}" ?? '' type="text" name="exam_number1" />
+                        @error('exam_number1')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-3 col-sm-3 mt-3 mt-sm-0">
                         <label>Year obtained</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
-                        @error('secondary_school_year')
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_year1') ?? ''}}" ?? '' type="text" name="exam_year1"  />
+                        @error('exam_year1')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
@@ -63,7 +63,7 @@
                   <div class="row mt-3">
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0" id="myInput">
                         <label>Certificate</label>
-                        <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
+                        <select class="multisteps-form__input form-control" name="ssce_certificate2" id="ssce_certificate2">
                             <option value="">--select---</option>
                           <option value="Waec">Waec</option>
                           <option value="Neco">Neco</option>
@@ -71,21 +71,21 @@
                           <option value="Naptep">Naptep</option>
                           <option value="Others">Others</option>
                       </select>
-                        @error('certificate_name')
+                        @error('ssce_certificate2')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-5 col-sm-5 mt-3 mt-sm-0">
                         <label>Exam Number</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
-                        @error('secondary_school_year')
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_number2') ?? ''}}" ?? '' type="text" name="exam_number2" />
+                        @error('exam_number2')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-3 col-sm-3 mt-3 mt-sm-0">
                         <label>Year obtained</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
-                        @error('secondary_school_year')
+                        <input class="multisteps-form__input form-control" value="{{ old('exam_year2') ?? ''}}" ?? '' type="text" name="exam_year2"  />
+                        @error('exam_year2')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
@@ -146,7 +146,7 @@
     if (buttonText === 'Add another') {
       $(this).text('Hide Field');
     } else {
-      $(this).text('Add another');
+      $(this).text('Toggle Field');
     }
   });
 });
