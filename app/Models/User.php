@@ -67,9 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Department::class);
     }
-    public function attendedSchool(): HasMany
+    public function attendedSchool(): HasOne
     {
-        return $this->hasMany(attendedSchool::class);
+        return $this->hasOne(AttendedSchool::class);
     }
 
     public function isHnd()

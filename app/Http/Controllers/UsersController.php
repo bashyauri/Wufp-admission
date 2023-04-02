@@ -126,9 +126,11 @@ class UsersController extends Controller
 
     public function createThree(Request $request)
     {
-        $user = $request->session()->get('user');
+        $school = User::with('attendedSchool')->find(auth()->user()->id)->attendedSchool;
 
-        return view('dashboards/student/nds/add-step-three',compact('user'));
+
+
+        return view('dashboards/student/nds/add-step-three')->with(['school'=>$school]);
     }
 
     public function validateThree(validateThreeRequest $request)

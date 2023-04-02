@@ -14,7 +14,7 @@
               </button>
               <button class="multisteps-form__progress-btn js-active" type="button" title="Address">Address</button>
               <button class="multisteps-form__progress-btn js-active" type="button" title="Socials">Socials</button>
-              <button class="multisteps-form__progress-btn js-active" type="button" title="Profile">Profile</button>
+              <button class="multisteps-form__progress-btn js-active" type="button" title="Profile">SSCE</button>
             </div>
           </div>
         </div>
@@ -26,23 +26,42 @@
 
               <!--single form panel-->
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white h-100 js-active" data-animation="FadeIn">
-                <h5 class="font-weight-bolder">Profile</h5>
+                <h5 class="font-weight-bolder">SSCE</h5>
                 <div class="multisteps-form__content mt-3">
-                  <div class="avatar avatar-xl position-relative">
-                    <div>
-                      <label for="file-input" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                        <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image"></i>
-                        <span class="sr-only">Edit Image</span>
-                      </label>
-                      <input type="file" id="file-input" name="user_img" accept="image/*" class="d-none">
-                      <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                        <img src="{{ URL::asset('assets/img/bruce-mars.jpg') }}" id="imgDisplay" alt="Profile Photo">
-                      </span>
+
+                  <div class="row mt-3">
+                    <div class="col-6 col-sm-6 mt-3 mt-sm-0">
+                        <label>Certificate</label>
+                        <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
+                          <option value="Waec">Waec</option>
+                          <option value="Neco">Neco</option>
+                          <option value="Gce">Gce</option>
+                          <option value="Naptep">Naptep</option>
+                          <option value="Others">Others</option>
+                      </select>
+                        @error('certificate_name')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Exam Number</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
+                        @error('secondary_school_year')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                  </div>
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                        <label>Year obtained</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
+                        @error('secondary_school_year')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-12">
-                        <label>Public Email</label>
+                        <label></label>
                         <input class="multisteps-form__input form-control" value="{{ old('public_email') ?? ''}}" ?? '' type="text" name="public_email" placeholder="Use an address you don't use frequently." />
                         @error('public_email')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
@@ -60,7 +79,7 @@
                     <a href="{{ route('users.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>
                   </div>
-                </div>
+
               </div>
             </form>
           </div>

@@ -162,8 +162,9 @@
                     <div class="col-sm-4 col-4">
                         <label class="form-label mt-3">Birth Date</label>
                         <select class="multisteps-form__input form-control" name="choices-day" id="choices-day">
-                           @if ( $birthDay = date('d', strtotime(auth()->user()->birthDay)))
-                           <option value="{{$birthDay}}">{{$birthDay}}</option>
+                            {{-- $birthDay = date('d', strtotime(auth()->user()->birthDay)) --}}
+                           @if (auth()->user()->birthday)
+                           <option value="{{date('d', strtotime(auth()->user()->birthday))}}">{{date('d', strtotime(auth()->user()->birthday))}}</option>
 
                            @endif
 
@@ -174,17 +175,17 @@
                         <label class="form-label mt-3">&nbsp;</label>
 
                         <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
-                            @if ( $birthMonth = date('m', strtotime(auth()->user()->birthday)))
-                           <option value="{{$birthMonth}}">{{$birthMonth}}</option>
+                            @if ( auth()->user()->birthday)
+                           <option value="{{date('m', strtotime(auth()->user()->birthday))}}">{{date('m', strtotime(auth()->user()->birthday))}}</option>
                            @endif
                             <option value="">Month</option>
                         </select>
                     </div>
                     <div class="col-sm-4 col-4">
-                        <label class="form-label mt-4">&nbsp;</label>
+                        <label class="form-label mt-3">&nbsp;</label>
                         <select class="multisteps-form__input form-control" name="choices-year" id="choices-year">
-                            @if ( $birthYear = date('Y', strtotime(auth()->user()->birthday)))
-                            <option value="{{$birthYear}}">{{$birthYear}}</option>
+                            @if (auth()->user()->birthday)
+                            <option value="{{date('Y', strtotime(auth()->user()->birthday))}}">{{date('Y', strtotime(auth()->user()->birthday))}}</option>
 
                             @endif
                             <option value="">Year</option>

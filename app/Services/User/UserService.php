@@ -55,11 +55,12 @@ class UserService
 
 
             AttendedSchool::updateOrCreate(
+                ['user_id' =>auth()->user()->id],
                 ['primary_school_name' => $validatedData['primary_school_name'],
                     'secondary_school_name' => $validatedData['secondary_school_name'],
                     'primary_year' => $validatedData['primary_school_year'],
                     'secondary_school_year' => $validatedData['secondary_school_year'],
-            ],['user_id' =>auth()->user()->id]);
+            ]);
 
 
 
