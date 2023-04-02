@@ -25,14 +25,15 @@
               @csrf
 
               <!--single form panel-->
-              <div class="card multisteps-form__panel p-3 border-radius-xl bg-white h-100 js-active" data-animation="FadeIn">
+              <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                 <h5 class="font-weight-bolder">SSCE</h5>
                 <div class="multisteps-form__content mt-3">
 
                   <div class="row mt-3">
-                    <div class="col-6 col-sm-6 mt-3 mt-sm-0">
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                         <label>Certificate</label>
                         <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
+                            <option value="">--select---</option>
                           <option value="Waec">Waec</option>
                           <option value="Neco">Neco</option>
                           <option value="Gce">Gce</option>
@@ -43,15 +44,14 @@
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                    <div class="col-5 col-sm-5 mt-3 mt-sm-0">
                         <label>Exam Number</label>
                         <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
                         @error('secondary_school_year')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                  </div>
-                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                    <div class="col-3 col-sm-3 mt-3 mt-sm-0">
                         <label>Year obtained</label>
                         <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
                         @error('secondary_school_year')
@@ -59,27 +59,49 @@
                         @enderror
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-12">
-                        <label></label>
-                        <input class="multisteps-form__input form-control" value="{{ old('public_email') ?? ''}}" ?? '' type="text" name="public_email" placeholder="Use an address you don't use frequently." />
-                        @error('public_email')
+                  <div id="inputField" style="display:none;">
+                  <div class="row mt-3">
+                    <div class="col-4 col-sm-4 mt-3 mt-sm-0" id="myInput">
+                        <label>Certificate</label>
+                        <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
+                            <option value="">--select---</option>
+                          <option value="Waec">Waec</option>
+                          <option value="Neco">Neco</option>
+                          <option value="Gce">Gce</option>
+                          <option value="Naptep">Naptep</option>
+                          <option value="Others">Others</option>
+                      </select>
+                        @error('certificate_name')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="col-12 mt-3">
-                        <label>Bio</label>
-                        <textarea class="multisteps-form__textarea form-control" value="{{ old('biography') ?? ''}}" ?? '' rows="5" name="biography" placeholder="Say a few words about who you are or what you're working on."></textarea>
-                        @error('biography')
+                    <div class="col-5 col-sm-5 mt-3 mt-sm-0">
+                        <label>Exam Number</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
+                        @error('secondary_school_year')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-3 col-sm-3 mt-3 mt-sm-0">
+                        <label>Year obtained</label>
+                        <input class="multisteps-form__input form-control" value="{{ old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
+                        @error('secondary_school_year')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                   </div>
+                  </div>
+                  <div class="button-row d-flex mt-4">
+
+                    <button class="btn bg-gradient-success ms-auto mb-0" type = "button" id="addButton">Add another</button>
+                  </div>
+
                   <div class="button-row d-flex mt-4">
                     <a href="{{ route('users.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>
                   </div>
 
+              </div>
               </div>
             </form>
           </div>
@@ -115,5 +137,21 @@
         }
     }
   </script>
+  <script>
+   $(document).ready(function() {
+  $('#addButton').click(function() {
+    event.preventDefault();
+    $('#inputField').toggle();
+    var buttonText = $(this).text();
+    if (buttonText === 'Add another') {
+      $(this).text('Hide Field');
+    } else {
+      $(this).text('Add another');
+    }
+  });
+});
+
+
+    </script>
 
   @endpush
