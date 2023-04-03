@@ -46,14 +46,21 @@
                     </div>
                     <div class="col-5 col-sm-5 mt-3 mt-sm-0">
                         <label>Exam Number</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('exam_number1') ?? ''}}" ?? '' type="text" name="exam_number1" />
+                        <input class="multisteps-form__input form-control"
+                        value="{{ old('exam_number1', auth()->user()->examDetail->exam_number1 ?? '') }}"
+                        type="text" id="exam_number1" name="exam_number1"
+                        />
                         @error('exam_number1')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-3 col-sm-3 mt-3 mt-sm-0">
                         <label>Year obtained</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('exam_year1') ?? ''}}" ?? '' type="text" name="exam_year1"  />
+                        <input class="multisteps-form__input form-control"
+                        value="{{ old('exam_year1', auth()->user()->examDetail->exam_year1 ?? '') }}"
+                        type="text" id="exam_year1" name="exam_year1"
+                        />
+
                         @error('exam_year1')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -77,6 +84,7 @@
                     </div>
                     <div class="col-5 col-sm-5 mt-3 mt-sm-0">
                         <label>Exam Number</label>
+
                         <input class="multisteps-form__input form-control" value="{{ old('exam_number2') ?? ''}}" ?? '' type="text" name="exam_number2" />
                         @error('exam_number2')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>

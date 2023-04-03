@@ -151,8 +151,6 @@ class UsersController extends Controller
 
     public function createFour(Request $request)
     {
-
-
         return view('dashboards/student/nds/add-step-four');
     }
     public function validateFour(validateFourRequest $request)
