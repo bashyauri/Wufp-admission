@@ -160,6 +160,7 @@ class UsersController extends Controller
 
         $validatedData = $request->validated();
 
+
         try {
             $this->userService->validateFour($validatedData);
             return redirect()->route('users.create.step.five')->with('success','Your account details have been saved/updated.');

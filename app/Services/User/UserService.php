@@ -67,15 +67,14 @@ class UserService
     public function validateFour(array $validatedData):void
     {
 
-
             examDetails::updateOrCreate(
                 ['user_id' =>auth()->user()->id],
                 ['ssce_certificate1' => $validatedData['ssce_certificate1'],
                     'exam_number1' => $validatedData['exam_number1'],
                     'exam_year1' => $validatedData['exam_year1'],
-                    'ssce_certificate2' => $validatedData['ssce_certificate2'],
-                    'exam_number2' => $validatedData['exam_number2'],
-                    'exam_year2' => $validatedData['exam_year2'],
+                    'ssce_certificate2' => $validatedData['ssce_certificate2'] ?? null,
+                    'exam_number2' => $validatedData['exam_number2'] ?? null,
+                    'exam_year2' => $validatedData['exam_year2'] ?? null,
                 ]
                );
 

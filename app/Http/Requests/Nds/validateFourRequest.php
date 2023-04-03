@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Nds;
 
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class validateFourRequest extends FormRequest
 {
@@ -26,7 +28,10 @@ class validateFourRequest extends FormRequest
         return [
             'ssce_certificate1' => ['required'],
             'exam_number1' => ['required'],
-            'exam_year1' => ['required'],
+            'exam_year1' => ['required','digits:4'],
+            'ssce_certificate2' => ['nullable'],
+            'exam_number2' => ['nullable'],
+            'exam_year2' => ['nullable','digits:4'],
         ];
     }
 }
