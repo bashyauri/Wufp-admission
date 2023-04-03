@@ -169,6 +169,12 @@ class UsersController extends Controller
         }
 
     }
+    public function createFive(Request $request)
+    {
+
+
+        return view('dashboards/student/nds/add-step-five',compact('user'));
+    }
 
     public function store(Request $request)
     {
