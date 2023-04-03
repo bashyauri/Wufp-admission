@@ -153,7 +153,7 @@ class UsersController extends Controller
     {
 
 
-        return view('dashboards/student/nds/add-step-four',compact('user'));
+        return view('dashboards/student/nds/add-step-four');
     }
     public function validateFour(validateFourRequest $request)
     {
@@ -173,7 +173,7 @@ class UsersController extends Controller
     {
 
 
-        return view('dashboards/student/nds/add-step-five',compact('user'));
+        return view('dashboards/student/nds/add-step-five');
     }
 
     public function store(Request $request)
