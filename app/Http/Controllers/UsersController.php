@@ -171,7 +171,9 @@ class UsersController extends Controller
     }
     public function createFive(Request $request)
     {
-        $subjects = Subject::orderBy('name','asc')->get();
+        $subjects = DB::table('subjects')
+        ->orderBy('name', 'asc')
+        ->get();
 
         return view('dashboards/student/nds/add-step-five',['subjects' => $subjects]);
     }

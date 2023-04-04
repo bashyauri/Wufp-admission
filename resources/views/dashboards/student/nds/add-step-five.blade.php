@@ -44,10 +44,15 @@
                     </div>
                     <div class="col-5 col-sm-5 mt-3 mt-sm-0">
                         <label>Subject</label>
-                        <input class="multisteps-form__input form-control"
-                        value="{{ old('exam_number1', auth()->user()->examDetail->exam_number1 ?? '') }}"
-                        type="text" id="exam_number1" name="exam_number1"
-                        />
+                        <select class="multisteps-form__input form-control" name="subject" id="subject">
+                            <option value="">--select---</option>
+                            @foreach ($subjects as $subject)
+                            <option value="{{$subject->id}}">{{$subject->name}}</option>
+                            @endforeach
+
+
+
+                      </select>
                         @error('exam_number1')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
