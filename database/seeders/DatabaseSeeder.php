@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             ProgramSeeder::class,
             DepartmentProgramSeeder::class,
-            CourseSeeder::class
+            CourseSeeder::class,
+            SubjectSeeder::class,
         ]);
     }
 }
