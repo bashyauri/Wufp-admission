@@ -11,6 +11,7 @@ use App\Models\Department;
 use App\Models\Lga;
 use App\Models\Program;
 use App\Models\State;
+use App\Models\Subject;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -170,9 +171,9 @@ class UsersController extends Controller
     }
     public function createFive(Request $request)
     {
+        $subjects = Subject::orderBy('name','asc')->get();
 
-
-        return view('dashboards/student/nds/add-step-five');
+        return view('dashboards/student/nds/add-step-five',['subjects' => $subjects]);
     }
 
     public function store(Request $request)

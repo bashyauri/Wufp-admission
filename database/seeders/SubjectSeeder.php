@@ -27,7 +27,7 @@ class SubjectSeeder extends Seeder
             ['name' => 'Technical Drawing'],
             ['name' => 'Literature in English'],
             ['name' => 'Fine Art'],
-            ['name' => ' Music'],
+            ['name' => 'Music'],
             ['name' => 'French'],
             ['name' => 'Religious Knowledge'],
             ['name' => 'Commerce'],
