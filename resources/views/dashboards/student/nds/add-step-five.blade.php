@@ -34,11 +34,11 @@
                         <label>Exam Details</label>
                         <select class="multisteps-form__input form-control" name="ssce_certificate1" id="ssce_certificate1">
                             <option value="">--select---</option>
-                          <option value="Waec">{{ old('exam_number1', auth()->user()->examDetail->exam_number1 ?? '') }}</option>
-                          <option value="Neco">{{ old('exam_number1', auth()->user()->examDetail->exam_number2 ?? '') }}</option>
+                          <option value="Waec">{{ old('exam_number1', auth()->user()->examDetail->ssce_certificate1.' '.auth()->user()->examDetail->exam_number1 ?? '') }}</option>
+                          <option value="Neco">{{ old('exam_number1', auth()->user()->examDetail->ssce_certificate2.' '.auth()->user()->examDetail->exam_number2 ?? '') }}</option>
 
                       </select>
-                        @error('ssce_certificate1')
+                        @error('ssce_certificate')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
