@@ -33,6 +33,9 @@
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                         <label>Certificate</label>
                         <select class="multisteps-form__input form-control" name="ssce_certificate1" id="ssce_certificate1">
+                            @if (auth()->user()->examDetail->ssce_certificate1)
+                            <option value="{{auth()->user()->examDetail->ssce_certificate1}}">{{auth()->user()->examDetail->ssce_certificate1}}</option>
+                            @endif
                             <option value="">--select---</option>
                           <option value="Waec">Waec</option>
                           <option value="Neco">Neco</option>
@@ -71,6 +74,9 @@
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0" id="myInput">
                         <label>Certificate</label>
                         <select class="multisteps-form__input form-control" name="ssce_certificate2" id="ssce_certificate2">
+                            @if (auth()->user()->examDetail->ssce_certificate2)
+                            <option value="{{auth()->user()->examDetail->ssce_certificate2}}">{{auth()->user()->examDetail->ssce_certificate2}}</option>
+                            @endif
                             <option value="">--select---</option>
                           <option value="Waec">Waec</option>
                           <option value="Neco">Neco</option>
@@ -85,14 +91,20 @@
                     <div class="col-5 col-sm-5 mt-3 mt-sm-0">
                         <label>Exam Number</label>
 
-                        <input class="multisteps-form__input form-control" value="{{ old('exam_number2') ?? ''}}" ?? '' type="text" name="exam_number2" />
+                        <input class="multisteps-form__input form-control"
+                        value="{{ old('exam_number2', auth()->user()->examDetail->exam_number2 ?? '') }}"
+                        type="text" id="exam_number2" name="exam_number2"
+                        />
                         @error('exam_number2')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-3 col-sm-3 mt-3 mt-sm-0">
                         <label>Year obtained</label>
-                        <input class="multisteps-form__input form-control" value="{{ old('exam_year2') ?? ''}}" ?? '' type="text" name="exam_year2"  />
+                        <input class="multisteps-form__input form-control"
+                        value="{{ old('exam_year2', auth()->user()->examDetail->exam_year2 ?? '') }}"
+                        type="text" id="exam_year2" name="exam_year2"
+                        />
                         @error('exam_year2')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -106,7 +118,7 @@
 
                   <div class="button-row d-flex mt-4">
                     <a href="{{ route('users.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
-                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>
+                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Next</button>
                   </div>
 
               </div>
