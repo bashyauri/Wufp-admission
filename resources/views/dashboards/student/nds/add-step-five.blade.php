@@ -26,13 +26,12 @@
 
               <!--single form panel-->
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                <h5 class="font-weight-bolder">Grades</h5>
                 <div class="multisteps-form__content mt-3">
-
-                  <div class="row mt-3">
-                    <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                    @for ($i = 0; $i < 8; $i++)
+                  <div class="row">
+                    <div class="col-4 col-sm-40">
                         <label>Exam Details</label>
-                        <select class="multisteps-form__input form-control" name="name" id="name">
+                        <select class="multisteps-form__input form-control" name="name[]" id="name">
                             <option value="">--select---</option>
                           <option>{{ old('name', auth()->user()->examDetail->ssce_certificate1.' '.auth()->user()->examDetail->exam_number1 ?? '') }}</option>
                           <option>{{ old('name', auth()->user()->examDetail->ssce_certificate2.' '.auth()->user()->examDetail->exam_number2 ?? '') }}</option>
@@ -42,9 +41,9 @@
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="col-5 col-sm-5 mt-3 mt-sm-0">
+                    <div class="col-5 col-sm-5">
                         <label>Subject</label>
-                        <select class="multisteps-form__input form-control" name="subject" id="subject">
+                        <select class="multisteps-form__input form-control" name="subject[]" id="subject">
                             <option value="">--select---</option>
                             @foreach ($subjects as $subject)
                             <option value="{{$subject->id}}">{{$subject->name}}</option>
@@ -54,9 +53,9 @@
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="col-3 col-sm-3 mt-3 mt-sm-0">
+                    <div class="col-3 col-sm-3">
                         <label>Grade</label>
-                        <select class="multisteps-form__input form-control" name="grade" id="grade">
+                        <select class="multisteps-form__input form-control" name="grade[]" id="grade">
                             <option value="">--select---</option>
                             @foreach ($grades as $grade)
                             <option value="{{$grade->id}}">{{$grade->name}}</option>
@@ -68,7 +67,7 @@
                         @enderror
                     </div>
                   </div>
-
+                  @endfor
                   <div class="button-row d-flex mt-4">
                     <a href="{{ route('users.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Next</button>
