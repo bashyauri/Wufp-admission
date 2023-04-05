@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Models\AttendedSchool;
 use App\Models\examDetails;
+use App\Models\ExamGrade;
 use App\Models\User;
 
 use function PHPSTORM_META\type;
@@ -77,6 +78,20 @@ class UserService
                     'exam_year2' => $validatedData['exam_year2'] ?? null,
                 ]
                );
+
+    }
+    public function validateFive(array $validatedData):void
+    {
+
+        for ($i=0; $i < count($validatedData) + 1 ; $i++) {
+            ExamGrade::updateOrCreate(
+                ['name' =>$validatedData['name'][$i],'subject' =>$validatedData['subject'][$i]],
+                ['name' => $validatedData['name'][$i],
+                    'subject' => $validatedData['subject'][$i],
+                    'grade' => $validatedData['grade'][$i],
+                ]
+               );
+            }
 
     }
 }

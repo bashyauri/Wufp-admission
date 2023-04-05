@@ -9,6 +9,7 @@ use App\Http\Requests\validateOneRequest;
 use App\Http\Requests\validateTwoRequest;
 use App\Models\Course;
 use App\Models\Department;
+use App\Models\ExamGrade;
 use App\Models\Lga;
 use App\Models\Program;
 use App\Models\State;
@@ -184,7 +185,15 @@ class UsersController extends Controller
     public function validateFive(validateFiveRequest $request)
     {
         $validatedData = $request->validated();
-        dd($validatedData);
+        $grade = ExamGrade::all();
+
+        try {
+            $this->userService->validateFive($validatedData );
+            return redirect()->route('users.create.step.five')->with('success','Your account details have been saved/updated.');
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
+        }
     }
 
     public function store(Request $request)
