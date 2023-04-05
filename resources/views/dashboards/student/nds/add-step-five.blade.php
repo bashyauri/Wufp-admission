@@ -32,10 +32,10 @@
                   <div class="row mt-3">
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                         <label>Exam Details</label>
-                        <select class="multisteps-form__input form-control" name="ssce_certificate1" id="ssce_certificate1">
+                        <select class="multisteps-form__input form-control" name="name" id="name">
                             <option value="">--select---</option>
-                          <option value="Waec">{{ old('exam_number1', auth()->user()->examDetail->ssce_certificate1.' '.auth()->user()->examDetail->exam_number1 ?? '') }}</option>
-                          <option value="Neco">{{ old('exam_number1', auth()->user()->examDetail->ssce_certificate2.' '.auth()->user()->examDetail->exam_number2 ?? '') }}</option>
+                          <option>{{ old('name', auth()->user()->examDetail->ssce_certificate1.' '.auth()->user()->examDetail->exam_number1 ?? '') }}</option>
+                          <option>{{ old('name', auth()->user()->examDetail->ssce_certificate2.' '.auth()->user()->examDetail->exam_number2 ?? '') }}</option>
 
                       </select>
                         @error('ssce_certificate')
@@ -49,9 +49,6 @@
                             @foreach ($subjects as $subject)
                             <option value="{{$subject->id}}">{{$subject->name}}</option>
                             @endforeach
-
-
-
                       </select>
                         @error('exam_number1')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
@@ -59,12 +56,14 @@
                     </div>
                     <div class="col-3 col-sm-3 mt-3 mt-sm-0">
                         <label>Grade</label>
-                        <input class="multisteps-form__input form-control"
-                        value="{{ old('exam_year1', auth()->user()->examDetail->exam_year1 ?? '') }}"
-                        type="text" id="exam_year1" name="exam_year1"
-                        />
+                        <select class="multisteps-form__input form-control" name="grade" id="grade">
+                            <option value="">--select---</option>
+                            @foreach ($grades as $grade)
+                            <option value="{{$grade->id}}">{{$grade->name}}</option>
+                            @endforeach
+                      </select>
 
-                        @error('exam_year1')
+                        @error('grade')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>

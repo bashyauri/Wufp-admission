@@ -174,8 +174,11 @@ class UsersController extends Controller
         $subjects = DB::table('subjects')
         ->orderBy('name', 'asc')
         ->get();
+        $grades = DB::table('grades')
+        ->orderBy('name', 'asc')
+        ->get();
 
-        return view('dashboards/student/nds/add-step-five',['subjects' => $subjects]);
+        return view('dashboards/student/nds/add-step-five',['subjects' => $subjects,'grades' => $grades]);
     }
 
     public function store(Request $request)
