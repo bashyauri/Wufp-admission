@@ -83,7 +83,7 @@ class UserService
     public function validateFive(array $validatedData):void
     {
 
-        for ($i=0; $i < count($validatedData) + 1 ; $i++) {
+        for ($i=0; $i < 8 ; $i++) {
             ExamGrade::updateOrCreate(
                 ['name' =>$validatedData['name'][$i],'subject' =>$validatedData['subject'][$i]],
                 ['name' => $validatedData['name'][$i],

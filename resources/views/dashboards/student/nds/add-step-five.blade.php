@@ -46,7 +46,7 @@
                         <select class="multisteps-form__input form-control" name="subject[]" id="subject">
                             <option value="">--select---</option>
                             @foreach ($subjects as $subject)
-                            <option value="{{$subject->id}}">{{$subject->name}}</option>
+                            <option>{{$subject->name}}</option>
                             @endforeach
                       </select>
                         @error('subject')
@@ -58,7 +58,7 @@
                         <select class="multisteps-form__input form-control" name="grade[]" id="grade">
                             <option value="">--select---</option>
                             @foreach ($grades as $grade)
-                            <option value="{{$grade->id}}">{{$grade->name}}</option>
+                            <option>{{$grade->name}}</option>
                             @endforeach
                       </select>
 
