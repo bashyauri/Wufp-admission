@@ -21,7 +21,7 @@
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-8 m-auto">
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.four')}}" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.five')}}" enctype="multipart/form-data">
               @csrf
 
               <!--single form panel-->
@@ -37,7 +37,7 @@
                           <option>{{ old('name', auth()->user()->examDetail->ssce_certificate2.' '.auth()->user()->examDetail->exam_number2 ?? '') }}</option>
 
                       </select>
-                        @error('ssce_certificate')
+                        @error('name')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
@@ -49,7 +49,7 @@
                             <option value="{{$subject->id}}">{{$subject->name}}</option>
                             @endforeach
                       </select>
-                        @error('exam_number1')
+                        @error('subject')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
@@ -69,7 +69,7 @@
                   </div>
                   @endfor
                   <div class="button-row d-flex mt-4">
-                    <a href="{{ route('users.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                    <a href="{{ route('users.create.step.four') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Next</button>
                   </div>
 
