@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Nds\validateFiveRequest;
 use App\Http\Requests\Nds\validateFourRequest;
 use App\Http\Requests\Nds\validateThreeRequest;
 use App\Http\Requests\validateOneRequest;
@@ -179,6 +180,11 @@ class UsersController extends Controller
         ->get();
 
         return view('dashboards/student/nds/add-step-five',['subjects' => $subjects,'grades' => $grades]);
+    }
+    public function validateFive(validateFiveRequest $request)
+    {
+        $validatedData = $request->validated();
+        dd($validatedData);
     }
 
     public function store(Request $request)

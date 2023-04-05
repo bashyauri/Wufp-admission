@@ -24,7 +24,9 @@ class validateFiveRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => ['required']
+           'name' => ['required'],
+           'subject' => ['required'],
+           'grade' => ['required'],
         ];
     }
 }
