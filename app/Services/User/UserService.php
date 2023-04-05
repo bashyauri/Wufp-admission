@@ -85,8 +85,10 @@ class UserService
 
         for ($i=0; $i < 8 ; $i++) {
             ExamGrade::updateOrCreate(
-                ['name' =>$validatedData['name'][$i],'subject' =>$validatedData['subject'][$i]],
-                ['name' => $validatedData['name'][$i],
+                ['user_id'=> auth()->user()->id,'subject' =>$validatedData['subject'][$i]],
+                [
+                    'user_id'=> auth()->user()->id,
+                    'name' => $validatedData['name'][$i],
                     'subject' => $validatedData['subject'][$i],
                     'grade' => $validatedData['grade'][$i],
                 ]

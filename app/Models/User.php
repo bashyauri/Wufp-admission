@@ -71,6 +71,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(AttendedSchool::class);
     }
+    public function ExamGrades(): HasMany
+    {
+        return $this->hasMany(ExamGrade::class);
+    }
     public function examDetail(): HasOne
     {
         return $this->hasOne(examDetails::class);
