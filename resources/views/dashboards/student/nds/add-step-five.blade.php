@@ -32,37 +32,46 @@
                     <div class="col-4 col-sm-40">
                         <label>Exam Details</label>
                         <select class="multisteps-form__input form-control" name="name[]" id="name">
+                            @if (auth()->user()->ExamGrades[$i]->name)
+                            <option value="{{auth()->user()->ExamGrades[$i]->name}}">{{auth()->user()->ExamGrades[$i]->name}}</option>
+                            @endif
                             <option value="">--select---</option>
                           <option>{{ old('name', auth()->user()->examDetail->ssce_certificate1.' '.auth()->user()->examDetail->exam_number1 ?? '') }}</option>
                           <option>{{ old('name', auth()->user()->examDetail->ssce_certificate2.' '.auth()->user()->examDetail->exam_number2 ?? '') }}</option>
 
                       </select>
-                        @error('name')
+                        @error('name[]')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-5 col-sm-5">
                         <label>Subject</label>
                         <select class="multisteps-form__input form-control" name="subject[]" id="subject">
+                            @if (auth()->user()->ExamGrades[$i]->subject)
+                            <option value="{{auth()->user()->ExamGrades[$i]->subject}}">{{auth()->user()->ExamGrades[$i]->subject}}</option>
+                            @endif
                             <option value="">--select---</option>
                             @foreach ($subjects as $subject)
                             <option>{{$subject->name}}</option>
                             @endforeach
                       </select>
-                        @error('subject')
+                        @error('subject[]')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-3 col-sm-3">
                         <label>Grade</label>
                         <select class="multisteps-form__input form-control" name="grade[]" id="grade">
+                            @if (auth()->user()->ExamGrades[$i]->grade)
+                            <option value="{{auth()->user()->ExamGrades[$i]->grade}}">{{auth()->user()->ExamGrades[$i]->grade}}</option>
+                            @endif
                             <option value="">--select---</option>
                             @foreach ($grades as $grade)
                             <option>{{$grade->name}}</option>
                             @endforeach
                       </select>
 
-                        @error('grade')
+                        @error('grade[]')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>

@@ -189,13 +189,23 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateFive($validatedData );
-            return redirect()->route('users.create.step.five')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('users.create.step.six')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
         }
     }
+    public function createSix(Request $request)
+    {
+        // $subjects = DB::table('subjects')
+        // ->orderBy('name', 'asc')
+        // ->get();
+        // $grades = DB::table('grades')
+        // ->orderBy('name', 'asc')
+        // ->get();
 
+        return view('dashboards/student/nds/add-step-six');
+    }
     public function store(Request $request)
     {
         if(!empty($request->file('user_img'))) {

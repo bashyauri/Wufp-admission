@@ -28,7 +28,7 @@ use App\Models\User;
 
 Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::get('/', function () {
-        return redirect('dashboard-default');
+        return redirect('login');
     });
 
     //Remita invoice
@@ -182,6 +182,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::post('/validate-step-four', [UsersController::class, 'validateFour'])->name('users.validate.step.four');
     Route::post('/validate-step-five', [UsersController::class, 'validateFive'])->name('users.validate.step.five');
     Route::get('/nds-create-step-five', [UsersController::class, 'createFive'])->name('users.create.step.five');
+    Route::get('/nds-create-step-six', [UsersController::class, 'createSix'])->name('users.create.step.six');
 
     Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
     Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLgas']);
