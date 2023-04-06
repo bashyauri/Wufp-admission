@@ -34,15 +34,15 @@
                     <div class="row mt-3">
                         <div class="col-8 col-sm-8 mt-3 mt-sm-0">
                             <label>Upload Result</label>
-                            <input class="multisteps-form__input form-control" value=""  type="file" name="" placeholder="e. Salama model Pri school" />
-                            @error('primary_school_name')
+                            <input class="multisteps-form__input form-control"  type="file" name="file" />
+                            @error('file')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Score</label>
-                            <input class="multisteps-form__input form-control"  type="text" name="" placeholder="e. Salama model Pri school" />
-                            @error('primary_school_year')
+                            <input class="multisteps-form__input form-control"  type="text" name="score" />
+                            @error('score')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
@@ -50,7 +50,7 @@
 
                   <div class="row">
                     <div class="button-row d-flex mt-4 col-12">
-                      <a href="{{ route('users.create.step.two') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                      <a href="{{ route('users.create.step.five') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                       <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>
                     </div>
                   </div>
