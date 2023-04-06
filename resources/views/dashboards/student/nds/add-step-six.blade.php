@@ -13,12 +13,12 @@
                 <span>User Info</span>
               </button>
               <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
-              <button class="multisteps-form__progress-btn js-active" type="button" title="Academic Details">Academic Details</button>
+
               <button class="multisteps-form__progress-btn" type="button" title="grades">SSCE Grades</button>
               <button class="multisteps-form__progress-btn" type="button" title="Socials">Socials</button>
               <button class="multisteps-form__progress-btn" type="button" title="Socials">Socials</button>
 
-              <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
+              <button class="multisteps-form__progress-btn js-active" type="button" title="Academic Details">Jamb Result</button>
             </div>
           </div>
         </div>
@@ -32,9 +32,9 @@
                 <h5 class="font-weight-bolder">Jamb</h5>
                 <div class="multisteps-form__content">
                     <div class="row mt-3">
-                        <div class="col-8 col-sm-8 mt-3 mt-sm-0">
-                            <label>Upload Result</label>
-                            <input class="multisteps-form__input form-control"  type="file" name="file" />
+                        <div class="col-6 col-sm-4 mt-3 mt-sm-0">
+                            <label>Jamb No</label>
+                            <input class="multisteps-form__input form-control"  type="text" name="jamb_no" />
                             @error('file')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
@@ -43,6 +43,13 @@
                             <label>Score</label>
                             <input class="multisteps-form__input form-control"  type="text" name="score" />
                             @error('score')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                            <label>Upload Result</label>
+                            <input class="multisteps-form__input form-control"  type="file" name="file" />
+                            @error('file')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
