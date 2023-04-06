@@ -1,5 +1,4 @@
-
-@extends('user_type.auth', ['parentFolder' => 'dashboards', 'childFolder' => 'none'])
+@extends('user_type.auth', ['parentFolder' => 'nds', 'childFolder' => ''])
 
 @section('content')
 
@@ -8,170 +7,56 @@
       <div class="multisteps-form mb-5">
         <!--progress bar-->
         <div class="row">
-          <div class="col-12 col-lg-8 mx-auto my-6">
+          <div class="col-12 col-lg-8 mx-auto my-5">
             <div class="multisteps-form__progress">
-              <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
+              <button class="multisteps-form__progress-btn" type="button" title="User Info">
                 <span>User Info</span>
               </button>
-              <button class="multisteps-form__progress-btn" type="button" title="Address">Adress</button>
-              <button class="multisteps-form__progress-btn" type="button" title="Socials">Academic</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
+              <button class="multisteps-form__progress-btn js-active" type="button" title="Academic Details">Academic Details</button>
+              <button class="multisteps-form__progress-btn" type="button" title="grades">SSCE Grades</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Socials">Socials</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Socials">Socials</button>
+
               <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
             </div>
           </div>
         </div>
         <!--form panels-->
         <div class="row">
-
           <div class="col-12 col-lg-8 m-auto">
-            <!--single form panel-->
-            <div class="card card-body my-3 py-3 d-flex flex-column" id="profile">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-auto col-8 my-auto">
-                        <div class="h-100">
-                        <h5 class="mb-1 font-weight-bolder">
-
-                        </h5>
-                        <p class="mb-0 font-weight-bold text-sm">
-
-                        </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
-                        <label class="form-check-label mb-0">
-
-                        </label>
-                        {{-- <div class="form-check form-switch ms-2">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23" checked onchange="visible()">
-                        </div> --}}
-                    </div>
-                    </div>
-                </div>
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.one')}}" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.six')}}" enctype="multipart/form-data">
               @csrf
-
-
-              <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" id="parsley-form" data-animation="FadeIn">
+              <!--single form panel-->
+              <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
+                <h5 class="font-weight-bolder">Jamb</h5>
                 <div class="multisteps-form__content">
-                  <input class="multisteps-form__input form-control field"  type="file" name="user_img" id="" value="{{ old('user_img') ?? ''}}" ?? '' placeholder="eg. Michael"/>
-                  <div class="row mt-3">
-                    <div class="col-12 col-sm-6">
+                    <div class="row mt-3">
+                        <div class="col-8 col-sm-8 mt-3 mt-sm-0">
+                            <label>Upload Result</label>
+                            <input class="multisteps-form__input form-control" value=""  type="file" name="" placeholder="e. Salama model Pri school" />
+                            @error('primary_school_name')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                            <label>Score</label>
+                            <input class="multisteps-form__input form-control"  type="text" name="" placeholder="e. Salama model Pri school" />
+                            @error('primary_school_year')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                      </div>
 
-                        <label>Department</label>
-                        <select class="multisteps-form__input form-control" id="department" name = "department">
-
-                            <option value="">-- Select Department--</option>
-
-
-                            <option value="{{ $department->id}}">{{$department->name}}</option>
-
-
-
-                        </select>
-                        @error('department')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
+                  <div class="row">
+                    <div class="button-row d-flex mt-4 col-12">
+                      <a href="{{ route('users.create.step.two') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>
                     </div>
-                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <label>Course</label>
-                        <select class="multisteps-form__input form-control field" id="courses" name="courses">
-
-
-                        </select>
-                        @error('courses')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-12 col-sm-6">
-
-                        <label>Phone Number</label>
-                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no"  placeholder="eg. 08038272560"/>
-                        @error('phone_no')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <label>Email</label>
-                        <input class="multisteps-form__input form-control"  type="text" id="email" type="email" name="email" placeholder="eg. basharu@screening.com" />
-                        @error('email')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-12 col-sm-6">
-                        <label>Gender</label>
-                        <select class="multisteps-form__input form-control field" name="gender">
-
-                            <option value="">-- Select Gender--</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-
-                        </select>
-                        @error('gender')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <label>Marital Status</label>
-                        <select class="multisteps-form__input form-control field" name="marital_status">
-
-                            <option value="">--Marital Status--</option>
-                            <option value="Married">Married</option>
-                            <option value="Single">Single</option>
-                            @endif
-
-                        </select>
-                        @error('marital_status')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-sm-4 col-4">
-                        <label class="form-label mt-3">Birth Date</label>
-                        <select class="multisteps-form__input form-control" name="choices-day" id="choices-day">
-                            <option value="">Day</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 col-4">
-                        <label class="form-label mt-3">&nbsp;</label>
-
-                        <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
-                            <option value="">Month</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4 col-4">
-                        <label class="form-label mt-4">&nbsp;</label>
-                        <select class="multisteps-form__input form-control" name="choices-year" id="choices-year">
-                            <option value="">Year</option>
-                        </select>
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-12 col-sm-6">
-                        <label>Next of Kin</label>
-                        <input class="multisteps-form__input form-control"
-                          type="text" name="next_of_kin" placeholder="eg. Umar" />
-                        @error('next_of_kin')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                        <label>Next of Kin Phone</label>
-                        <input class="multisteps-form__input form-control field" type="text"  id="next_of_kin_phone" name="next_of_kin_phone" placeholder="eg. your Dad"/>
-                        @error('next_of_kin_phone')
-                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                        @enderror
-                    </div>
-                  </div>
-
-                  <div class="button-row d-flex mt-4">
-                    <button class="btn bg-gradient-dark ms-auto mb-0" id="next" type="submit" title="Next">Next</button>
                   </div>
                 </div>
               </div>
+
             </form>
           </div>
         </div>
@@ -180,137 +65,31 @@
   </div>
 
 @endsection
-@push('js')
-    <script src="{{ URL::asset('assets/js/plugins/choices.min.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-        var birthdayArray = <?PHP echo (!empty($birthdayArray) ? json_encode($birthdayArray) : '"0"'); ?>;
-    var selectedYear = birthdayArray["year"];
-    var selectedMonth = Math.floor(birthdayArray["month"]);
-    var selectedDay = birthdayArray["day"];
 
-    if (document.getElementById('choices-gender')) {
-      var gender = document.getElementById('choices-gender');
+  @push('js')
+    <script src="{{ URL::asset('assets/js/plugins/choices.min.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+  <script>
+    if (document.getElementById('choices-role')) {
+      var gender = document.getElementById('choices-role');
       const example = new Choices(gender);
     }
-
-    if (document.getElementById('choices-language')) {
-      var language = document.getElementById('choices-language');
-      const example = new Choices(language);
-    }
-    if (document.getElementById('choices-year')) {
-      var year = document.getElementById('choices-year');
-      setTimeout(function() {
-        const example = new Choices(year);
-      }, 1);
-
-      for (y = 1900; y <= 2020; y++) {
-        var optn = document.createElement("OPTION");
-        optn.text = y;
-        optn.value = y;
-
-        if(selectedYear > 0)
-        {
-            if (y == selectedYear) {
-          optn.selected = true;
-        }
-        }
-        year.options.add(optn);
-      }
-    }
-
-    if (document.getElementById('choices-day')) {
-      var day = document.getElementById('choices-day');
-      setTimeout(function() {
-        const example = new Choices(day);
-      }, 1);
-
-
-      for (y = 1; y <= 31; y++) {
-        var optn = document.createElement("OPTION");
-        optn.text = y;
-        optn.value = y;
-        if(selectedDay > 0){
-            if (y == selectedDay) {
-            optn.selected = true;
-            }
-        }
-        day.options.add(optn);
+    if (document.getElementById('role_id')) {
+      var country = document.getElementById('role_id');
+      const example = new Choices(country);
       }
 
-    }
-
-    if (document.getElementById('choices-month')) {
-      var month = document.getElementById('choices-month');
-      setTimeout(function() {
-        const example = new Choices(month);
-      }, 1);
-
-      var d = new Date();
-      var monthArray = new Array();
-      monthArray[0] = "January";
-      monthArray[1] = "February";
-      monthArray[2] = "March";
-      monthArray[3] = "April";
-      monthArray[4] = "May";
-      monthArray[5] = "June";
-      monthArray[6] = "July";
-      monthArray[7] = "August";
-      monthArray[8] = "September";
-      monthArray[9] = "October";
-      monthArray[10] = "November";
-      monthArray[11] = "December";
-      for (m = 0; m <= 11; m++) {
-        var optn = document.createElement("OPTION");
-        optn.text = monthArray[m];
-        // server side month start from one
-        optn.value = (m + 1);
-        if(selectedMonth > 0){
-            if (optn.value == selectedMonth) {
-            optn.selected = true;
-            }
-        }
-        month.options.add(optn);
-      }
-    }
-
-    function visible() {
-      var elem = document.getElementById('profileVisibility');
-      if (elem) {
-        if (elem.innerHTML == "Switch to visible") {
-          elem.innerHTML = "Switch to invisible"
-        } else {
-          elem.innerHTML = "Switch to visible"
-        }
-      }
-    }
-    </script>
-    <script>
-     function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgDisplay').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
+    var upload = document.getElementById('imgDisplay');
+    var imgInp = document.getElementById('file-input');
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            upload.src = URL.createObjectURL(file)
         }
     }
-
-    $("#file-input").change(function(){
-        readURL(this);
-    });
   </script>
-
-    <script>
-    $(document).ready(function(){
-        $("#alert-success").delay(3000).slideUp(300);
-
-        });
-    </script>
-@endpush
-
-
-
+  @endpush
 

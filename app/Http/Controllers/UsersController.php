@@ -206,6 +206,19 @@ class UsersController extends Controller
 
         return view('dashboards/student/nds/add-step-six');
     }
+    public function validateSix(validateFiveRequest $request)
+    {
+        $validatedData = $request->validated();
+        $grade = ExamGrade::all();
+
+        try {
+            $this->userService->validateFive($validatedData );
+            return redirect()->route('users.create.step.six')->with('success','Your account details have been saved/updated.');
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
+        }
+    }
     public function store(Request $request)
     {
         if(!empty($request->file('user_img'))) {
