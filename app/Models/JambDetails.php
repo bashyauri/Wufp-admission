@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class JambDetails extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id','file','jamb_no','score'];
 }
