@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Nds;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class validateSixRequest extends FormRequest
 {
@@ -25,7 +26,7 @@ class validateSixRequest extends FormRequest
     {
         return [
             'jamb_no' => ['required'],
-            'file' => ['required','file','image','mimes:jpg,png'],
+            'file' => [Rule::requiredIf(!auth()->user()->jambDetails->file),'file','image','mimes:jpg,png'],
             'score' => ['required']
         ];
     }

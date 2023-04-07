@@ -33,20 +33,22 @@
                     <div class="row mt-3">
                         <div class="col-6 col-sm-4 mt-3 mt-sm-0">
                             <label>Jamb No</label>
-                            <input class="multisteps-form__input form-control"  type="text" name="jamb_no" />
+
+                            <input class="multisteps-form__input form-control" value="{{ old('jamb_no', auth()->user()->jambDetails->jamb_no ?? '') }}" type="text" name="jamb_no" />
                             @error('jamb_no')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Score</label>
-                            <input class="multisteps-form__input form-control"  type="text" name="score" />
+                            <input class="multisteps-form__input form-control" value="{{ old('score', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" />
                             @error('score')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Upload Result</label>
+
                             <input class="multisteps-form__input form-control"  type="file" name="file" />
                             @error('file')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
