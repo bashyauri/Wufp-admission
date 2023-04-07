@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Nds\validateFiveRequest;
 use App\Http\Requests\Nds\validateFourRequest;
+use App\Http\Requests\Nds\validateSixRequest;
 use App\Http\Requests\Nds\validateThreeRequest;
 use App\Http\Requests\validateOneRequest;
 use App\Http\Requests\validateTwoRequest;
@@ -185,7 +186,7 @@ class UsersController extends Controller
     public function validateFive(validateFiveRequest $request)
     {
         $validatedData = $request->validated();
-        $grade = ExamGrade::all();
+        $grades = ExamGrade::all();
 
         try {
             $this->userService->validateFive($validatedData );
@@ -197,22 +198,17 @@ class UsersController extends Controller
     }
     public function createSix(Request $request)
     {
-        // $subjects = DB::table('subjects')
-        // ->orderBy('name', 'asc')
-        // ->get();
-        // $grades = DB::table('grades')
-        // ->orderBy('name', 'asc')
-        // ->get();
+
 
         return view('dashboards/student/nds/add-step-six');
     }
-    public function validateSix(validateFiveRequest $request)
+    public function validateSix(validateSixRequest $request)
     {
         $validatedData = $request->validated();
-        $grade = ExamGrade::all();
+
 
         try {
-            $this->userService->validateFive($validatedData );
+            $this->userService->validateSix($validatedData );
             return redirect()->route('users.create.step.six')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
