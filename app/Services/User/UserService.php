@@ -5,6 +5,7 @@ namespace App\Services\User;
 use App\Models\AttendedSchool;
 use App\Models\examDetails;
 use App\Models\ExamGrade;
+use App\Models\JambDetails;
 use App\Models\User;
 
 use function PHPSTORM_META\type;
@@ -95,5 +96,23 @@ class UserService
                );
             }
 
+    }
+    public function validateSix(array $validatedData): void
+    {
+        if(!empty($validatedData['file'])) {
+            $validatedData['uniqueFileName'] = uniqid().$validatedData['file']->getClientOriginalName();
+            $validatedData['file']->move(public_path('/assets/img/jamb/'), $validatedData['uniqueFileName']);
+        }
+        else{
+            $validatedData['uniqueFileName'] = auth()->user()->jambDetails->file;
+        }
+        JambDetails::updateOrCreate(  ['user_id'=> auth()->user()->id],
+        [
+            'user_id'=> auth()->user()->id,
+            'jamb_no' => $validatedData['jamb_no'],
+            'file' => $validatedData['uniqueFileName'],
+            'score' => $validatedData['score'],
+
+        ]);
     }
 }
