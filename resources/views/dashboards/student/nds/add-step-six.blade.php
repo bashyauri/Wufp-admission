@@ -17,7 +17,6 @@
               <button class="multisteps-form__progress-btn" type="button" title="grades">SSCE Grades</button>
               <button class="multisteps-form__progress-btn" type="button" title="Socials">Socials</button>
               <button class="multisteps-form__progress-btn" type="button" title="Socials">Socials</button>
-
               <button class="multisteps-form__progress-btn js-active" type="button" title="Academic Details">Jamb Result</button>
             </div>
           </div>
@@ -35,7 +34,7 @@
                         <div class="col-6 col-sm-4 mt-3 mt-sm-0">
                             <label>Jamb No</label>
                             <input class="multisteps-form__input form-control"  type="text" name="jamb_no" />
-                            @error('file')
+                            @error('jamb_no')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
