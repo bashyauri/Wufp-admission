@@ -8,20 +8,20 @@
       <div class="multisteps-form mb-5">
         <!--progress bar-->
         <div class="row">
-          <div class="col-12 col-lg-8 mx-auto my-6">
+            <div class="col-12 col-lg-8 mx-auto my-6">
 
-            <div class="multisteps-form__progress">
-              <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
-                <span>User Info</span>
-              </button>
-              <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
-              <button class="multisteps-form__progress-btn" type="button" title="Socials">Academic</button>
-              <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
-                 <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
-                    <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
+              <div class="multisteps-form__progress">
+                <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
+                  <span>User Info</span>
+                </button>
+                <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
+                <button class="multisteps-form__progress-btn" type="button" title="Socials">Schools Attended</button>
+                <button class="multisteps-form__progress-btn" type="button" title="Profile">SSCE Details</button>
+                   <button class="multisteps-form__progress-btn" type="button" title="Profile">SSCE Grades</button>
+                      <button class="multisteps-form__progress-btn" type="button" title="Profile">Jamb Details</button>
+              </div>
             </div>
           </div>
-        </div>
         <!--form panels-->
         <div class="row">
 

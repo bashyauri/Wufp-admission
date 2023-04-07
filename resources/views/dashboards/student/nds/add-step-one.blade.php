@@ -9,13 +9,16 @@
         <!--progress bar-->
         <div class="row">
           <div class="col-12 col-lg-8 mx-auto my-6">
+
             <div class="multisteps-form__progress">
               <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
                 <span>User Info</span>
               </button>
-              <button class="multisteps-form__progress-btn" type="button" title="Address">Adress</button>
-              <button class="multisteps-form__progress-btn" type="button" title="Socials">Academic</button>
-              <button class="multisteps-form__progress-btn" type="button" title="Profile">Profile</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Address">Address</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Socials">Schools Attended</button>
+              <button class="multisteps-form__progress-btn" type="button" title="Profile">SSCE Details</button>
+                 <button class="multisteps-form__progress-btn" type="button" title="Profile">SSCE Grades</button>
+                    <button class="multisteps-form__progress-btn" type="button" title="Profile">Jamb Details</button>
             </div>
           </div>
         </div>
@@ -51,11 +54,7 @@
                     </div>
                     <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
                         <label class="form-check-label mb-0">
-
                         </label>
-                        {{-- <div class="form-check form-switch ms-2">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23" checked onchange="visible()">
-                        </div> --}}
                     </div>
                     </div>
                 </div>
@@ -65,16 +64,13 @@
 
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" id="parsley-form" data-animation="FadeIn">
                 <div class="multisteps-form__content">
-                  <input class="multisteps-form__input form-control field"  type="file" name="user_img" id="" value="{{ old('user_img') ?? ''}}" ?? '' placeholder="eg. Michael"/>
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">
 
                         <label>Department</label>
                         <select class="multisteps-form__input form-control" id="department" name = "department">
-                            @if (auth()->user()->de)
-
-                            @else
-
+                            @if (auth()->user()->department_id)
+                            <option value="{{ $studentDepartment->id}}">{{$studentDepartment->name}}</option>
                             @endif
                             <option value="">-- Select Department--</option>
 
@@ -88,9 +84,17 @@
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
                     </div>
+                    <input type="file" id="file-input" name="user_img" accept="image/*" class="d-none" value="{{ auth()->user()->file ? auth()->user()->file : old('user_img') ?? ''}}" ?? ''>
+                     @error('user_img')
+                            <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                        @enderror
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Course</label>
                         <select class="multisteps-form__input form-control field" id="courses" name="courses">
+
+                           @if ($studentCourse)
+                           <option value="{{ $studentCourse->id}}">{{$studentCourse->name}}</option>
+                           @endif
 
 
                         </select>
@@ -110,7 +114,11 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Email</label>
-                        <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" type="email" name="email" placeholder="eg. basharu@screening.com" />
+                        <input class="multisteps-form__input form-control"
+                            value="{{ old('email', auth()->user()->email ?? '') }}"
+                            type="email" id="email" name="email"
+                            placeholder="eg. basharu@screening.com" />
+                        {{-- <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" type="email" name="email" placeholder="eg. basharu@screening.com" /> --}}
                         @error('email')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -137,11 +145,11 @@
                         <select class="multisteps-form__input form-control field" name="marital_status">
                             @if (auth()->user()->marital_status)
                             <option value="{{auth()->user()->marital_status}}">{{auth()->user()->marital_status}}</option>
-                            @else
+                               @endif
                             <option value="">--Marital Status--</option>
                             <option value="Married">Married</option>
                             <option value="Single">Single</option>
-                            @endif
+
 
                         </select>
                         @error('marital_status')
@@ -153,6 +161,12 @@
                     <div class="col-sm-4 col-4">
                         <label class="form-label mt-3">Birth Date</label>
                         <select class="multisteps-form__input form-control" name="choices-day" id="choices-day">
+                            {{-- $birthDay = date('d', strtotime(auth()->user()->birthDay)) --}}
+                           @if (auth()->user()->birthday)
+                           <option value="{{date('d', strtotime(auth()->user()->birthday))}}">{{date('d', strtotime(auth()->user()->birthday))}}</option>
+
+                           @endif
+
                             <option value="">Day</option>
                         </select>
                     </div>
@@ -160,12 +174,19 @@
                         <label class="form-label mt-3">&nbsp;</label>
 
                         <select class="multisteps-form__input form-control" name="choices-month" id="choices-month">
+                            @if ( auth()->user()->birthday)
+                           <option value="{{date('m', strtotime(auth()->user()->birthday))}}">{{date('m', strtotime(auth()->user()->birthday))}}</option>
+                           @endif
                             <option value="">Month</option>
                         </select>
                     </div>
                     <div class="col-sm-4 col-4">
-                        <label class="form-label mt-4">&nbsp;</label>
+                        <label class="form-label mt-3">&nbsp;</label>
                         <select class="multisteps-form__input form-control" name="choices-year" id="choices-year">
+                            @if (auth()->user()->birthday)
+                            <option value="{{date('Y', strtotime(auth()->user()->birthday))}}">{{date('Y', strtotime(auth()->user()->birthday))}}</option>
+
+                            @endif
                             <option value="">Year</option>
                         </select>
                     </div>
@@ -181,7 +202,7 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Next of Kin Phone</label>
-                        <input class="multisteps-form__input form-control field" type="text" value="{{ old('next_of_kin_phone') ?? ''}}" ?? '' id="next_of_kin_phone" name="next_of_kin_phone" placeholder="eg. your Dad"/>
+                        <input class="multisteps-form__input form-control field" type="text" value="{{  auth()->user()->kin_gsm ? auth()->user()->kin_gsm : old('next_of_kin_phone') ?? ''}}" ?? '' id="next_of_kin_phone" name="next_of_kin_phone" placeholder="eg. your Dads Phone Number"/>
                         @error('next_of_kin_phone')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -305,7 +326,9 @@
         }
       }
     }
+
     </script>
+
     <script>
      function readURL(input) {
         if (input.files && input.files[0]) {
@@ -323,7 +346,7 @@
         readURL(this);
     });
   </script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
     $(document).ready(function(){
         $("#alert-success").delay(3000).slideUp(300);
@@ -331,7 +354,6 @@
         });
     </script>
 @endpush
-
 
 
 
