@@ -26,7 +26,7 @@ class validateSixRequest extends FormRequest
     {
         return [
             'jamb_no' => ['required'],
-            'file' => [Rule::requiredIf(!auth()->user()->jambDetails->file),'file','image','mimes:jpg,png'],
+            'file' => [Rule::requiredIf(!isset(auth()->user()->jambDetails->file)),'image','mimes:jpg,png'],
             'score' => ['required']
         ];
     }
