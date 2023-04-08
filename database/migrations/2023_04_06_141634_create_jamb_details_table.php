@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('jamb_details', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->string('jamb_no');
+            $table->string('jamb_no')->unique();
             $table->string('score');
             $table->string('file');
             $table->timestamps();
