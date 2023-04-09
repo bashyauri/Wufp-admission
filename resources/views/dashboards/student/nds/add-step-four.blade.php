@@ -24,7 +24,7 @@
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-8 m-auto">
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.four')}}" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('nds.validate.step.four')}}" enctype="multipart/form-data">
               @csrf
 
               <!--single form panel-->

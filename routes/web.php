@@ -171,20 +171,20 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
       //Payment Controller
       Route::get('/invoice', [PaymentController::class, 'invoice'])->name('hnd.invoice');
 
-      // User
+      // NDS Student
       Route::prefix('nds')->group(function(){
         Route::get('/index', [UsersController::class, 'index']);
-        Route::post('/validate-step-one', [UsersController::class, 'validateOne'])->name('users.validate.step.one');
-        Route::post('/validate-step-two', [UsersController::class, 'validateTwo'])->name('users.validate.step.two');
-        Route::get('/nds-create-step-two', [UsersController::class, 'createTwo'])->name('users.create.step.two');
-        Route::get('/nds-create-step-three', [UsersController::class, 'createThree'])->name('users.create.step.three');
-        Route::post('/validate-step-three', [UsersController::class, 'validateThree'])->name('users.validate.step.three');
-        Route::get('/nds-create-step-four', [UsersController::class, 'createFour'])->name('users.create.step.four');
-        Route::post('/validate-step-four', [UsersController::class, 'validateFour'])->name('users.validate.step.four');
-        Route::post('/validate-step-five', [UsersController::class, 'validateFive'])->name('users.validate.step.five');
-        Route::get('/nds-create-step-five', [UsersController::class, 'createFive'])->name('users.create.step.five');
-        Route::get('/nds-create-step-six', [UsersController::class, 'createSix'])->name('users.create.step.six');
-        Route::post('/validate-step-six', [UsersController::class, 'validateSix'])->name('users.validate.step.six');
+        Route::post('/validate-step-one', [UsersController::class, 'validateOne'])->name('nds.validate.step.one');
+        Route::post('/validate-step-two', [UsersController::class, 'validateTwo'])->name('nds.validate.step.two');
+        Route::get('/nds-create-step-two', [UsersController::class, 'createTwo'])->name('nds.create.step.two');
+        Route::get('/nds-create-step-three', [UsersController::class, 'createThree'])->name('nds.create.step.three');
+        Route::post('/validate-step-three', [UsersController::class, 'validateThree'])->name('nds.validate.step.three');
+        Route::get('/nds-create-step-four', [UsersController::class, 'createFour'])->name('nds.create.step.four');
+        Route::post('/validate-step-four', [UsersController::class, 'validateFour'])->name('nds.validate.step.four');
+        Route::post('/validate-step-five', [UsersController::class, 'validateFive'])->name('nds.validate.step.five');
+        Route::get('/nds-create-step-five', [UsersController::class, 'createFive'])->name('nds.create.step.five');
+        Route::get('/nds-create-step-six', [UsersController::class, 'createSix'])->name('nds.create.step.six');
+        Route::post('/validate-step-six', [UsersController::class, 'validateSix'])->name('nds.validate.step.six');
 
         Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
         Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLgas']);

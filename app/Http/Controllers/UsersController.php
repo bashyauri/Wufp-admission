@@ -97,7 +97,7 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateOne($validatedData);
-            return redirect()->route('users.create.step.two')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('nds.create.step.two')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -120,13 +120,13 @@ class UsersController extends Controller
         $validatedData = $request->validated();
         try {
             $this->userService->validateTwo($validatedData);
-            return redirect()->route('users.create.step.three')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('nds.create.step.three')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
         }
 
-        return redirect()->route('users.create.step.three');
+        return redirect()->route('nds.create.step.three');
     }
 
     public function createThree(Request $request)
@@ -145,7 +145,7 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateThree($validatedData);
-            return redirect()->route('users.create.step.four')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('nds.create.step.four')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -165,7 +165,7 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateFour($validatedData);
-            return redirect()->route('users.create.step.five')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('nds.create.step.five')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -190,7 +190,7 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateFive($validatedData );
-            return redirect()->route('users.create.step.six')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('nds.create.step.six')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -209,7 +209,7 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateSix($validatedData );
-            return redirect()->route('users.create.step.six')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('nds.create.step.six')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);

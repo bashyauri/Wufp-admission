@@ -58,7 +58,7 @@
                     </div>
                     </div>
                 </div>
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('users.validate.step.one')}}" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('nds.validate.step.one')}}" enctype="multipart/form-data">
               @csrf
 
 
