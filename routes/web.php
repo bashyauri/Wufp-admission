@@ -9,7 +9,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Nds\UsersController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\hnd\PaymentController;

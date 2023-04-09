@@ -8,7 +8,7 @@ use App\Models\ExamGrade;
 use App\Models\JambDetails;
 use App\Models\User;
 
-use function PHPSTORM_META\type;
+
 
 /**
  * Class UserService.
@@ -55,8 +55,6 @@ class UserService
     }
     public function validateThree(array $validatedData):void
     {
-
-
             AttendedSchool::updateOrCreate(
                 ['user_id' =>auth()->user()->id],
                 ['primary_school_name' => $validatedData['primary_school_name'],

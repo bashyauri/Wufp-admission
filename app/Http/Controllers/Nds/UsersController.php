@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Nds;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Nds\validateFiveRequest;
 use App\Http\Requests\Nds\validateFourRequest;
 use App\Http\Requests\Nds\validateSixRequest;
