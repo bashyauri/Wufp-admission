@@ -25,7 +25,7 @@ class SessionController extends Controller
         {
 
              session()->regenerate();
-            return  redirect('/student/index');
+            return  redirect('/student/nds/index');
 
         }
 
