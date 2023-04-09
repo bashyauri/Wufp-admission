@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Nds;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;

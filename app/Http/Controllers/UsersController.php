@@ -6,8 +6,9 @@ use App\Http\Requests\Nds\validateFiveRequest;
 use App\Http\Requests\Nds\validateFourRequest;
 use App\Http\Requests\Nds\validateSixRequest;
 use App\Http\Requests\Nds\validateThreeRequest;
-use App\Http\Requests\validateOneRequest;
-use App\Http\Requests\validateTwoRequest;
+use App\Http\Requests\Nds\validateOneRequest;
+use App\Http\Requests\Nds\validateTwoRequest;
+
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\ExamGrade;
