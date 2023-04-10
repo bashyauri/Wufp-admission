@@ -24,6 +24,24 @@
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-8 m-auto">
+            @if($errors->any())
+            <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
+                <span class="alert-text text-white">
+                {{$errors->first()}}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+            </div>
+            @endif
+            @if(session('success'))
+            <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                <span class="alert-text text-white">
+                {{ session('success') }}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+            </div>
+            @endif
             <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('nds.validate.step.two')}}" enctype="multipart/form-data">
               @csrf
               <!--single form panel-->
@@ -31,6 +49,23 @@
                 <h5 class="font-weight-bolder">Address</h5>
                 <div class="multisteps-form__content">
                     <div class="row mt-3">
+                        @if($errors->any())
+                        <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
+                            <span class="alert-text text-white">
+                            {{$errors->first()}}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <i class="fa fa-close" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        @endif
+                        @if(session('success'))
+                        <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                            <span class="alert-text text-white">
+                            {{ session('success') }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <i class="fa fa-close" aria-hidden="true"></i>
+                            </button>
+                        </div>
                         <div class="col-12 col-sm-6">
                             <label>Nationality</label>
                             <select class="multisteps-form__select form-control" name="nationality">
