@@ -32,6 +32,23 @@
                 <div class="multisteps-form__content mt-3">
                     @for ($i = 0; $i < 8; $i++)
                   <div class="row">
+                    @if($errors->any())
+                    <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
+                        <span class="alert-text text-white">
+                        {{$errors->first()}}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    @endif
+                    @if(session('success'))
+                    <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                        <span class="alert-text text-white">
+                        {{ session('success') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <div class="col-4 col-sm-40">
                         <label>Exam Details</label>
                         <select class="multisteps-form__input form-control" name="name[]" id="name">
