@@ -96,7 +96,7 @@ class UsersController extends Controller
     {
         if(!auth()->user()->course_id) {
 
-            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
 
         $data['states'] = State::all();
@@ -126,7 +126,7 @@ class UsersController extends Controller
     {
         if(!auth()->user()->lga_id) {
 
-            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
         $school = User::with('attendedSchool')->find(auth()->user()->id)->attendedSchool;
 
@@ -154,7 +154,7 @@ class UsersController extends Controller
     {
         if(! User::with('attendedSchool')->find(auth()->user()->id)->attendedSchool) {
 
-            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
 
         return view('dashboards/student/nds/add-step-four');
@@ -178,7 +178,7 @@ class UsersController extends Controller
     {
         if(! auth()->user()->examDetail) {
 
-            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
 
         $subjects = DB::table('subjects')
