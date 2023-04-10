@@ -31,6 +31,23 @@
                 <h5 class="font-weight-bolder">Academic Details</h5>
                 <div class="multisteps-form__content">
                     <div class="row mt-3">
+                        @if($errors->any())
+                        <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
+                            <span class="alert-text text-white">
+                            {{$errors->first()}}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <i class="fa fa-close" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        @endif
+                        @if(session('success'))
+                        <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                            <span class="alert-text text-white">
+                            {{ session('success') }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <i class="fa fa-close" aria-hidden="true"></i>
+                            </button>
+                        </div>
                         <div class="col-8 col-sm-8 mt-3 mt-sm-0">
                             <label>Primary School Name</label>
                             <input class="multisteps-form__input form-control" value="{{  $school->primary_school_name ?  $school->primary_school_name : old('primary_school_name') ?? ''}}" ?? '' type="text" name="primary_school_name" placeholder="e. Salama model Pri school" />
