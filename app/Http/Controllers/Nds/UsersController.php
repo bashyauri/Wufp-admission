@@ -2,21 +2,9 @@
 
 namespace App\Http\Controllers\Nds;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Nds\validateFiveRequest;
-use App\Http\Requests\Nds\validateFourRequest;
-use App\Http\Requests\Nds\validateSixRequest;
-use App\Http\Requests\Nds\validateThreeRequest;
-use App\Http\Requests\Nds\validateOneRequest;
-use App\Http\Requests\Nds\validateTwoRequest;
-
-use App\Models\Course;
-use App\Models\Department;
-use App\Models\ExamGrade;
-use App\Models\Lga;
-use App\Models\Program;
-use App\Models\State;
-use App\Models\Subject;
-use App\Models\User;
+use App\Http\Requests\Nds\{validateOneRequest,validateTwoRequest,
+validateThreeRequest,validateFourRequest,validateFiveRequest,validateSixRequest};
+use App\Models\{User,Course,Department,ExamGrade,State,Lga,Program,Subject};
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,8 +35,7 @@ class UsersController extends Controller
 
 
 
-        // if (Auth::user()->id =! $data['student']->id) return abort(404);
-        // Using PHP 8 match method
+
        $dashboard = match(Auth::user()->program_id){
             1 => 'dashboards.hnd',
             2 => 'dashboards.nd',
@@ -107,6 +94,11 @@ class UsersController extends Controller
 
     public function createTwo(Request $request)
     {
+        if(!auth()->user()->course_id) {
+
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+        }
+
         $data['states'] = State::all();
         $data['studentState'] = State::find(Auth::user()->state_id);
         $data['studentLga'] = Lga::find(Auth::user()->lga_id);
