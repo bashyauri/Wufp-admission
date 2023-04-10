@@ -34,7 +34,7 @@
                             <div>
                             <label for="file-input" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
                                 <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image"></i>
-                                <span class="sr-only">Edit Image</span>
+                                <span class="sr-only">Edit Ie</span>
                             </label>
                             <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                                 <img src="{{ URL::asset('assets/img/users/'.auth()->user()->file) }}" class="avatar-xxl" id="imgDisplay" alt="Profile Photo">
@@ -72,7 +72,7 @@
                   <div class="row mt-3">
                     <div class="col-12 col-sm-6">
 
-                        <label>Department</label>
+                        <label>Deprtment</label>
                         <select class="multisteps-form__input form-control" id="department" name = "department">
                             @if (auth()->user()->department_id)
                             <option value="{{ $studentDepartment->id}}">{{$studentDepartment->name}}</option>
