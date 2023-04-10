@@ -24,6 +24,24 @@
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-8 m-auto">
+            @if($errors->any())
+            <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
+                <span class="alert-text text-white">
+                {{$errors->first()}}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+            </div>
+            @endif
+            @if(session('success'))
+            <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                <span class="alert-text text-white">
+                {{ session('success') }}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                </button>
+            </div>
+            @endif
             <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('nds.validate.step.five')}}" enctype="multipart/form-data">
               @csrf
 
@@ -32,23 +50,7 @@
                 <div class="multisteps-form__content mt-3">
                     @for ($i = 0; $i < 8; $i++)
                   <div class="row">
-                    @if($errors->any())
-                    <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
-                        <span class="alert-text text-white">
-                        {{$errors->first()}}</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                            <i class="fa fa-close" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    @endif
-                    @if(session('success'))
-                    <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
-                        <span class="alert-text text-white">
-                        {{ session('success') }}</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                            <i class="fa fa-close" aria-hidden="true"></i>
-                        </button>
-                    </div>
+
                     <div class="col-4 col-sm-40">
                         <label>Exam Details</label>
                         <select class="multisteps-form__input form-control" name="name[]" id="name">
@@ -98,7 +100,7 @@
                   </div>
                   @endfor
                   <div class="button-row d-flex mt-4">
-                    <a href="{{ route('users.create.step.four') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                    <a href="{{ route('nds.create.step.four') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Next</button>
                   </div>
 

@@ -48,6 +48,7 @@
                                 <i class="fa fa-close" aria-hidden="true"></i>
                             </button>
                         </div>
+                        @endif
                         <div class="col-8 col-sm-8 mt-3 mt-sm-0">
                             <label>Primary School Name</label>
                             <input class="multisteps-form__input form-control" value="{{  $school->primary_school_name ?  $school->primary_school_name : old('primary_school_name') ?? ''}}" ?? '' type="text" name="primary_school_name" placeholder="e. Salama model Pri school" />
@@ -84,7 +85,7 @@
 
                   <div class="row">
                     <div class="button-row d-flex mt-4 col-12">
-                      <a href="{{ route('users.create.step.two') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                      <a href="{{ route('nds.create.step.two') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                       <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>
                     </div>
                   </div>

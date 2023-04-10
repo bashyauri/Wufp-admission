@@ -48,6 +48,7 @@
                                 <i class="fa fa-close" aria-hidden="true"></i>
                             </button>
                         </div>
+                        @endif
                         <div class="col-6 col-sm-4 mt-3 mt-sm-0">
                             <label>Jamb No</label>
 
@@ -75,7 +76,7 @@
 
                   <div class="row">
                     <div class="button-row d-flex mt-4 col-12">
-                      <a href="{{ route('users.create.step.five') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                      <a href="{{ route('nds.create.step.five') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                       <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>
                     </div>
                   </div>

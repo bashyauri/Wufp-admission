@@ -124,6 +124,10 @@ class UsersController extends Controller
 
     public function createThree(Request $request)
     {
+        if(!auth()->user()->lga_id) {
+
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+        }
         $school = User::with('attendedSchool')->find(auth()->user()->id)->attendedSchool;
 
 
@@ -148,6 +152,11 @@ class UsersController extends Controller
 
     public function createFour(Request $request)
     {
+        if(! User::with('attendedSchool')->find(auth()->user()->id)->attendedSchool) {
+
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+        }
+
         return view('dashboards/student/nds/add-step-four');
     }
     public function validateFour(validateFourRequest $request)
@@ -167,6 +176,11 @@ class UsersController extends Controller
     }
     public function createFive(Request $request)
     {
+        if(! auth()->user()->examDetail) {
+
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been field']);
+        }
+
         $subjects = DB::table('subjects')
         ->orderBy('name', 'asc')
         ->get();

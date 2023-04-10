@@ -50,6 +50,7 @@
                             <i class="fa fa-close" aria-hidden="true"></i>
                         </button>
                     </div>
+                    @endif
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                         <label>Certificate</label>
                         <select class="multisteps-form__input form-control" name="ssce_certificate1" id="ssce_certificate1">
@@ -137,7 +138,7 @@
                   </div>
 
                   <div class="button-row d-flex mt-4">
-                    <a href="{{ route('users.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                    <a href="{{ route('nds.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Next</button>
                   </div>
 
