@@ -65,6 +65,25 @@
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" id="parsley-form" data-animation="FadeIn">
                 <div class="multisteps-form__content">
                   <div class="row mt-3">
+                    @if($errors->any())
+                <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
+                    <span class="alert-text text-white">
+                    {{$errors->first()}}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fa fa-close" aria-hidden="true"></i>
+                    </button>
+                </div>
+                @endif
+                @if(session('success'))
+                <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                    <span class="alert-text text-white">
+                    {{ session('success') }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fa fa-close" aria-hidden="true"></i>
+                    </button>
+                </div>
+                @endif
+
                     <div class="col-12 col-sm-6">
 
                         <label>Department</label>
