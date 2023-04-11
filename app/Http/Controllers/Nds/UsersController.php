@@ -205,7 +205,10 @@ class UsersController extends Controller
     }
     public function createSix(Request $request)
     {
+        if(! auth()->user()->ExamGrades) {
 
+            return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
+        }
 
         return view('dashboards/student/nds/add-step-six');
     }
@@ -216,7 +219,7 @@ class UsersController extends Controller
 
         try {
             $this->userService->validateSix($validatedData );
-            return redirect()->route('nds.create.step.six')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('nds.dashboard')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
