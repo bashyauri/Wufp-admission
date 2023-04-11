@@ -9,7 +9,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\Nds\UsersController;
+use App\Http\Controllers\Nds\{UsersController,HomeController};
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\hnd\PaymentController;
@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::view('/authentication-verification-cover', 'authentication/verification/cover');
     Route::view('/authentication-verification-illustration', 'authentication/verification/illustration');
 
-    Route::view('/dashboard-default', 'dashboards/default');
+    // Route::view('/dashboard-default', 'dashboards/default');
     Route::view('/dashboard-nd', 'dashboards/nd_dashboard');
     Route::view('/dashboard-hnd', 'dashboards/hnd_dashboard');
     Route::view('/dashboard-nds', 'dashboards/nds_dashboard');
@@ -185,6 +185,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
         Route::get('/nds-create-step-five', [UsersController::class, 'createFive'])->name('nds.create.step.five');
         Route::get('/nds-create-step-six', [UsersController::class, 'createSix'])->name('nds.create.step.six');
         Route::post('/validate-step-six', [UsersController::class, 'validateSix'])->name('nds.validate.step.six');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('nds.dashboard');
 
         Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
         Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLgas']);
