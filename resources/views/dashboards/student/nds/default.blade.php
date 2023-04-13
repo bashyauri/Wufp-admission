@@ -19,6 +19,92 @@
     </div>
   </div>
   <div class="row mt-4">
+    <div class="col-lg-7">
+        <div class="card mb-4">
+            <div class="card-header p-3 pb-0">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h6>Remita Details</h6>
+                  <p class="text-sm mb-0">
+                    Remita no. <b>241342</b> from <b>23.02.2021</b>
+                  </p>
+                  <p class="text-sm">
+                    transaction Code: <b>KF332</b>
+                  </p>
+                </div>
+                <a href="javascript:;" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>
+              </div>
+            </div>
+            <div class="card-body p-3 pt-0">
+              <hr class="horizontal dark mt-0 mb-4">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="d-flex">
+                    <div>
+                        <img src="{{ URL::asset('assets/img/users/'.auth()->user()->file) }}" class="avatar-xxl" id="imgDisplay" alt="Profile Photo">
+                    </div>
+                    <div class="m-3">
+                      <h6 class="text-lg mb-0">{{auth()->user()->first_name. ' ' . auth()->user()->last_name.' '. auth()->user()->middle_name }}</h6>
+                      <p class="text-sm mb-3">{{$programs->name}}</p>
+                      <span class="badge badge-sm bg-gradient-secondary">Pending</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12 my-auto text-end">
+                  <a href="javascript:;" class="btn bg-gradient-info mb-0">Go to profile</a>
+                  <p class="text-sm mt-2 mb-0">Do you like the product? Leave us a review <a href="javascript:;">here</a>.</p>
+                </div>
+              </div>
+              <hr class="horizontal dark mt-4 mb-4">
+              <div class="table-responsive p-0">
+
+                    <table class="table align-items-center justify-content-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-dark text-sm font-weight-bolder opacity-7">Department</th>
+                                <th class="text-uppercase text-dark text-sm font-weight-bolder opacity-7 ps-2">Course</th>
+                                <th class="text-uppercase text-dark text-sm font-weight-bolder opacity-7 ps-2">Admission Status</th>
+                                <th></th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+
+                                    <div class="d-flex px-2">
+
+                                        <div class="my-auto">
+                                          <h6 class="mb-0 text-xs">{{$studentDepartment->name}}</h6>
+                                        </div>
+                                      </div>
+
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-normal mb-0">{{$studentCourse->name}}</p>
+
+                                </td>
+
+                                    <td>
+                                        <span class="badge badge-dot me-4">
+                                          <i class="bg-info"></i>
+                                          <span class="text-dark text-xs">Pending</span>
+                                        </span>
+                                      </td>
+                                      <td class="align-middle">
+                                        <button class="btn btn-link text-secondary mb-0">
+                                          <span class="material-icons">
+                                          Generate Invoice
+                                          </span>
+                                        </button>
+                                      </td>
+                                    <tr>
+
+                        </tbody>
+                    </table>
+            </div>
+            </div>
+          </div>
+    </div>
     <div class="col-lg-5 mb-lg-0 mb-4">
       <div class="card z-index-2">
         <div class="card-body p-3">
@@ -135,42 +221,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-7">
-      <div class="card z-index-2">
-        <div class="card card-profile card-plain p-3">
-            <div class="row">
-              <div class="col-lg-5">
-                <a href="javascript:;">
-                  <div class="position-relative">
-                    <div class="blur-shadow-image">
-                     <img src="{{ URL::asset('assets/img/users/'.auth()->user()->file) }}" class="avatar-xxl" id="imgDisplay" alt="Profile Photo">
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-7 ps-0 my-auto">
-                <div class="card-body text-left">
-                  <div class="p-md-0 pt-0">
-                    <h5 class="font-weight-bolder mb-0">{{auth()->user()->last_name .' '.auth()->user()->first_name. ' '.auth()->user()->middle_name}}</h5>
-                    <p class="text-uppercase text-sm font-weight-bold mb-2">Programme:{{$programs->name}}</p>
-                  </div>
-                  <p class="mb-2">Department: {{auth()->user()->deparment->name}}</p>
-                  <button type="button" class="btn btn-facebook btn-simple btn-lg mb-0 pe-3 ps-2">
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                  </button>
-                  <button type="button" class="btn btn-twitter btn-simple btn-lg mb-0 px-2">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                  </button>
-                  <button type="button" class="btn btn-github btn-simple btn-lg mb-0 px-2">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 
   </div>
