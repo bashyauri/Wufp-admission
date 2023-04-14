@@ -168,8 +168,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::get('/logout', [SessionController::class, 'destroy']);
     Route::view('/login', 'dashboards/default')->name('sign-up');
 
-      //Payment Controller
-      Route::get('/invoice', [NdsPaymentController::class, 'invoice'])->name('nds.invoice');
+
 
       // NDS Student
       Route::prefix('nds')->group(function(){
@@ -186,6 +185,8 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
         Route::get('/nds-create-step-six', [UsersController::class, 'createSix'])->name('nds.create.step.six');
         Route::post('/validate-step-six', [UsersController::class, 'validateSix'])->name('nds.validate.step.six');
         Route::get('/dashboard', [HomeController::class, 'index'])->name('nds.dashboard');
+         //Payment Controller
+      Route::get('/invoice', [NdsPaymentController::class, 'invoice'])->name('nds.invoice');
 
         Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
         Route::get('/get-lgas/{state_id}', [UsersController::class, 'getLgas']);
