@@ -12,7 +12,7 @@
                 Remita no. <b>241342</b> from <b>23.02.2021</b>
               </p>
               <p class="text-sm">
-                transaction Code: <b>KF332</b>
+                Amount: <b></b>
               </p>
             </div>
             <a href="javascript:;" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>

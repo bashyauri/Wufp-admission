@@ -9,6 +9,6 @@ class PaymentController extends Controller
 {
     public function invoice(){
 
-        return view('hnd.invoice');
+        return view('nds.invoice');
     }
 }
