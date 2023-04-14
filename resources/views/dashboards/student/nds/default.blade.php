@@ -32,7 +32,7 @@
                     transaction Code: <b>KF332</b>
                   </p>
                 </div>
-                <a href="javascript:;" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>
+                <a href="{{route('nds.invoice')}}" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>
               </div>
             </div>
             <div class="card-body p-3 pt-0">
