@@ -51,8 +51,7 @@
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12 my-auto text-end">
-                  <a href="javascript:;" class="btn bg-gradient-info mb-0">Go to profile</a>
-                  <p class="text-sm mt-2 mb-0">Do you like the product? Leave us a review <a href="javascript:;">here</a>.</p>
+                  <a href="{{route('nds.validate.step.one')}}" class="btn bg-gradient-info mb-0">Go to profile</a>
                 </div>
               </div>
               <hr class="horizontal dark mt-4 mb-4">
