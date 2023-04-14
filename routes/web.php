@@ -9,7 +9,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\Nds\{UsersController,HomeController};
+use App\Http\Controllers\Nds\{UsersController,HomeController, NdsPaymentController};
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\hnd\PaymentController;
@@ -169,7 +169,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::view('/login', 'dashboards/default')->name('sign-up');
 
       //Payment Controller
-      Route::get('/invoice', [PaymentController::class, 'invoice'])->name('hnd.invoice');
+      Route::get('/invoice', [NdsPaymentController::class, 'invoice'])->name('nds.invoice');
 
       // NDS Student
       Route::prefix('nds')->group(function(){
