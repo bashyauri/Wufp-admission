@@ -8,13 +8,18 @@ use Illuminate\Http\Request;
 class NdsPaymentController extends Controller
 {
     public function invoice(){
-        $transcId =substr (md5(uniqid(rand(),true)), 0, 4);
-        $tran=strtoupper($transcId);
-        $transactionId = "WUFPRF".$today =date("Ymd").$tran;
-        return view('nds.invoice')->with($transactionId);
+
+        $transactionId = $this->generateTransactionId();
+        return view('nds.invoice')->with(['transactionId' => $transactionId]);
     }
     private function checkInvoice()
     {
 
+    }
+    private function generateTransactionId():string
+    {
+        $transcId =substr (md5(uniqid(rand(),true)), 0, 4);
+        $tran=strtoupper($transcId);
+        return "WUFPADM".$today =date("Ymd").$tran;
     }
 }
