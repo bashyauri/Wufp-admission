@@ -12,7 +12,7 @@
                 Remita no. <b>{{'Wufpbk'}}</b> from <b>23.02.2021</b>
               </p>
               <p class="text-sm">
-                Amount: <b>{{config('remita.ADMISSIONSERVICEID')}}</b>
+                Amount: <b>N{{config('services.remita.ADMISSION_FEES')}}</b>
               </p>
             </div>
             <a href="javascript:;" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>
@@ -27,14 +27,14 @@
                   <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80" class="avatar avatar-xxl me-3" alt="product image">
                 </div>
                 <div>
-                  <h6 class="text-lg mb-0 mt-2">HND Admission Fees</h6>
+                  <h6 class="text-lg mb-0 mt-2">NDS Admission Fees</h6>
                   <p class="text-sm mb-3">Order was delivered 2 days ago.</p>
                   <span class="badge badge-sm bg-gradient-success">Delivered</span>
                 </div>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12 my-auto text-end">
-              <a href="javascript:;" class="btn bg-gradient-info mb-0">Contact Us</a>
+              <a href="javascript:;" class="btn bg-gradient-info mb-0">Proceed To Remita</a>
               <p class="text-sm mt-2 mb-0">Do you like the product? Leave us a review <a href="javascript:;">here</a>.</p>
             </div>
           </div>
@@ -90,8 +90,8 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-sm font-weight-bold mb-0"></p>
-                                <input name="amount" value="" type="hidden" />
+                                <p class="text-sm font-weight-bold mb-0">N{{config('services.remita.ADMISSION_FEES')}}</p>
+                                <input name="amount" value="{{config('services.remita.ADMISSION_FEES')}}" type="hidden" />
                             </td>
 
                         </tr>
@@ -106,10 +106,10 @@
                             </td>
                             <td>
                                 <p class="text-sm font-weight-bold mb-0">
-
+                                    {{auth()->user()->last_name . ' ' . auth()->user()->first_name . ' ' . auth()->user()->middle_name}}
                                 </p>
                                 <input id="payerName" name="payerName"
-                                    value=""
+                                    value="{{auth()->user()->last_name . ' ' . auth()->user()->first_name . ' ' . auth()->user()->middle_name}}"
                                     type="hidden" />
                             </td>
 
@@ -124,8 +124,8 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-sm font-weight-bold mb-0"> </p>
-                                <input id="payerEmail" name="payerEmail" value=""
+                                <p class="text-sm font-weight-bold mb-0">{{auth()->user()->email}} </p>
+                                <input id="payerEmail" name="payerEmail" value="{{auth()->user()->email}}"
                                     type="hidden" />
                             </td>
 
@@ -141,8 +141,8 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-sm font-weight-bold mb-0"></p>
-                                <input name="payerPhone" value="" type="hidden" />
+                                <p class="text-sm font-weight-bold mb-0">{{auth()->user()->phone_no}}</p>
+                                <input name="payerPhone" value="{{auth()->user()->phone_no}}" type="hidden" />
                                 <input name="paymenttype" value="RRRGEN" type="hidden" />
 
                             </td>
@@ -157,27 +157,7 @@
                     </tbody>
                 </table>
             </form>
-            <script type="text/javascript">
-                function PrintElem(elem) {
-                    //Popup($(elem).html());
-                    //var d = $('#' + elem).html();
-                    Popup($('#' + elem).html());
-                }
 
-                function Popup(data) {
-                    var mywindow = window.open('', 'new div', 'height=500,width=800');
-                    mywindow.document.write('<html><head><title></title>');
-                    //mywindow.document.write("<link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" media=\"all\"/>");
-                    mywindow.document.write('</head><body >');
-                    mywindow.document.write(data);
-                    mywindow.document.write('</body></html>');
-
-                    mywindow.print();
-                    mywindow.close();
-
-                    return true;
-                }
-            </script>
         </div>
         </div>
       </div>
