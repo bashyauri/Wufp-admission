@@ -11,4 +11,8 @@ class NdsPaymentController extends Controller
 
         return view('nds.invoice');
     }
+    private function checkInvoice()
+    {
+
+    }
 }

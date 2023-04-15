@@ -9,10 +9,10 @@
             <div>
               <h6>Remita Details</h6>
               <p class="text-sm mb-0">
-                Remita no. <b>241342</b> from <b>23.02.2021</b>
+                Remita no. <b>{{'Wufpbk'}}</b> from <b>23.02.2021</b>
               </p>
               <p class="text-sm">
-                Amount: <b></b>
+                Amount: <b>{{config('remita.ADMISSIONSERVICEID')}}</b>
               </p>
             </div>
             <a href="javascript:;" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>

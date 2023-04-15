@@ -34,6 +34,8 @@ return [
         'CCESERVICEID' =>  env('CCESERVICEID'),
         'MERCHANTID' =>  env('MERCHANTID'),
         'APIKEY' =>  env('APIKEY'),
+        'SCREEENING_FEES' => 2500,
+        'ADMISSION_FEES' => 6500,
     ]
 
 ];
