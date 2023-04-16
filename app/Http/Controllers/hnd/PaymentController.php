@@ -11,4 +11,7 @@ class PaymentController extends Controller
 
         return view('nds.invoice');
     }
+    public function generateInvoice(Request $request) {
+
+    }
 }
