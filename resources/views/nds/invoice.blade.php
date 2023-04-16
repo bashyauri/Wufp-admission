@@ -59,8 +59,8 @@
                             <td>
 
 
-                                <p class="text-sm font-weight-bold mb-0"> </p>
-                                <input id="transactionId" name="transactionId" value=""
+                                <p class="text-sm font-weight-bold mb-0">{{$transactionId}} </p>
+                                <input id="transactionId" name="transactionId" value="{{$transactionId}}"
                                     type="hidden" />
                             </td>
 
@@ -70,7 +70,7 @@
                                 <div class="d-flex px-2">
 
                                     <div class="my-auto">
-                                        <h6 class="mb-0 text-sm">Service</h6>
+                                        <h6 class="mb-0 text-sm">Service:</h6>
                                     </div>
                                 </div>
                             </td>
@@ -85,7 +85,7 @@
                                 <div class="d-flex px-2">
 
                                     <div class="my-auto">
-                                        <h6 class="mb-0 text-sm">Amount</h6>
+                                        <h6 class="mb-0 text-sm">Amount:</h6>
                                     </div>
                                 </div>
                             </td>
@@ -100,7 +100,7 @@
                                 <div class="d-flex px-2">
 
                                     <div class="my-auto">
-                                        <h6 class="mb-0 text-sm">Name</h6>
+                                        <h6 class="mb-0 text-sm">Name:</h6>
                                     </div>
                                 </div>
                             </td>
