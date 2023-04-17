@@ -4,6 +4,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
       <div class="card mb-4">
+      <form>
         <div class="card-header p-3 pb-0">
           <div class="d-flex justify-content-between align-items-center">
             <div>
@@ -40,7 +41,7 @@
           </div>
           <hr class="horizontal dark mt-4 mb-4">
           <div class="table-responsive p-0">
-            <form action="" method="POST">
+            <form action="{{route('nds.remita.invoice')}}" method="POST">
                 @csrf
                 <table class="table align-items-center justify-content-center mb-0">
                     <thead>

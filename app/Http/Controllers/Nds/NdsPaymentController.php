@@ -12,6 +12,9 @@ class NdsPaymentController extends Controller
         $transactionId = $this->generateTransactionId();
         return view('nds.invoice')->with(['transactionId' => $transactionId]);
     }
+    public function generateInvoice(Request $request) {
+
+    }
     private function checkInvoice()
     {
 
