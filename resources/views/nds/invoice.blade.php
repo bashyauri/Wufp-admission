@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-lg-8 mx-auto">
       <div class="card mb-4">
-      <form>
+
         <div class="card-header p-3 pb-0">
           <div class="d-flex justify-content-between align-items-center">
             <div>
@@ -76,8 +76,8 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-sm font-weight-bold mb-0"></p>
-                                <input name="transactionId" value="" type="hidden" />
+                                <p class="text-sm font-weight-bold mb-0">{{config('services.remita.ADMISSIONSERVICEID')}}</p>
+                                <input name="service" value="{{config('services.remita.ADMISSIONSERVICEID')}}" type="hidden" />
                             </td>
 
                         </tr>
@@ -152,7 +152,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input class="btn btn-success" type="submit" name="" value="Continue">
+                                <input class="btn btn-success" type="submit" name="" value="Proceed to remita">
                             </td>
                         </tr>
                     </tbody>
