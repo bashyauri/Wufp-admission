@@ -3,16 +3,35 @@
 namespace App\Http\Controllers\Nds;
 
 use App\Http\Controllers\Controller;
+use App\Services\Nds\PaymentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class NdsPaymentController extends Controller
 {
+    public function __construct(
+        public $ndsPaymentService = new PaymentService,
+    ) {}
     public function invoice(){
 
         $transactionId = $this->generateTransactionId();
         return view('nds.invoice')->with(['transactionId' => $transactionId]);
     }
     public function generateInvoice(Request $request) {
+        $data = $request->all();
+
+        $valuesToHash = config('services.remita.MERCHANTID') . config('services.remita.ADMISSIONSERVICEID') .
+        $data['transactionId']. $data['amount'] . config('services.remita.APIKEY');
+        $data['apiHash'] = hash('sha512', $valuesToHash);
+        try {
+            $this->ndsPaymentService->generateInvoice($data);
+           return redirect()->route('nds.dashboard')->with('success','Invoice Generated');
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
+        }
+        // CRYPT_SHA512(config('services.remita.ADMISSIONSERVICEID').
+        // config('services.remita.APIKEY'));
 
     }
     private function checkInvoice()
