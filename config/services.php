@@ -30,6 +30,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'remita'=> [
+        'BASEURL' => env('REMITABASEURL'),
         'ADMISSIONSERVICEID' =>  env('ADMISSIONSERVICEID'),
         'CCESERVICEID' =>  env('CCESERVICEID'),
         'MERCHANTID' =>  env('MERCHANTID'),
