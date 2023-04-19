@@ -2,6 +2,8 @@
 
 namespace App\Services\Nds;
 
+use App\Models\Payment;
+
 /**
  * Class PaymentService.
  */
@@ -37,8 +39,21 @@ class PaymentService
     $response = curl_exec($curl);
 
     curl_close($curl);
-    dd($response);
+    $response = json_decode($response);
+    if ($response['statuscode'] == 025){
+        return Payment::insert([
+            'student_id' => auth()->user()->id,
+            'transaction_id' => $data['transactionId'],
+            'amount' => $data['amount'],
+            'date' => now(),
+            'status' =>$response['statuscode'],
+            'resource' => 'Payment For Admission',
+            'RRR' => $response['RRR'],
+        ]);
+    }
+    return $response;
   }
+
 
 
 
