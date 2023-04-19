@@ -46,9 +46,9 @@ class PaymentService
             'transaction_id' => $data['transactionId'],
             'amount' => $data['amount'],
             'date' => now(),
-            'status' =>$response['statuscode'],
+            'status' =>$response->statuscode,
             'resource' => 'Payment For Admission',
-            'RRR' => $response['RRR'],
+            'RRR' => $response->RRR,
         ]);
     }
     return $response;
