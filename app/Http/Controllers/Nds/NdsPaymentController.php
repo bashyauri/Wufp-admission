@@ -25,12 +25,11 @@ class NdsPaymentController extends Controller
         $data['apiHash'] = hash('sha512', $valuesToHash);
         try {
 
-            dd($status = $this->ndsPaymentService->generateInvoice($data));
+            $response = $this->ndsPaymentService->generateInvoice($data);
+            dd($response);
+                return redirect()->route('nds.invoice')->with('success', );
 
-            if($status==025){
-                return redirect()->route('nds.invoice')->with('success',$status);
-            }
-            return redirect()->back()->withErrors(['msgError' => $status]);
+            return redirect()->back()->withErrors(['msgError' => 'asghsgh']);
 
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
