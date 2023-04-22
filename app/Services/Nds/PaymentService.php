@@ -43,65 +43,35 @@ class PaymentService
 
     return PaymentService::convertJsonToArray($response);
 
+
   }
-  public static function convertJsonToArray(string $response,bool $assoc = false): object
+  public static function convertJsonToArray(string $response='',bool $assoc = false): object
   {
     if($response[0] !== '[' && $response[0] !== '{') { // we have JSONP
         $response = substr($response, strpos($response, '('));
+        return json_decode(trim($response,'();'), $assoc);
      }
-     return json_decode(trim($response,'();'), $assoc);
+     return json_decode(trim($response));
+
   }
+  public function createPayment($data)
+  {
+    $values = $this->generateInvoice($data);
+    if(!empty($values)){
+        Payment::create([
+            'transaction_id' => $data['transactionId'],
+            'student_id' => auth()->user()->id,
+            'amount' => $data['amount'],
+            'date' => now(),
+            'status' => $data['statuscode'],
+            'resource' => $data['status'],
+            'RRR' => $data['RRR']
+        ]
+        );
 
+    }
 
-
-
-
-
-// $curl = curl_init();
-
-// curl_setopt_array($curl, array(
-//   CURLOPT_URL => '{{gateway-url}}/echannelsvc/merchant/api/paymentinit',
-//   CURLOPT_RETURNTRANSFER => true,
-//   CURLOPT_ENCODING => '',
-//   CURLOPT_MAXREDIRS => 10,
-//   CURLOPT_TIMEOUT => 0,
-//   CURLOPT_FOLLOWLOCATION => true,
-//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//   CURLOPT_CUSTOMREQUEST => 'POST',
-//   CURLOPT_POSTFIELDS =>'{
-// 	"serviceTypeId": "4430731",
-// 	"amount": "{{totalAmount}}",
-// 	"orderId": "{{orderId}}",
-// 	"payerName": "Michael Alozie",
-// 	"payerEmail": "alozie@systemspecs.com.ng",
-// 	"payerPhone": "09062067384",
-// 	"description": "Payment for Donation 3",
-// 	"customFields": [{
-// 		"name": "Payer TIN",
-// 		"value": "1234567890",
-// 		"type": "ALL"
-// 		},
-// 		 {
-// 		 "name": "Contract Date",
-// 		"value": "2018/06/27",
-// 		"type": "ALL"
-// 		},
-// 		 {
-// 		 "name": "Tax Period",
-// 		"value": "2018/06/20",
-// 		"type": "ALL"
-// 		}]
-// }',
-//   CURLOPT_HTTPHEADER => array(
-//     'Content-Type: application/json',
-//     'Authorization: remitaConsumerKey=2547916,remitaConsumerToken={{apiHash}}'
-//   ),
-// ));
-
-// $response = curl_exec($curl);
-
-// curl_close($curl);
-// echo $response;
+  }
 
 
 }
