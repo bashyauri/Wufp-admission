@@ -28,7 +28,8 @@ class PaymentService
         "payerName": "'.$data['payerName'].'",
         "payerEmail": "'.$data['payerEmail'].'",
         "payerPhone": "'.$data['payerPhone'].'",
-        "description": "Payment For Admission"
+        "description": "Payment For Admission",
+
     }',
       CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json',
