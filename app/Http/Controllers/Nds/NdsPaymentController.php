@@ -24,12 +24,16 @@ class NdsPaymentController extends Controller
         $data['transactionId']. $data['amount'] . config('services.remita.APIKEY');
         $data['apiHash'] = hash('sha512', $valuesToHash);
         try {
-
             $response = $this->ndsPaymentService->generateInvoice($data);
-            dd($response);
-                return redirect()->route('nds.invoice')->with('success', );
+            if(isset($response->RRR)){
+                $data['RRR'] = $response->RRR;
+                $data['statuscode'] = $response->statuscode;
+                $data['status'] = $response->status;
+                $this->ndsPaymentService->createPayment($data);
+                return redirect()->route('nds.invoice')->with('success',$response->status );
 
-            return redirect()->back()->withErrors(['msgError' => 'asghsgh']);
+            }
+            return redirect()->route('nds.invoice')->with('success',$response->status );
 
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
