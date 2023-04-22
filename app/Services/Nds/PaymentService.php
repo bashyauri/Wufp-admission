@@ -39,19 +39,38 @@ class PaymentService
     $response = curl_exec($curl);
 
     curl_close($curl);
-    $response = json_decode($response);
-    if ($response['statuscode'] == 025){
-        return Payment::insert([
-            'student_id' => auth()->user()->id,
-            'transaction_id' => $data['transactionId'],
-            'amount' => $data['amount'],
-            'date' => now(),
-            'status' =>$response->statuscode,
-            'resource' => 'Payment For Admission',
-            'RRR' => $response->RRR,
-        ]);
-    }
-    return $response;
+
+    return json_decode($response);
+
+  //   $jsonData = PaymentService::convertJsonToArray($response);
+  //   dd($jsonData);
+
+
+  //  if (isset($jsonData['statuscode']) && $jsonData['statuscode'] == '025') {
+  //    Payment::create([
+  //       'student_id' => auth()->user()->id,
+  //       'transaction_id' => $data['transactionId'],
+  //       'amount' => $data['amount'],
+  //       'date' => now(),
+  //       'status' =>$jsonData['statuscode'],
+  //       'resource' => 'Payment For Admission',
+  //       'RRR' => $jsonData['RRR'],
+  //   ]);
+  //   return dd($jsonData);
+  //  }
+  //      return dd($jsonData['status']);
+
+  }
+  public static function convertJsonToArray($response)
+  {
+    if (stripos($response, 'jsonp(') === 0) {
+        // Extract the JSON data from the function call and decode it into a PHP associative array
+        $json_data = substr($response, strlen('jsonp('), -1);
+        return json_decode($json_data, true);
+      } else {
+        // Decode the JSON data into a PHP associative array
+        return json_decode($response, true);
+      }
   }
 
 
