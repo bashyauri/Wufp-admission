@@ -20,19 +20,21 @@ class NdsPaymentController extends Controller
     public function generateInvoice(Request $request) {
         $data = $request->all();
 
+
         $valuesToHash = config('services.remita.MERCHANTID') . config('services.remita.ADMISSIONSERVICEID') .
         $data['transactionId']. $data['amount'] . config('services.remita.APIKEY');
         $data['apiHash'] = hash('sha512', $valuesToHash);
         try {
             $response = $this->ndsPaymentService->generateInvoice($data);
+
             if(isset($response->RRR)){
                 $data['RRR'] = $response->RRR;
                 $data['statuscode'] = $response->statuscode;
                 $data['status'] = $response->status;
                 $this->ndsPaymentService->createPayment($data);
                 return redirect()->route('nds.invoice')->with('success',$response->status );
-
             }
+
             return redirect()->route('nds.invoice')->with('success',$response->status );
 
         } catch (\Exception $ex) {
