@@ -23,6 +23,39 @@
               <input type="button" onclick="makePayment()" value="Submit" button class="button"/>
            </form>
         </div>
+        @push('js')
         <script type="text/javascript" src="https://remitademo.net/payment/v1/remita-pay-inline.bundle.js"></script>
+        <script>
+            function makePayment() {
+        var randomnumber = Math.floor(Math.random() \\* 1101233);
+        var form = document.querySelector("#payment-form");
+        var paymentEngine = RmPaymentEngine.init({
+            key:"QzAwMDAyNzEyNTl8MTEwNjE4NjF8OWZjOWYwNmMyZDk3MDRhYWM3YThiOThlNTNjZTE3ZjYxOTY5NDdmZWE1YzU3NDc0ZjE2ZDZjNTg1YWYxNWY3NWM4ZjMzNzZhNjNhZWZlOWQwNmJhNTFkMjIxYTRiMjYzZDkzNGQ3NTUxNDIxYWNlOGY4ZWEyODY3ZjlhNGUwYTY=",
+            processRrr: true,
+            transactionId: {{$transactionId}}, //you are expected to generate new values for the transactionId for each transaction processing.
+            channel: "CARD,USSD", //this field is used to filter what card channels you want enabled on the payment modal
+            extendedData: {
+                customFields: [
+                    {
+                        name: "rrr",
+                        value: rrr //rrr to be processed.
+                    }
+                 ]
+            },
+            onSuccess: function (response) {
+                console.log('callback Successful Response', response);
+            },
+            onError: function (response) {
+                console.log('callback Error Response', response);
+            },
+            onClose: function () {
+                console.log("closed");
+            }
+        });
+         paymentEngine.showPaymentWidget();
+    }
+            </script>
+      @endpush
+
      </body>
   </html>
