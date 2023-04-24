@@ -28,7 +28,7 @@ class PaymentService
         "payerName": "'.$data['payerName'].'",
         "payerEmail": "'.$data['payerEmail'].'",
         "payerPhone": "'.$data['payerPhone'].'",
-        "description": "Payment For Admission",
+        "description": "'.$data['description'].'"
 
     }',
       CURLOPT_HTTPHEADER => array(
@@ -40,7 +40,6 @@ class PaymentService
     $response = curl_exec($curl);
 
     curl_close($curl);
-
 
     return PaymentService::convertJsonToArray($response);
 
@@ -65,7 +64,7 @@ class PaymentService
             'amount' => $data['amount'],
             'date' => now(),
             'status' => $data['statuscode'],
-            'resource' => $data['status'],
+            'resource' => $data['description'],
             'RRR' => $data['RRR']
         ]
         );
