@@ -17,6 +17,7 @@ class NdsPaymentController extends Controller
         $transactionId = $this->generateTransactionId();
         return view('nds.invoice')->with(['transactionId' => $transactionId]);
     }
+
     public function generateInvoice(Request $request) {
         $data = $request->all();
 
@@ -31,8 +32,9 @@ class NdsPaymentController extends Controller
                 $data['RRR'] = $response->RRR;
                 $data['statuscode'] = $response->statuscode;
                 $data['status'] = $response->status;
-                $this->ndsPaymentService->createPayment($data);
-                return redirect()->route('nds.invoice')->with('success',$response->status );
+
+                // $this->ndsPaymentService->createPayment($data);
+                return view('nds.payment')->with($data);
             }
 
             return redirect()->route('nds.invoice')->with('success',$response->status );
