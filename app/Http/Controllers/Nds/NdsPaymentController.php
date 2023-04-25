@@ -54,14 +54,10 @@ class NdsPaymentController extends Controller
         // config('services.remita.APIKEY'));
 
     }
-    public function checkTransactionStatus($transactionId){
+    public function checkTransactionStatus($rrr){
         try {
-            $response = $this->ndsPaymentService->checkTransactionStatus($transactionId);
-            dd($transactionId);
-                $data['RRR'] = $response->RRR;
-                $data['statuscode'] = $response->statuscode;
-                $data['status'] = $response->status;
-                $this->ndsPaymentService->updatePayment($data);
+            $response =PaymentService::getTransactionStatus($rrr);
+            dd($response);
 
                // return view('nds.payment')->with($data);
             return redirect()->route('nds.invoice')->with('success',$response->status );
