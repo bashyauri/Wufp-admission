@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="row mt-4">
-    <div class="col-lg-7">
+    <div class="col-lg-10">
         <div class="card mb-4">
             <div class="card-header p-3 pb-0">
               <div class="d-flex justify-content-between align-items-center">
@@ -35,7 +35,7 @@
                 <a href="{{route('nds.invoice')}}" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>
               </div>
             </div>
-            <div class="card-body p-3 pt-0">
+            <div class="card-body p-1 pt-0">
               <hr class="horizontal dark mt-0 mb-4">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-12">
@@ -104,53 +104,71 @@
             </div>
           </div>
     </div>
-    <div class="col-lg-5 mb-lg-0 mb-4">
-        <div class="card">
-            <div class="table-responsive">
-              <table class="table align-items-center mb-0">
-                <thead>
-                  <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">RRR</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                    <th class="text-secondary opacity-7"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
 
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-xs">Miriam Eric</h6>
-                          <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm badge-secondary">Offline</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-normal">6500</span>
-                    </td>
-                    <td class="align-middle">
-                      <a href="#!" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-    </div>
 
   </div>
+  <div class="d-flex flex-column h-100">
+    <h6>Transactions</h6>
+  </div>
+  <div class="col-lg-10 mb-lg-0 mb-4">
 
+    <div class="card">
+        <div class="card-header p-3 pb-0">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6>Transactions</h6>
+
+            </div>
+          </div>
+
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">RRR</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                <th class="text-secondary opacity-7"></th>
+              </tr>
+            </thead>
+            <tbody>
+                @if (!empty($studentPayments))
+                @foreach ($studentPayments as $payment)
+                <tr>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-xs">{{$payment->transaction_id}}</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0">{{$payment->RRR}}</p>
+
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="badge badge-sm badge-secondary">{{$payment->status}}</span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-normal">{{$payment->amount}}</span>
+                  </td>
+                  <td class="align-middle">
+                    <a href="#!" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      Check Status
+                    </a>
+                  </td>
+                </tr>
+                @endforeach
+                @else
+                <h6 class="mb-0 text-xs">No Record Found</h6>
+                @endif
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
   </div>
 @endsection
 
