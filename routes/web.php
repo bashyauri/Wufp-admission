@@ -188,6 +188,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
          //Payment Controller
       Route::get('/invoice', [NdsPaymentController::class, 'invoice'])->name('nds.invoice');
       Route::get('/screening/payment', [NdsPaymentController::class, 'makeScreeningPayment'])->name('nds.screening.payment');
+      Route::get('/screening/status/{rrr}', [NdsPaymentController::class, 'checkTransactionStatus'])->name('nds.screening.status');
       Route::post('/remita-invoice', [NdsPaymentController::class, 'generateInvoice'])->name('nds.remita.invoice');
 
         Route::get('/get-courses/{department_id}', [UsersController::class, 'getCourses']);
