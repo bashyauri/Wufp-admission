@@ -82,6 +82,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(ExamGrade::class);
     }
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class,'student_id');
+    }
     public function examDetail(): HasOne
     {
         return $this->hasOne(examDetails::class);
