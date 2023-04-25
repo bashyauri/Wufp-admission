@@ -54,6 +54,23 @@ class NdsPaymentController extends Controller
         // config('services.remita.APIKEY'));
 
     }
+    public function checkTransactionStatus($transactionId){
+        try {
+            $response = $this->ndsPaymentService->checkTransactionStatus($transactionId);
+            dd($transactionId);
+                $data['RRR'] = $response->RRR;
+                $data['statuscode'] = $response->statuscode;
+                $data['status'] = $response->status;
+                $this->ndsPaymentService->updatePayment($data);
+
+               // return view('nds.payment')->with($data);
+            return redirect()->route('nds.invoice')->with('success',$response->status );
+
+        } catch (\Exception $ex) {
+            Log::alert($ex->getMessage());
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong:'.$response->status]);
+        }
+    }
     private function hasScreeningInvoice():object | null
     {
         return Payment::where(['student_id' =>auth()->user()->id,'resource' => 'Admission Payment'])->first();
