@@ -113,14 +113,6 @@
   <div class="col-lg-10 mb-lg-0 mb-4">
 
     <div class="card">
-        <div class="card-header p-3 pb-0">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <h6>Transactions</h6>
-
-            </div>
-          </div>
-
         <div class="table-responsive">
           <table class="table align-items-center mb-0">
             <thead>
