@@ -19,6 +19,7 @@
     </div>
   </div>
   <div class="row mt-4">
+
     <div class="col-lg-10">
         <div class="card mb-4">
             <div class="card-header p-3 pb-0">
@@ -113,6 +114,8 @@
   <div class="col-lg-10 mb-lg-0 mb-4">
 
     <div class="card">
+
+
         <div class="table-responsive">
           <table class="table align-items-center mb-0">
             <thead>
@@ -124,6 +127,24 @@
               </tr>
             </thead>
             <tbody>
+                @if($errors->any())
+                <div class="m-3  alert alert-warning alert-dismissible fade show" role="alert">
+                    <span class="alert-text text-white">
+                    {{$errors->first()}}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fa fa-close" aria-hidden="true"></i>
+                    </button>
+                </div>
+                @endif
+                @if(session('success'))
+                <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                    <span class="alert-text text-white">
+                    {{ session('success') }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <i class="fa fa-close" aria-hidden="true"></i>
+                    </button>
+                </div>
+                @endif
                 @if (!empty($studentPayments))
                 @foreach ($studentPayments as $payment)
                 <tr>
