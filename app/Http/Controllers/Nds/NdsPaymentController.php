@@ -56,15 +56,17 @@ class NdsPaymentController extends Controller
     }
     public function checkTransactionStatus($rrr){
         try {
+
             $response =PaymentService::getTransactionStatus($rrr);
-            dd($response);
+
+            PaymentService::updateTransactionStatus($response->status,$response->RRR);
 
                // return view('nds.payment')->with($data);
-            return redirect()->route('nds.invoice')->with('success',$response->status );
+            return redirect()->route('nds.screening.payment')->with('success',$response->message );
 
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
-            return redirect()->back()->withErrors(['msgError' => 'Something went wrong:'.$response->status]);
+            return redirect()->back()->withErrors(['msgError' => 'Something went wrong:'.$response->message]);
         }
     }
     private function hasScreeningInvoice():object | null
