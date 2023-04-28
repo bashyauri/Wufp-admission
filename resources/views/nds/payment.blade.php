@@ -253,7 +253,7 @@
 
                                             <div class="my-2"><i
                                                     class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span
-                                                    class="text-600 text-90">Status:</span>
+                                                    class="text-600 text-90">Status:{{$status}}</span>
                                                 @if ($status == 01)
                                                     <span class="badge bg-gradient-success">{{ $status }}</span>
                                                 @else
@@ -315,8 +315,10 @@
                                                             class="btn bg-gradient-success btn-lg">Continue</button>
                                                     @else
                                                     <input type="button" onclick="makePayment()" value="Pay" button class="button"/>
-                                                        {{-- <button type="submit">Pay
-                                                            Now</button> --}}
+
+                                                    <a href="{{route('nds.dashboard')}}" class="button">
+                                                        Back
+                                                      </a>
                                                     @endif
 
                                                 </div>
