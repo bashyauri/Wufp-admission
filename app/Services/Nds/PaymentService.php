@@ -72,6 +72,11 @@ class PaymentService
     }
 
   }
+  public static function updateTransactionStatus($status,$rrr){
+
+    Payment::where('RRR', $rrr)->update(['status'=>$status]);
+
+  }
 public static function getTransactionStatus($RRR){
     $valuesToHash = $RRR.config('services.remita.APIKEY').config('services.remita.MERCHANTID') ;
 
