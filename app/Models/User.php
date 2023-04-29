@@ -102,7 +102,7 @@ class User extends Authenticatable
     }
     public function isDiplomaSpecial()
     {
-        return $this->programme_id == 3;
+        return $this->program_id == 3;
     }
 
     public function isPolytechnicDiploma()
