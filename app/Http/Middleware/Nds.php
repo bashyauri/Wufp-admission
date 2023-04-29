@@ -16,9 +16,12 @@ class Nds
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->user()->isDiplomaSpecial){
-            return redirect('login');
+
+        if (auth()->check() && auth()->user()->program_id === 3) {
+            return $next($request);
         }
-        return $next($request);
+
+        auth()->logout();
+        return redirect('login');
     }
 }
