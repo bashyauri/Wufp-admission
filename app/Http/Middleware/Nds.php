@@ -16,6 +16,9 @@ class Nds
      */
     public function handle(Request $request, Closure $next)
     {
+        if(!auth()->user()->isDiplomaSpecial){
+            return redirect('login');
+        }
         return $next($request);
     }
 }
