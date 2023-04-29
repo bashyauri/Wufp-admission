@@ -210,6 +210,10 @@
                                    <input type="hidden" value="{{$RRR}}" class="form-control" id="js-firstName"  name="rrr"/>
 
                                 </div>
+                                <div class='preserveHtml' class='preserveHtml' class="form-floating mb-3 mt-3">
+                                    <input type="hidden" value="{{$transaction_id}}" class="form-control" id="js-firstName"  name="transaction_id"/>
+
+                                 </div>
 
                              </form>
                                 @csrf
@@ -289,7 +293,7 @@
 
                                         <div class="row ">
                                             <div class="col-12 col-sm-7 text-grey-d2 text-95 mt-2 mt-lg-0">
-                                                Wufpbk Online Services
+                                                Wufpbk  Services
                                             </div>
 
                                             <div class="col-12 col-sm-5 text-grey text-90 order-first order-sm-last">
@@ -343,11 +347,12 @@
             var randomnumber = Math.floor(Math.random() * 1101233);
             var form = document.querySelector("#payment-form");
             var rrr = document.querySelector('input[name="rrr"]').value;
+            var transaction_id = document.querySelector('input[name="transaction_id"]').value;
 
             var paymentEngine = RmPaymentEngine.init({
                 key:"QzAwMDAyNzEyNTl8MTEwNjE4NjF8OWZjOWYwNmMyZDk3MDRhYWM3YThiOThlNTNjZTE3ZjYxOTY5NDdmZWE1YzU3NDc0ZjE2ZDZjNTg1YWYxNWY3NWM4ZjMzNzZhNjNhZWZlOWQwNmJhNTFkMjIxYTRiMjYzZDkzNGQ3NTUxNDIxYWNlOGY4ZWEyODY3ZjlhNGUwYTY=",
                 processRrr: true,
-                transactionId: "{{$transaction_id}}",
+                // transactionId: randomnumber,
 
                 extendedData: {
                     customFields: [
