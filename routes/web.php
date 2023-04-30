@@ -171,7 +171,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
 
 
       // NDS Student
-      Route::prefix('nds')->group(function(){
+      Route::prefix('nds')->middleware('nds')->group(function(){
         Route::get('/index', [UsersController::class, 'index']);
         Route::post('/validate-step-one', [UsersController::class, 'validateOne'])->name('nds.validate.step.one');
         Route::post('/validate-step-two', [UsersController::class, 'validateTwo'])->name('nds.validate.step.two');
