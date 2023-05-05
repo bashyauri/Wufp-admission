@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DropdownController;
@@ -25,6 +26,7 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::get('/', function () {
