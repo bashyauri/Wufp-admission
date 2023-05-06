@@ -51,6 +51,11 @@
                     </div>
                   </div>
                 </div>
+                @can('printAdmissionForm', App\Models\User::class)
+                <div class="col-lg-6 col-md-6 col-12 my-auto text-end">
+                    <a href="{{route('nds.print.form')}}" class="btn bg-gradient-info mb-0">Print Form</a>
+                  </div>
+                @endcan
                 <div class="col-lg-6 col-md-6 col-12 my-auto text-end">
                   <a href="{{route('nds.validate.step.one')}}" class="btn bg-gradient-info mb-0">Go to profile</a>
                 </div>
