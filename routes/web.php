@@ -186,7 +186,8 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
         Route::get('/nds-create-step-five', [UsersController::class, 'createFive'])->name('nds.create.step.five');
         Route::get('/nds-create-step-six', [UsersController::class, 'createSix'])->name('nds.create.step.six');
         Route::post('/validate-step-six', [UsersController::class, 'validateSix'])->name('nds.validate.step.six');
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('nds.dashboard')->middleware('nds');
+        Route::get('print/form',[HomeController::class,'printForm'])->name('nds.print.form');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('nds.dashboard');
          //Payment Controller
       Route::get('/invoice', [NdsPaymentController::class, 'invoice'])->name('nds.invoice');
       Route::get('/screening/payment', [NdsPaymentController::class, 'makeScreeningPayment'])->name('nds.screening.payment');
