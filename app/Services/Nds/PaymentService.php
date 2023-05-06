@@ -105,6 +105,10 @@ curl_close($curl);
 return PaymentService::convertJsonToArray($response);
 
   }
+  public static function hasPaid(string $paymentType) : bool
+  {
+   return  Payment::where(['resource' => $paymentType, 'student_id' => auth()->user()->id,'status' => 00 ])->exists();
+  }
 
 
 }
