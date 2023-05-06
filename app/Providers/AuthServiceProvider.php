@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Policies\StudentPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UsersPolicy::class,
+        User::class => StudentPolicy::class,
     ];
 
     /**
@@ -28,6 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-items', 'App\Policies\UsersPolicy@manageItems');
 
         Gate::define('manage-users', 'App\Policies\UsersPolicy@manageUsers');
+        Gate::define('printAdmissionForm', 'App\Policies\StudentPolicy@printAdmissionForm');
     }
 
 

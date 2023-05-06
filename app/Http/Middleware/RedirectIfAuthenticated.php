@@ -24,9 +24,10 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if ($guard === 'admin') {
                 return redirect('/admin/dashboard'); // Redirect to admin dashboard
-            } else {
-                return redirect(RouteServiceProvider::HOME); // Redirect to default home page
             }
+            // else {
+            //     return redirect(RouteServiceProvider::HOME); // Redirect to default home page
+            // }
         }
 
         return $next($request);
