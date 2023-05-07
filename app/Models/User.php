@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,9 +59,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function program(): HasOne
+    // public function program(): HasOne
+    // {
+    //     return $this->hasOne(Program::class);
+    // }
+    public function program() : BelongsTo
     {
-        return $this->hasOne(Program::class);
+        return $this->belongsTo(Program::class);
     }
     public function course(): HasOne
     {
