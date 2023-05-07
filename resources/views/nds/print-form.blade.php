@@ -157,7 +157,7 @@
                                     <th colspan="2" style="color:red;">PROGRAMME APPLIED FOR:</th>
 
 
-                                    {{-- <td colspan="4" style="color:red;">{{ auth()->user()->program->name }}</td> --}}
+                                    <td colspan="4" style="color:red;">{{ auth()->user()->program->name }}</td>
                                 </tr>
                             </tbody>
                             <table>
