@@ -11,6 +11,10 @@ class Program extends Model
     public function departments(){
         return $this->hasManyThrough(Department::class,DepartmentProgram::class,'program_id','id','id','department_id');
     }
+    public function students()
+    {
+        return $this->hasMany(User::class);
+    }
     // public function departments()
     // {
     //     return $this->belongsToMany(Department::class);
