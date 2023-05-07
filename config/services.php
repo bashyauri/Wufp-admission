@@ -37,6 +37,10 @@ return [
         'APIKEY' =>  env('APIKEY'),
         'SCREEENING_FEES' => 2500,
         'ADMISSION_FEES' => 6500,
-    ]
+
+    ],
+    'school' => [
+        'ACADEMIC_SESSION' => env('ACADEMIC_SESSION'),
+    ],
 
 ];
