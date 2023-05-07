@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = 'student/nds/dashboard';
+    public const HOME = 'dashboards.student.nds.default';
 
     /**
      * The controller namespace for the application.
