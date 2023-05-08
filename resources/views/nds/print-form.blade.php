@@ -203,18 +203,25 @@
                                 <th colspan="2">Exam Name</th>
                                 <th colspan="2">Exam Number</th>
                                 <th colspan="2">Exam Date</th>
-                                {{-- @foreach ($exams as $exam)
+
 
 
                             </tr>
                             <tr>
-                                <td colspan="2">{{ $exam->exam_name }}</td>
-                                <td colspan="2">{{ $exam->exam_no }}</td>
-                                <td colspan="2">{{ $exam->exam_date }}</td>
+                                <td colspan="2"> {{auth()->user()->examDetail->ssce_certificate1}}</td>
+                                <td colspan="2"> {{auth()->user()->examDetail->exam_number1}}</td>
+                                <td colspan="2">{{auth()->user()->examDetail->exam_year1}}</td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2"> {{auth()->user()->examDetail->ssce_certificate2}}</td>
+                                <td colspan="2"> {{auth()->user()->examDetail->exam_number2}}</td>
+                                <td colspan="2">{{auth()->user()->examDetail->exam_year2}}</td>
 
                             </tr>
 
-                            @endforeach --}}
+
+
                             <tr>
                                 <th>S/N</th>
                                 <th>Subject</th>
