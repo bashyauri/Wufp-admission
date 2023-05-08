@@ -228,18 +228,21 @@
                                 <th>Exam</th>
                                 <th>Grade</th>
                             </tr>
-                            {{-- @foreach ($subjects as $subject)
+                            @php
+                             $subjectCount = 1;
+                            @endphp
+                            @foreach (auth()->user()->Examgrades as $subject)
                                 <tr>
 
 
 
                                     <td>{{ $subjectCount = $subjectCount + 1 }}</td>
-                                    <td>{{ $subject->subject_name }}</td>
-                                    <td>{{ $subject->exam_name }}</td>
+                                    <td>{{$subject->subject }}</td>
+                                    <td>{{ $subject->name }}</td>
                                     <td><strong>{{ $subject->grade }}</strong></td>
 
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </table>
                     </div>
                     <div class="span6">
@@ -256,8 +259,8 @@
                                 <th colspan="1">JAMB Score</th>
                             </tr>
 
-                            {{-- <td colspan="2">{{ $jambNumber }}</td>
-                            <td colspan="2">{{ $score }}</td> --}}
+                            <td colspan="2">{{ auth()->user()->jambDetails->jamb_no }}</td>
+                            <td colspan="2">{{ auth()->user()->jambDetails->score }}</td>
 
                             </tr>
                             <tr>
@@ -265,11 +268,11 @@
                                 <th colspan="3"><h4> Course of Study</h4></th>
 
                             </tr>
-                            {{-- <tr>
+                            <tr>
                                 <td>{{ 1 }}</td>
-                                <td colspan="3"><h6>{{ $course }}</h6></td>
+                                <td colspan="3"><h6>{{ auth()->user()->course->name }}</h6></td>
 
-                            </tr> --}}
+                            </tr>
 
 
 
