@@ -180,15 +180,15 @@
                             </tr>
 
 
-                            {{-- @foreach ($institutions as $institution)
+
 
                                 <tr>
-                                    <td>{{ $count = $count + 1 }}</td>
-                                    <td>{{ $institution->sch_colle_name }}</td>
-                                    <td>{{ $institution->start_date }}</td>
-                                    <td>{{ $institution->end_date }}</td>
+                                    <td>{{ auth()->user()->attendedSchool->primary_school_name }}</td>
+                                    <td>{{ auth()->user()->attendedSchool->secondary_school_name }}</td>
+                                    <td>{{ auth()->user()->attendedSchool->primary_year }}</td>
+                                    <td>{{ auth()->user()->attendedSchool->secondary_school_year }}</td>
                                 </tr>
-                            @endforeach --}}
+
                         </table>
                     </div>
                 </div>
