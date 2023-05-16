@@ -5,6 +5,7 @@
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css" rel="stylesheet" />
 <link  href="assets/css/form-wizard.css" rel="stylesheet" />
@@ -83,13 +84,13 @@
                                     <td rowspan="4"> <img src="{{ URL::asset('assets/img/users/'.auth()->user()->file) }}" height = "100px" class="avatar-xxl" id="imgDisplay" alt="Profile Photo"></td>
                                 </tr>
                                 <tr>
-                                    <td><Strong></Strong></td>
+                                    <td><Strong>{{$admissionPayment->transaction_id}}</Strong></td>
                                 </tr>
                                 <tr>
                                     <th>Remita Number</th>
                                 </tr>
                                 <tr>
-                                    <td><Strong></Strong></td>
+                                    <td><Strong>{{$admissionPayment->RRR}}</Strong></td>
                                 </tr>
                             </tbody>
                         </table>
