@@ -43,8 +43,8 @@ class UsersController extends Controller
     //         4 => 'dashboards.nce',
     //         5 => 'dashboards.pd',
 
-        // };
-        return view('dashboards.student.nds.add-step-one')->with($data);
+    //     };
+        return view('dashboards/student/nds/add-step-one')->with($data);
 
     }
     public function getCourses(int $department_id): object
