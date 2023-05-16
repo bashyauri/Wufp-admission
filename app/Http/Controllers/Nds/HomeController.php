@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Nds;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Department;
+use App\Models\Payment;
 use App\Models\Program;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
@@ -23,7 +24,9 @@ class HomeController extends Controller
     }
     public function printForm(User $student){
         $this->authorize('printAdmissionForm', $student);
-        return view('nds.print-form');
+        $admissionPayment = Payment::where(['student_id'=> auth()->user()->id,'resource'=>'Admission Fees'])->first(['RRR','transaction_id']);
+
+        return view('nds.print-form')->with(['admissionPayment'=>$admissionPayment]);
 
     }
 }
