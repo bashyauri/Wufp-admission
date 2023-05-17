@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Nds;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Department;
+use App\Models\Lga;
 use App\Models\Payment;
 use App\Models\Program;
+use App\Models\State;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -24,9 +26,11 @@ class HomeController extends Controller
     }
     public function printForm(User $student){
         $this->authorize('printAdmissionForm', $student);
+        $lga = Lga::where(['id'=>auth()->user()->lga_id])->first(['name']);
+        $state = State::where(['id'=>auth()->user()->state_id])->first(['name']);
         $admissionPayment = Payment::where(['student_id'=> auth()->user()->id,'resource'=>'Admission Fees'])->first(['RRR','transaction_id']);
 
-        return view('nds.print-form')->with(['admissionPayment'=>$admissionPayment]);
+        return view('nds.print-form')->with(['admissionPayment'=>$admissionPayment,'lga'=>$lga,'state'=>$state]);
 
     }
 }
