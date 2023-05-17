@@ -80,6 +80,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Department::class);
     }
+    public function lga(): HasOne
+    {
+        return $this->hasOne(Lga::class);
+    }
     public function attendedSchool(): HasOne
     {
         return $this->hasOne(AttendedSchool::class);

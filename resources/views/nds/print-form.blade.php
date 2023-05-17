@@ -118,9 +118,9 @@
 
 
 
-                                    {{-- <td>{{ $lga }}</td> --}}
+                                    <td>{{ $lga->name }}</td>
                                     <th >State of Origin:</th>
-                                    {{-- <td>{{ $state }}</td> --}}
+                                    <td>{{ $state->name }}</td>
                                 </tr>
                                 <tr>
                                     <th>Nationality:</th>
@@ -171,21 +171,22 @@
                             <h4><b>SECTION B: SCHOOLS/COLLEGES ATTENDED</b></h4>
                             <tr>
                                 <th rowspan="2">S/N</th>
-                                <th rowspan="2">Schools/Colleges Attended</th>
-                                <th colspan="2">Date</th>
+                                <th rowspan="2">Schools/Colleges Name</th>
+
                             </tr>
                             <tr>
-                                <th>Start Date [From]</th>
-                                <th>End Date [TO]</th>
+                                <th>Year</th>
+
                             </tr>
 
-
-
-
                                 <tr>
+                                    <td>1</td>
                                     <td>{{ auth()->user()->attendedSchool->primary_school_name }}</td>
-                                    <td>{{ auth()->user()->attendedSchool->secondary_school_name }}</td>
                                     <td>{{ auth()->user()->attendedSchool->primary_year }}</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>{{ auth()->user()->attendedSchool->secondary_school_name }}</td>
                                     <td>{{ auth()->user()->attendedSchool->secondary_school_year }}</td>
                                 </tr>
 
