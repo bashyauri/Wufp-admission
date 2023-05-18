@@ -170,7 +170,9 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::get('/logout', [SessionController::class, 'destroy']);
     Route::view('/login', 'dashboards/default')->name('sign-up');
 
+    Route::prefix('nds')->middleware('hnd')->group(function(){
 
+    });
 
       // NDS Student
       Route::prefix('nds')->middleware('nds')->group(function(){
