@@ -169,8 +169,9 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
 
     Route::get('/logout', [SessionController::class, 'destroy']);
     Route::view('/login', 'dashboards/default')->name('sign-up');
-
-    Route::prefix('nds')->middleware('hnd')->group(function(){
+    // HND Students
+    Route::prefix('hnd')->middleware('hnd')->group(function(){
+        Route::get('/index', [UsersController::class, 'index']);
 
     });
 
