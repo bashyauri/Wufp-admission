@@ -237,7 +237,7 @@
 
 
 
-                                    <td>{{ $subjectCount = $subjectCount + 1 }}</td>
+                                    <td>{{ $subjectCount++}}</td>
                                     <td>{{$subject->subject }}</td>
                                     <td>{{ $subject->name }}</td>
                                     <td><strong>{{ $subject->grade }}</strong></td>
