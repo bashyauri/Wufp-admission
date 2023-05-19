@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Nds;
+namespace App\Http\Controllers\Hnd;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Nds\{validateOneRequest,validateTwoRequest,
 validateThreeRequest,validateFourRequest,validateFiveRequest,validateSixRequest};
@@ -17,7 +17,7 @@ use App\Services\User\UserService;
 use Illuminate\Support\Facades\Log;
 
 
-class UsersController extends Controller
+class HndUsersController extends Controller
 {
     public function __construct(
         public $userService = new UserService,
@@ -30,20 +30,7 @@ class UsersController extends Controller
         $data['studentCourse'] = Course::find(Auth::user()->course_id);
         $data['studentDepartment'] = Department::find(Auth::user()->department_id);
 
-
-
-
-
-
-    //    $dashboard = match(Auth::user()->program_id){
-    //         1 => 'dashboards.hnd',
-    //         2 => 'dashboards.nd',
-    //         3 => 'dashboards.student.nds.add-step-one',
-    //         4 => 'dashboards.nce',
-    //         5 => 'dashboards.pd',
-
-    //     };
-        return view('dashboards/student/nds/add-step-one')->with($data);
+        return view('dashboards/student/hnd/add-step-one')->with($data);
 
     }
     public function getCourses(int $department_id): object
