@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\Hnd\HndUsersController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RolesController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Nds\{UsersController,HomeController, NdsPaymentControll
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\hnd\PaymentController;
+use App\Http\Controllers\UsersController as ControllersUsersController;
 use App\Models\User;
 
 /*
@@ -171,7 +173,8 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::view('/login', 'dashboards/default')->name('sign-up');
     // HND Students
     Route::prefix('hnd')->middleware('hnd')->group(function(){
-        Route::get('/index', [UsersController::class, 'index']);
+        Route::get('/index', [HndUsersController::class, 'index']);
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('nds.dashboard');
 
     });
 
