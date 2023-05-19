@@ -25,11 +25,12 @@ class SessionController extends Controller
         {
 
              session()->regenerate();
+
              if(auth()->user()->course_id)
              {
-                return redirect('/student/nds/dashboard');
+                return redirect("/student/".strtolower(auth()->user()->program->abv)."/dashboard");
              }
-            return  redirect('/student/nds/index');
+            return  redirect('/student/'.strtolower(auth()->user()->program->abv).'/index');
 
         }
 
