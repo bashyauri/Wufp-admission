@@ -174,7 +174,18 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     // HND Students
     Route::prefix('hnd')->middleware('hnd')->group(function(){
         Route::get('/index', [HndUsersController::class, 'index']);
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('nds.dashboard');
+        Route::post('/validate-step-one', [HndUsersController::class, 'validateOne'])->name('hnd.validate.step.one');
+        Route::post('/validate-step-two', [HndUsersControllerr::class, 'validateTwo'])->name('hnd.validate.step.two');
+        Route::get('/nds-create-step-two', [HndUsersController::class, 'createTwo'])->name('hnd.create.step.two');
+        Route::get('/nds-create-step-three', [HndUsersController::class, 'createThree'])->name('hnd.create.step.three');
+        Route::post('/validate-step-three', [HndUsersController::class, 'validateThree'])->name('hnd.validate.step.three');
+        Route::get('/nds-create-step-four', [HndUsersController::class, 'createFour'])->name('hnd.create.step.four');
+        Route::post('/validate-step-four', [HndUsersController::class, 'validateFour'])->name('hnd.validate.step.four');
+        Route::post('/validate-step-five', [HndUsersController::class, 'validateFive'])->name('hnd.validate.step.five');
+        Route::get('/nds-create-step-five', [HndUsersController::class, 'createFive'])->name('hnd.create.step.five');
+        Route::get('/nds-create-step-six', [HndUsersController::class, 'createSix'])->name('hnd.create.step.six');
+        Route::post('/validate-step-six', [HndUsersController::class, 'validateSix'])->name('hnd.validate.step.six');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('hnd.dashboard');
 
     });
 
