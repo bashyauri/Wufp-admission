@@ -71,7 +71,7 @@ class HndUsersController extends Controller
 
         try {
             $this->userService->validateOne($validatedData);
-            return redirect()->route('nds.create.step.two')->with('success','Your account details have been saved/updated.');
+            return redirect()->route('hnd.create.step.two')->with('success','Your account details have been saved/updated.');
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -91,7 +91,7 @@ class HndUsersController extends Controller
 
         $user = $request->session()->get('user');
 
-        return view('dashboards/student/nds/add-step-two')->with($data);
+        return view('hnd/add-step-two')->with($data);
     }
 
     public function validateTwo(validateTwoRequest $request)
@@ -99,13 +99,13 @@ class HndUsersController extends Controller
         $validatedData = $request->validated();
         try {
             $this->userService->validateTwo($validatedData);
-            return redirect()->route('nds.create.step.three')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('hnd.create.step.three')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
         }
 
-        return redirect()->route('nds.create.step.three');
+        return redirect()->route('hnd.create.step.three');
     }
 
     public function createThree(Request $request)
@@ -118,7 +118,7 @@ class HndUsersController extends Controller
 
 
 
-        return view('dashboards/student/nds/add-step-three')->with(['school'=>$school]);
+        return view('hnd/add-step-three')->with(['school'=>$school]);
     }
 
     public function validateThree(validateThreeRequest $request)
@@ -128,7 +128,7 @@ class HndUsersController extends Controller
 
         try {
             $this->userService->validateThree($validatedData);
-            return redirect()->route('nds.create.step.four')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('hnd.create.step.four')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -143,7 +143,7 @@ class HndUsersController extends Controller
             return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
 
-        return view('dashboards/student/nds/add-step-four');
+        return view('hnd/add-step-four');
     }
     public function validateFour(validateFourRequest $request)
     {
@@ -174,7 +174,7 @@ class HndUsersController extends Controller
         ->orderBy('name', 'asc')
         ->get();
 
-        return view('dashboards/student/nds/add-step-five',['subjects' => $subjects,'grades' => $grades]);
+        return view('hnd/add-step-five',['subjects' => $subjects,'grades' => $grades]);
     }
     public function validateFive(validateFiveRequest $request)
     {
@@ -183,7 +183,7 @@ class HndUsersController extends Controller
 
         try {
             $this->userService->validateFive($validatedData );
-            return redirect()->route('nds.create.step.six')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('hnd.create.step.six')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -196,7 +196,7 @@ class HndUsersController extends Controller
             return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
 
-        return view('dashboards/student/nds/add-step-six');
+        return view('hnd/add-step-six');
     }
     public function validateSix(validateSixRequest $request)
     {
@@ -205,36 +205,36 @@ class HndUsersController extends Controller
 
         try {
             $this->userService->validateSix($validatedData );
-            return redirect()->route('nds.dashboard')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('hnd.dashboard')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
         }
     }
-    public function store(Request $request)
-    {
-        if(!empty($request->file('user_img'))) {
-            $uniqueFileName = uniqid().$request->file('user_img')->getClientOriginalName();
-            $request->file('user_img')->move(public_path('/assets/img/users/'),$uniqueFileName);
-        }
-        else{
-            $uniqueFileName = 'default/default.jpg';
-        }
+    // public function store(Request $request)
+    // {
+    //     if(!empty($request->file('user_img'))) {
+    //         $uniqueFileName = uniqid().$request->file('user_img')->getClientOriginalName();
+    //         $request->file('user_img')->move(public_path('/assets/img/users/'),$uniqueFileName);
+    //     }
+    //     else{
+    //         $uniqueFileName = 'default/default.jpg';
+    //     }
 
 
-        $validatedData = $request->validate([
-            'public_email' => ['max:50'],
-            'biography' => ['max:50'],
-        ]);
-        $user = $request->session()->get('user');
-        $user->fill($validatedData);
-        $user->file = $uniqueFileName;
-        $user->save();
+    //     $validatedData = $request->validate([
+    //         'public_email' => ['max:50'],
+    //         'biography' => ['max:50'],
+    //     ]);
+    //     $user = $request->session()->get('user');
+    //     $user->fill($validatedData);
+    //     $user->file = $uniqueFileName;
+    //     $user->save();
 
-        $request->session()->forget('user');
+    //     $request->session()->forget('user');
 
-        return redirect('/laravel-users-management')->with('success','User successfully added.');
-    }
+    //     return redirect('/laravel-users-management')->with('success','User successfully added.');
+    // }
 
     public function destroy($id){
         try{
