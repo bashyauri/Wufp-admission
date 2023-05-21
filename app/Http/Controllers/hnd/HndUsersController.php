@@ -30,7 +30,7 @@ class HndUsersController extends Controller
         $data['studentCourse'] = Course::find(Auth::user()->course_id);
         $data['studentDepartment'] = Department::find(Auth::user()->department_id);
 
-        return view('dashboards/student/hnd/add-step-one')->with($data);
+        return view('hnd/add-step-one')->with($data);
 
     }
     public function getCourses(int $department_id): object
