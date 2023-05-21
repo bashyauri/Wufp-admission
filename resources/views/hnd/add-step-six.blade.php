@@ -1,4 +1,4 @@
-@extends('user_type.auth', ['parentFolder' => 'nds', 'childFolder' => ''])
+@extends('user_type.auth', ['parentFolder' => 'hnd', 'childFolder' => ''])
 
 @section('content')
 
@@ -24,7 +24,7 @@
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-8 m-auto">
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('nds.validate.step.six')}}" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('hnd.validate.step.six')}}" enctype="multipart/form-data">
               @csrf
               <!--single form panel-->
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
