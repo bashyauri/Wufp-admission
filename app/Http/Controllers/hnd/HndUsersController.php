@@ -27,7 +27,9 @@ class HndUsersController extends Controller
        // Get all the departments
         $data['programs'] =  Program::with('departments')->find( Auth::user()->program_id);
 
+
         $data['studentCourse'] = Course::find(Auth::user()->course_id);
+
         $data['studentDepartment'] = Department::find(Auth::user()->department_id);
 
         return view('hnd/add-step-one')->with($data);
@@ -211,30 +213,6 @@ class HndUsersController extends Controller
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
         }
     }
-    // public function store(Request $request)
-    // {
-    //     if(!empty($request->file('user_img'))) {
-    //         $uniqueFileName = uniqid().$request->file('user_img')->getClientOriginalName();
-    //         $request->file('user_img')->move(public_path('/assets/img/users/'),$uniqueFileName);
-    //     }
-    //     else{
-    //         $uniqueFileName = 'default/default.jpg';
-    //     }
-
-
-    //     $validatedData = $request->validate([
-    //         'public_email' => ['max:50'],
-    //         'biography' => ['max:50'],
-    //     ]);
-    //     $user = $request->session()->get('user');
-    //     $user->fill($validatedData);
-    //     $user->file = $uniqueFileName;
-    //     $user->save();
-
-    //     $request->session()->forget('user');
-
-    //     return redirect('/laravel-users-management')->with('success','User successfully added.');
-    // }
 
     public function destroy($id){
         try{

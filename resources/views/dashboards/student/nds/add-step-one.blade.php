@@ -58,7 +58,7 @@
                     </div>
                     </div>
                 </div>
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('nds.validate.step.one')}}" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('hnd.validate.step.one')}}" enctype="multipart/form-data">
               @csrf
 
 
@@ -348,7 +348,6 @@
 
     </script>
 
-    <script>
      function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -366,12 +365,33 @@
     });
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  $(document).ready(function() {
+  $('#department').on('change', function() {
+    if ($(this).val() === '') {
+      alert('Please select a department');
+      return;
+    }
+
+    var departmentId = $(this).val();
+    $.ajax({
+      url: 'get-courses/' + departmentId,
+      type: 'GET',
+      success: function(data) {
+        $('#courses').empty();
+        $.each(data, function(index, course) {
+          $('#courses').append('<option value="' + course.id + '">' + course.name + '</option>');
+        });
+      }
+    });
+  });
+});
     <script>
     $(document).ready(function(){
         $("#alert-success").delay(3000).slideUp(300);
 
         });
     </script>
+
 @endpush
 
 
