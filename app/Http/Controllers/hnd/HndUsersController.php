@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Log;
 class HndUsersController extends Controller
 {
     public function __construct(
-        public $userService = new UserService,
+        protected $userService = new UserService,
     ) {}
 
     public function index(){

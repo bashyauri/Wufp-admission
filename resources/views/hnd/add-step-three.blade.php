@@ -1,4 +1,4 @@
-@extends('user_type.auth', ['parentFolder' => 'nds', 'childFolder' => ''])
+@extends('user_type.auth', ['parentFolder' => 'hnd', 'childFolder' => ''])
 
 @section('content')
 
