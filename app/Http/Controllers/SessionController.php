@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Payment;
 use Illuminate\Validation\Rule;
 
 use Illuminate\Http\Request;
@@ -26,7 +28,10 @@ class SessionController extends Controller
 
              session()->regenerate();
 
-             if(auth()->user()->course_id)
+
+             if(Payment::where([
+                'student_id' => auth()->user()->id,
+            ])->exists())
              {
                 return redirect("/student/".strtolower(auth()->user()->program->abv)."/dashboard");
              }

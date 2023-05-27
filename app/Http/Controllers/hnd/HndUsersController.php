@@ -155,7 +155,7 @@ class HndUsersController extends Controller
 
         try {
             $this->userService->validateFour($validatedData);
-            return redirect()->route('nds.create.step.five')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('hnd.create.step.five')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);

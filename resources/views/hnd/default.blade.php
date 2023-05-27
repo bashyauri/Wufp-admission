@@ -33,7 +33,7 @@
                     transaction Code: <b>KF332</b>
                   </p>
                 </div>
-                <a href="{{route('nds.invoice')}}" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>
+                <a href="{{route('hnd.invoice')}}" class="btn bg-gradient-secondary ms-auto mb-0">Invoice</a>
               </div>
             </div>
             <div class="card-body p-1 pt-0">
@@ -172,7 +172,7 @@
                     <span class="text-secondary text-xs font-weight-normal">{{$payment->amount}}</span>
                   </td>
                   <td class="align-middle">
-                    <a href="{{route('nds.screening.status',['rrr'=>$payment->RRR])}}" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                    <a href="{{route('hnd.screening.status',['rrr'=>$payment->RRR])}}" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
                       Check Status
                     </a>
                   </td>

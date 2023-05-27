@@ -175,7 +175,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::prefix('hnd')->middleware('hnd')->group(function(){
         Route::get('/index', [HndUsersController::class, 'index']);
         Route::post('/validate-step-one', [HndUsersController::class, 'validateOne'])->name('hnd.validate.step.one');
-        Route::post('/validate-step-two', [HndUsersControllerr::class, 'validateTwo'])->name('hnd.validate.step.two');
+        Route::post('/validate-step-two', [HndUsersController::class, 'validateTwo'])->name('hnd.validate.step.two');
         Route::get('/hnd-create-step-two', [HndUsersController::class, 'createTwo'])->name('hnd.create.step.two');
         Route::get('/hnd-create-step-three', [HndUsersController::class, 'createThree'])->name('hnd.create.step.three');
         Route::post('/validate-step-three', [HndUsersController::class, 'validateThree'])->name('hnd.validate.step.three');
