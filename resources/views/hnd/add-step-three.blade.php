@@ -83,10 +83,26 @@
                             @enderror
                         </div>
                       </div>
+                      <div class="row mt-3">
+                        <div class="col-8 col-sm-8 mt-3 mt-sm-0">
+                            <label>Higher Institution name</label>
+                            <input class="multisteps-form__input form-control" value="{{  $school &&  $school->tertiary_school_name ?  $school->tertiary_school_name : old('tertiary_school_name') ?? ''}}" ?? '' type="text" name="tertiary_school_name" placeholder="e. Wufpbk" />
+                            @error('tertiary_school_name')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                            <label>Year</label>
+                            <input class="multisteps-form__input form-control" value="{{  $school &&  $school->tertiary_school_year ?  $school->tertiary_school_year : old('tertiary_school_year') ?? ''}}" ?? '' type="text" name="tertiary_school_year" placeholder="2015" />
+                            @error('secondary_school_year')
+                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                            @enderror
+                        </div>
+                      </div>
 
                   <div class="row">
                     <div class="button-row d-flex mt-4 col-12">
-                      <a href="{{ route('nds.create.step.two') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                      <a href="{{ route('hnd.create.step.two') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                       <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>
                     </div>
                   </div>
