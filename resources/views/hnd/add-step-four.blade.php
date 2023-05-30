@@ -138,7 +138,7 @@
                   </div>
 
                   <div class="button-row d-flex mt-4">
-                    <a href="{{ route('nds.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                    <a href="{{ route('hnd.create.step.three') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Next</button>
                   </div>
 
