@@ -116,7 +116,9 @@ class HndUsersController extends Controller
 
             return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
-        $school = User::with('attendedSchool')->find(auth()->user()->id)->attendedSchool;
+        $school = User::find(auth()->user()->id)->attendedSchool;
+
+
 
 
 

@@ -54,9 +54,9 @@
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                         <label>Certificate</label>
                         <select class="multisteps-form__input form-control" name="ssce_certificate1" id="ssce_certificate1">
-                            @if (auth()->user()->examDetail->ssce_certificate1)
-                            <option value="{{auth()->user()->examDetail->ssce_certificate1}}">{{auth()->user()->examDetail->ssce_certificate1}}</option>
-                            @endif
+                            @if (auth()->user()->examDetail && auth()->user()->examDetail->ssce_certificate1)
+                            <option value="{{ auth()->user()->examDetail->ssce_certificate1 }}">{{ auth()->user()->examDetail->ssce_certificate1 }}</option>
+                        @endif
                             <option value="">--select---</option>
                           <option value="Waec">Waec</option>
                           <option value="Neco">Neco</option>
@@ -95,7 +95,7 @@
                     <div class="col-4 col-sm-4 mt-3 mt-sm-0" id="myInput">
                         <label>Certificate</label>
                         <select class="multisteps-form__input form-control" name="ssce_certificate2" id="ssce_certificate2">
-                            @if (auth()->user()->examDetail->ssce_certificate2)
+                            @if (auth()->user()->examDetail && auth()->user()->examDetail->ssce_certificate2)
                             <option value="{{auth()->user()->examDetail->ssce_certificate2}}">{{auth()->user()->examDetail->ssce_certificate2}}</option>
                             @endif
                             <option value="">--select---</option>

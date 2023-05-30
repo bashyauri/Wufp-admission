@@ -33,11 +33,13 @@ class NdsPaymentController extends Controller
         $data = $request->all();
 
 
+
         $valuesToHash = config('services.remita.MERCHANTID') . config('services.remita.ADMISSIONSERVICEID') .
         $data['transactionId']. $data['amount'] . config('services.remita.APIKEY');
         $data['apiHash'] = hash('sha512', $valuesToHash);
         try {
             $response = $this->ndsPaymentService->generateInvoice($data);
+
                 $data['RRR'] = $response->RRR;
                 $data['statuscode'] = $response->statuscode;
                 $data['status'] = $response->status;

@@ -39,6 +39,7 @@ class PaymentService
 
     $response = curl_exec($curl);
 
+
     curl_close($curl);
 
     return PaymentService::convertJsonToArray($response);

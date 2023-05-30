@@ -51,14 +51,15 @@
                         @endif
                         <div class="col-8 col-sm-8 mt-3 mt-sm-0">
                             <label>Primary School Name</label>
-                            <input class="multisteps-form__input form-control" value="{{  $school->primary_school_name ?  $school->primary_school_name : old('primary_school_name') ?? ''}}" ?? '' type="text" name="primary_school_name" placeholder="e. Salama model Pri school" />
+                            <input class="multisteps-form__input form-control" value="{{ $school && $school->primary_school_name ? $school->primary_school_name : old('primary_school_name') ?? '' }}" type="text" name="primary_school_name" placeholder="e. Salama model Pri school" />
+
                             @error('primary_school_name')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Year</label>
-                            <input class="multisteps-form__input form-control" value="{{  $school->primary_year ?  $school->primary_year : old('primary_school_year') ?? ''}}" ?? '' type="text" name="primary_school_year" placeholder="e. Salama model Pri school" />
+                            <input class="multisteps-form__input form-control" value="{{ $school && $school->primary_year ?  $school->primary_year : old('primary_school_year') ?? ''}}" ?? '' type="text" name="primary_school_year" placeholder="e. Salama model Pri school" />
                             @error('primary_school_year')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
@@ -69,14 +70,14 @@
                     <div class="row mt-3">
                         <div class="col-8 col-sm-8 mt-3 mt-sm-0">
                             <label>Secondary School Name</label>
-                            <input class="multisteps-form__input form-control" value="{{  $school->secondary_school_name ?  $school->secondary_school_name : old('secondary_school_name') ?? ''}}" ?? '' type="text" name="secondary_school_name" placeholder="e. Salama model Pri school" />
+                            <input class="multisteps-form__input form-control" value="{{  $school &&  $school->secondary_school_name ?  $school->secondary_school_name : old('secondary_school_name') ?? ''}}" ?? '' type="text" name="secondary_school_name" placeholder="e. Salama model Pri school" />
                             @error('secondary_school_name')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Year</label>
-                            <input class="multisteps-form__input form-control" value="{{  $school->secondary_school_year ?  $school->secondary_school_year : old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
+                            <input class="multisteps-form__input form-control" value="{{  $school &&  $school->secondary_school_year ?  $school->secondary_school_year : old('secondary_school_year') ?? ''}}" ?? '' type="text" name="secondary_school_year" placeholder="e. Salama model Pri school" />
                             @error('secondary_school_year')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
