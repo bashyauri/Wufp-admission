@@ -28,7 +28,7 @@
               @csrf
               <!--single form panel-->
               <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                <h5 class="font-weight-bolder">Jamb</h5>
+                <h5 class="font-weight-bolder">Certificate</h5>
                 <div class="multisteps-form__content">
                     <div class="row mt-3">
                         @if($errors->any())
@@ -50,16 +50,23 @@
                         </div>
                         @endif
                         <div class="col-6 col-sm-4 mt-3 mt-sm-0">
-                            <label>Jamb No</label>
+                            <label>National Diploma Course Obtained</label>
 
-                            <input class="multisteps-form__input form-control" value="{{ old('jamb_no', auth()->user()->jambDetails->jamb_no ?? '') }}" type="text" name="jamb_no" />
-                            @error('jamb_no')
+                            <input class="multisteps-form__input form-control" value="{{ old('', auth()->user()->jambDetails->jamb_no ?? '') }}" type="text" name="nd_course" />
+                            @error('nd_course')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
-                            <label>Score</label>
-                            <input class="multisteps-form__input form-control" value="{{ old('score', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" />
+                            <label>Grade Obtained</label>
+                            <select class="multisteps-form__input form-control" name="grade_obtained" id="grade_obtained">
+                            <option value="">--select---</option>
+                          <option value="Distinction">Distinction</option>
+                          <option value="Upper Credit">Upper Credit</option>
+                          <option value="Lower Credit">Lower Credit</option>
+                          <option value="Pass">Pass</option>
+                        </select>
+                            {{-- <input class="multisteps-form__input form-control" value="{{ old('score', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" /> --}}
                             @error('score')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
