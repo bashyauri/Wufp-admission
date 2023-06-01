@@ -49,41 +49,53 @@
                             </button>
                         </div>
                         @endif
-                        <div class="col-6 col-sm-4 mt-3 mt-sm-0">
-                            <label>National Diploma Course Obtained</label>
-
-                            <input class="multisteps-form__input form-control" value="{{ old('', auth()->user()->jambDetails->jamb_no ?? '') }}" type="text" name="nd_course" />
-                            @error('nd_course')
-                                <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
-                            @enderror
-                        </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
-                            <label>Grade Obtained</label>
+                            <label>Certificate type</label>
+
                             <select class="multisteps-form__input form-control" name="grade_obtained" id="grade_obtained">
-                            <option value="">--select---</option>
-                          <option value="Distinction">Distinction</option>
-                          <option value="Upper Credit">Upper Credit</option>
-                          <option value="Lower Credit">Lower Credit</option>
-                          <option value="Pass">Pass</option>
-                        </select>
-                            {{-- <input class="multisteps-form__input form-control" value="{{ old('score', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" /> --}}
-                            @error('score')
+                              <option value="">--select---</option>
+                            <option value="National diploma">National Diploma</option>
+                          </select>
+                            @error('certificate_type')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
+
+                            <div class="col-4 col-sm-4 mt-3 mt-sm-0">
+                                <label>Course name</label>
+
+                                <input class="multisteps-form__input form-control" value="{{ old('course_name', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" />
+                                @error('course_name')
+                                    <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            {{-- <input class="multisteps-form__input form-control" value="{{ old('score', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" /> --}}
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6 col-sm-6 mt-3 mt-sm-0">
+                        <label>Grade Obtained</label>
+                        <select class="multisteps-form__input form-control" name="grade_obtained" id="grade_obtained">
+                        <option value="">--select---</option>
+                      <option value="Distinction">Distinction</option>
+                      <option value="Upper Credit">Upper Credit</option>
+                      <option value="Lower Credit">Lower Credit</option>
+                      <option value="Pass">Pass</option>
+                    </select>
+                    </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Upload Result</label>
 
-                            <input class="multisteps-form__input form-control"  type="file" name="file" />
+                            <input class="multisteps-form__input form-control"  type="certificate" name="file" />
                             @error('file')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
-                      </div>
+                    </div>
 
                   <div class="row">
                     <div class="button-row d-flex mt-4 col-12">
-                      <a href="{{ route('nds.create.step.five') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
+                      <a href="{{ route('hnd.create.step.five') }}" class="btn bg-gradient-light mb-0 js-btn-prev">Prev</a>
                       <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit" title="Next">Next</button>
                     </div>
                   </div>
