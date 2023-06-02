@@ -29,6 +29,9 @@ class validateThreeRequest extends FormRequest
             'secondary_school_name' => ['required'],
             'primary_school_year' => ['required','digits:4'],
             'secondary_school_year' => ['required','digits:4'],
+            'tertiary_school_name' => ['required'],
+            'tertiary_school_year' => ['required','digits:4'],
+
         ];
     }
 }
