@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Hnd;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Nds\{validateOneRequest,validateTwoRequest,
+use App\Http\Requests\Hnd\{validateOneRequest,validateTwoRequest,
 validateThreeRequest,validateFourRequest,validateFiveRequest,validateSixRequest};
 use App\Models\{User,Course,Department,ExamGrade,State,Lga,Program,Subject};
 use Exception;
