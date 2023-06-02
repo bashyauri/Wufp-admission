@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
-use App\Services\User\UserService;
+use App\Services\User\Hnd\UserService;
 
 
 use Illuminate\Support\Facades\Log;
@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Log;
 class HndUsersController extends Controller
 {
     public function __construct(
-        protected $userService = new UserService,
+        protected UserService $userService
     ) {}
 
     public function index(){
