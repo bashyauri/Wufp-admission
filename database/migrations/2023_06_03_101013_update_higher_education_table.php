@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('higher_education', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('certificate_type');
-            $table->string('course_name');
-            $table->string('grade_obtained');
-            $table->timestamps();
+        Schema::table('higher_education', function (Blueprint $table) {
+            $table->foreignIdFor(User::class)->after('id');
+            $table->string('certificate')->after('certificate_type');
         });
     }
 
@@ -30,6 +27,15 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('higher_education');
+        Schema::table('higher_education', function (Blueprint $table) {
+
+            $table->dropColumn('user_id');
+
+        });
+
+
+
+
+
     }
 };
