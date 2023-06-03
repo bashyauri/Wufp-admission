@@ -5,7 +5,7 @@ namespace App\Services\User\Hnd;
 use App\Models\AttendedSchool;
 use App\Models\examDetails;
 use App\Models\ExamGrade;
-use App\Models\JambDetails;
+use App\Models\HigherEducation;
 use App\Models\User;
 
 
@@ -99,19 +99,20 @@ class UserService
     }
     public function validateSix(array $validatedData): void
     {
-        if(!empty($validatedData['file'])) {
-            $validatedData['uniqueFileName'] = uniqid().$validatedData['file']->getClientOriginalName();
-            $validatedData['file']->move(public_path('/assets/img/jamb/'), $validatedData['uniqueFileName']);
+        if(!empty($validatedData['certificate'])) {
+            $validatedData['uniqueFileName'] = uniqid().$validatedData['certificate']->getClientOriginalName();
+            $validatedData['certificate']->move(public_path('/assets/certificate/'), $validatedData['uniqueFileName']);
         }
         else{
-            $validatedData['uniqueFileName'] = auth()->user()->jambDetails->file;
+            $validatedData['uniqueFileName'] = auth()->user()->higherEducation->certificate;
         }
-        JambDetails::updateOrCreate(  ['user_id'=> auth()->user()->id],
+        HigherEducation::updateOrCreate(  ['user_id'=> auth()->user()->id],
         [
             'user_id'=> auth()->user()->id,
-            'jamb_no' => $validatedData['jamb_no'],
-            'file' => $validatedData['uniqueFileName'],
-            'score' => $validatedData['score'],
+            'certificate_type' => $validatedData['certificate_type'],
+            'certificate' => $validatedData['uniqueFileName'],
+            'course_name' => $validatedData['course_name'],
+            'grade_obtained' => $validatedData['grade_obtained'],
 
         ]);
     }
