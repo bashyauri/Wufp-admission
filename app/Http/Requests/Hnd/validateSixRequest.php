@@ -25,9 +25,10 @@ class validateSixRequest extends FormRequest
     public function rules()
     {
         return [
-            'jamb_no' => ['required'],
-            'file' => [Rule::requiredIf(!isset(auth()->user()->jambDetails->file)),'image','mimes:jpg,png'],
-            'score' => ['required']
+            'certificate_type' => ['required','string'],
+            'course_name' => ['required','string'],
+            'grade_obtained' => ['required','string'],
+            'certificate' => [Rule::requiredIf(!isset(auth()->user()->higherEducation->certificate)),'mimes:jpg,png,pdf'],
         ];
     }
 }
