@@ -118,10 +118,6 @@ class HndUsersController extends Controller
         }
         $school = User::find(auth()->user()->id)->attendedSchool;
 
-
-
-
-
         return view('hnd/add-step-three')->with(['school'=>$school]);
     }
 
