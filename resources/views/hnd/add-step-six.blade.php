@@ -52,7 +52,7 @@
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Certificate type</label>
 
-                            <select class="multisteps-form__input form-control" name="grade_obtained" id="grade_obtained">
+                            <select class="multisteps-form__input form-control" name="certificate_type" id="certificate_type">
                               <option value="">--select---</option>
                             <option value="National diploma">National Diploma</option>
                           </select>
@@ -64,13 +64,11 @@
                             <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                                 <label>Course name</label>
 
-                                <input class="multisteps-form__input form-control" value="{{ old('course_name', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" />
+                                <input class="multisteps-form__input form-control" value="{{ old('course_name', auth()->user()->higher_education->course_name ?? '') }}" type="text" name="course_name" />
                                 @error('course_name')
                                     <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                                 @enderror
                             </div>
-
-                            {{-- <input class="multisteps-form__input form-control" value="{{ old('score', auth()->user()->jambDetails->score ?? '') }}" type="text" name="score" /> --}}
                     </div>
                     <div class="row mt-3">
                         <div class="col-6 col-sm-6 mt-3 mt-sm-0">
@@ -82,12 +80,15 @@
                       <option value="Lower Credit">Lower Credit</option>
                       <option value="Pass">Pass</option>
                     </select>
+                    @error('grade_obtained')
+                    <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
+                @enderror
                     </div>
                         <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                             <label>Upload Result</label>
 
-                            <input class="multisteps-form__input form-control"  type="certificate" name="file" />
-                            @error('file')
+                            <input class="multisteps-form__input form-control"  type="file" name="certificate" />
+                            @error('certificate')
                                 <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                             @enderror
                         </div>
