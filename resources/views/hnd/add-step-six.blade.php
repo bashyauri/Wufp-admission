@@ -53,6 +53,9 @@
                             <label>Certificate type</label>
 
                             <select class="multisteps-form__input form-control" name="certificate_type" id="certificate_type">
+                                @if (auth()->user()->higherEducation && auth()->user()->higherEducation->certificate_type)
+                                <option value="{{auth()->user()->higherEducation->certificate_type}}">{{auth()->user()->higherEducation->certificate_type}}</option>
+                                @endif
                               <option value="">--select---</option>
                             <option value="National diploma">National Diploma</option>
                           </select>
@@ -64,7 +67,7 @@
                             <div class="col-4 col-sm-4 mt-3 mt-sm-0">
                                 <label>Course name</label>
 
-                                <input class="multisteps-form__input form-control" value="{{ old('course_name', auth()->user()->higher_education->course_name ?? '') }}" type="text" name="course_name" />
+                                <input class="multisteps-form__input form-control" value="{{  auth()->user()->higherEducation &&  auth()->user()->higherEducation->course_name ?  auth()->user()->higherEducation->course_name : old('course_name') ?? ''}}" ?? '' type="text" name="course_name" />
                                 @error('course_name')
                                     <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                                 @enderror
@@ -74,7 +77,11 @@
                         <div class="col-6 col-sm-6 mt-3 mt-sm-0">
                         <label>Grade Obtained</label>
                         <select class="multisteps-form__input form-control" name="grade_obtained" id="grade_obtained">
+                            @if (auth()->user()->higherEducation && auth()->user()->higherEducation->grade_obtained)
+                            <option value="{{auth()->user()->higherEducation->grade_obtained}}">{{auth()->user()->higherEducation->grade_obtained}}</option>
+                            @endif
                         <option value="">--select---</option>
+
                       <option value="Distinction">Distinction</option>
                       <option value="Upper Credit">Upper Credit</option>
                       <option value="Lower Credit">Lower Credit</option>
