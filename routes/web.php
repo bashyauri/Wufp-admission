@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\Hnd\HndHomeController;
+use App\Http\Controllers\hnd\HndPaymentController;
 use App\Http\Controllers\Hnd\HndUsersController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\RegisterController;
@@ -14,7 +16,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Nds\{UsersController,HomeController, NdsPaymentController};
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\hnd\PaymentController;
+
 use App\Http\Controllers\UsersController as ControllersUsersController;
 use App\Models\User;
 
@@ -185,7 +187,13 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
         Route::get('/hnd-create-step-five', [HndUsersController::class, 'createFive'])->name('hnd.create.step.five');
         Route::get('/hnd-create-step-six', [HndUsersController::class, 'createSix'])->name('hnd.create.step.six');
         Route::post('/validate-step-six', [HndUsersController::class, 'validateSix'])->name('hnd.validate.step.six');
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('hnd.dashboard');
+        Route::get('/dashboard', [HndHomeController::class, 'index'])->name('hnd.dashboard');
+
+              //Payment Controller
+      Route::get('/invoice', [HndPaymentController::class, 'invoice'])->name('hnd.invoice');
+      Route::get('/screening/payment', [HndPaymentController::class, 'makeScreeningPayment'])->name('hnd.screening.payment');
+      Route::get('/screening/status/{rrr}', [HndPaymentController::class, 'checkTransactionStatus'])->name('hnd.screening.status');
+      Route::post('/remita-invoice', [HndPaymentController::class, 'generateInvoice'])->name('hnd.remita.invoice');
 
         Route::get('/get-courses/{department_id}', [HndUsersController::class, 'getCourses']);
         Route::get('/get-lgas/{state_id}', [HndUsersController::class, 'getLgas']);
@@ -194,7 +202,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
 
       // NDS Student
       Route::prefix('nds')->middleware('nds')->group(function(){
-        Route::get('/index', [UsersController::class, 'index'])->name('nds.validate.step.one');
+        Route::get('/index', [UsersController::class, 'index']);
         Route::post('/validate-step-one', [UsersController::class, 'validateOne'])->name('nds.validate.step.one');
         Route::post('/validate-step-two', [UsersController::class, 'validateTwo'])->name('nds.validate.step.two');
         Route::get('/nds-create-step-two', [UsersController::class, 'createTwo'])->name('nds.create.step.two');
