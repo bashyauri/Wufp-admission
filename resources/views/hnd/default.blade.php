@@ -27,7 +27,7 @@
                 <div>
                   <h6>Remita Details</h6>
                   <p class="text-sm mb-0">
-                    Remita no. <b>241342</b> from <b>23.02.2021</b>
+                    Remita no. <b>241342</b> from <b>23.02.2023</b>
                   </p>
                   <p class="text-sm">
                     transaction Code: <b>KF332</b>
@@ -53,11 +53,11 @@
                 </div>
                 @can('printAdmissionForm', App\Models\User::class)
                 <div class="col-lg-6 col-md-6 col-12 my-auto text-end">
-                    <a href="{{route('nds.print.form')}}" class="btn bg-gradient-info mb-0">Print Form</a>
+                    <a href="{{route('hnd.print.form')}}" class="btn bg-gradient-info mb-0">Print Form</a>
                   </div>
                 @endcan
                 <div class="col-lg-6 col-md-6 col-12 my-auto text-end">
-                  <a href="{{route('nds.validate.step.one')}}" class="btn bg-gradient-info mb-0">Go to profile</a>
+                  <a href="{{route('hnd.validate.step.six')}}" class="btn bg-gradient-info mb-0">Go to profile</a>
                 </div>
               </div>
               <hr class="horizontal dark mt-4 mb-4">
