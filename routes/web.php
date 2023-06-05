@@ -191,7 +191,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
 
               //Payment Controller
       Route::get('/invoice', [HndPaymentController::class, 'invoice'])->name('hnd.invoice');
-      Route::get('/screening/payment', [HndPaymentController::class, 'makeScreeningPayment'])->name('hnd.screening.payment');
+      Route::get('/admission/payment', [HndPaymentController::class, 'makeAdmissionPayment'])->name('hnd.payment');
       Route::get('/screening/status/{rrr}', [HndPaymentController::class, 'checkTransactionStatus'])->name('hnd.screening.status');
       Route::post('/remita-invoice', [HndPaymentController::class, 'generateInvoice'])->name('hnd.remita.invoice');
 
