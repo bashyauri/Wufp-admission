@@ -59,7 +59,7 @@
                 </button>
             </div>
             @endif
-            <form action="{{route('nds.remita.invoice')}}" method="POST">
+            <form action="{{route('hnd.remita.invoice')}}" method="POST">
                 @csrf
                 <table class="table align-items-center justify-content-center mb-0">
                     <thead>
