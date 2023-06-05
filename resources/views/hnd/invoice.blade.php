@@ -28,7 +28,7 @@
                   <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80" class="avatar avatar-xxl me-3" alt="product image">
                 </div>
                 <div>
-                  <h6 class="text-lg mb-0 mt-2">NDS Admission Fees</h6>
+                  <h6 class="text-lg mb-0 mt-2">HND Admission Fees</h6>
                   <p class="text-sm mb-3">Order was delivered 2 days ago.</p>
                   <span class="badge badge-sm bg-gradient-success">Delivered</span>
                 </div>
