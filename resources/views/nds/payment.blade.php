@@ -258,7 +258,7 @@
                                             <div class="my-2"><i
                                                     class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span
                                                     class="text-600 text-90">Status:{{$status}}</span>
-                                                @if ($status == 01)
+                                                @if ($status == 00)
                                                     <span class="badge bg-gradient-success">{{ $status }}</span>
                                                 @else
                                                     <span class="badge bg-gradient-warning">{{ 'Pending' }}</span>
