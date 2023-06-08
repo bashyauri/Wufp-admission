@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Storage;
 class UsersController extends Controller
 {
     public function __construct(
-        public $userService = new UserService,
+
+        protected UserService $userService
     ) {}
 
     public function index(){
@@ -35,15 +36,6 @@ class UsersController extends Controller
 
 
 
-
-    //    $dashboard = match(Auth::user()->program_id){
-    //         1 => 'dashboards.hnd',
-    //         2 => 'dashboards.nd',
-    //         3 => 'dashboards.student.nds.add-step-one',
-    //         4 => 'dashboards.nce',
-    //         5 => 'dashboards.pd',
-
-    //     };
         return view('dashboards/student/nds/add-step-one')->with($data);
 
     }
