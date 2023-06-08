@@ -162,7 +162,7 @@
                             <td>
                                 <p class="text-sm font-weight-bold mb-0">{{auth()->user()->phone_no}}</p>
                                 <input name="payerPhone" value="{{auth()->user()->phone_no}}" type="hidden" />
-                                <input name="description" value="Admission Payment" type="hidden" />
+                                <input name="description" value="Admission Fees" type="hidden" />
 
                             </td>
 
