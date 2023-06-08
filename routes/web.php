@@ -187,6 +187,7 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
         Route::get('/hnd-create-step-five', [HndUsersController::class, 'createFive'])->name('hnd.create.step.five');
         Route::get('/hnd-create-step-six', [HndUsersController::class, 'createSix'])->name('hnd.create.step.six');
         Route::post('/validate-step-six', [HndUsersController::class, 'validateSix'])->name('hnd.validate.step.six');
+        Route::get('print/form',[HndHomeController::class,'printForm'])->name('hnd.print.form');
         Route::get('/dashboard', [HndHomeController::class, 'index'])->name('hnd.dashboard');
 
               //Payment Controller
