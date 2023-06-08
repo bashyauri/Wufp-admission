@@ -13,7 +13,7 @@ class StudentPolicy
 
     use HandlesAuthorization;
 
-    public function printAdmissionForm(User $student)
+    public function printAdmissionForm(User $student) :bool
     {
         return PaymentService::hasPaid("Admission Fees");
     }
