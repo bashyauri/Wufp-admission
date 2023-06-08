@@ -189,6 +189,11 @@
                                     <td>{{ auth()->user()->attendedSchool->secondary_school_name }}</td>
                                     <td>{{ auth()->user()->attendedSchool->secondary_school_year }}</td>
                                 </tr>
+                                 <tr>
+                                    <td>3</td>
+                                    <td>{{ auth()->user()->attendedSchool->tertiary_school_name }}</td>
+                                    <td>{{ auth()->user()->attendedSchool->tertiary_school_year }}</td>
+                                </tr>
 
                         </table>
                     </div>
@@ -252,16 +257,18 @@
 
                             <tr>
                                 <td colspan="5">
-                                    <h4><b>JAMB RESULTS DETAILS</b></h4>
+                                    <h4><b>HIGHER EDUCATION RESULTS DETAILS</b></h4>
                                 </td>
                             </tr>
                             <tr>
-                                <th colspan="2">JAMB Number</th>
-                                <th colspan="1">JAMB Score</th>
+                                <th colspan="2">CERTIFICATE TYPE</th>
+                                <th colspan="1">COURSE NAME</th>
+                                <th colspan="1">GRADE OBTAINED</th>
                             </tr>
 
-                            <td colspan="2">{{ auth()->user()->jambDetails->jamb_no }}</td>
-                            <td colspan="2">{{ auth()->user()->jambDetails->score }}</td>
+                            <td colspan="2">{{ auth()->user()->higherEducation->certificate_type }}</td>
+                            <td colspan="1">{{ auth()->user()->higherEducation->course_name }}</td>
+                            <td colspan="1">{{ auth()->user()->higherEducation->grade_obtained }}</td>
 
                             </tr>
                             <tr>
