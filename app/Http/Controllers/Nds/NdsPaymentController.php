@@ -24,7 +24,7 @@ class NdsPaymentController extends Controller
         return view('nds.invoice')->with(['transactionId' => $transactionId]);
     }
     public function makeScreeningPayment(){
-        $data = Payment::where(['student_id' =>auth()->user()->id,'resource' => 'Admission Payment'])->first();
+        $data = Payment::where(['student_id' =>auth()->user()->id,'resource' => 'Admission Fees'])->first();
 
          return view('nds.payment')->with(json_decode($data,true));
     }
@@ -73,7 +73,7 @@ class NdsPaymentController extends Controller
     }
     private function hasScreeningInvoice():object | null
     {
-        return Payment::where(['student_id' =>auth()->user()->id,'resource' => 'Admission Payment'])->first();
+        return Payment::where(['student_id' =>auth()->user()->id,'resource' => 'Admission Fees'])->first();
     }
     private function generateTransactionId():string
     {
