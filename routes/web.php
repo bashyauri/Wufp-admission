@@ -173,6 +173,33 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
 
     Route::get('/logout', [SessionController::class, 'destroy']);
     Route::view('/login', 'dashboards/default')->name('sign-up');
+        // ND Students
+        Route::prefix('nd')->middleware('nd')->group(function(){
+            Route::get('/index', [HndUsersController::class, 'index']);
+            Route::post('/validate-step-one', [HndUsersController::class, 'validateOne'])->name('hnd.validate.step.one');
+            Route::post('/validate-step-two', [HndUsersController::class, 'validateTwo'])->name('hnd.validate.step.two');
+            Route::get('/hnd-create-step-two', [HndUsersController::class, 'createTwo'])->name('hnd.create.step.two');
+            Route::get('/hnd-create-step-three', [HndUsersController::class, 'createThree'])->name('hnd.create.step.three');
+            Route::post('/validate-step-three', [HndUsersController::class, 'validateThree'])->name('hnd.validate.step.three');
+            Route::get('/hnd-create-step-four', [HndUsersController::class, 'createFour'])->name('hnd.create.step.four');
+            Route::post('/validate-step-four', [HndUsersController::class, 'validateFour'])->name('hnd.validate.step.four');
+            Route::post('/validate-step-five', [HndUsersController::class, 'validateFive'])->name('hnd.validate.step.five');
+            Route::get('/hnd-create-step-five', [HndUsersController::class, 'createFive'])->name('hnd.create.step.five');
+            Route::get('/hnd-create-step-six', [HndUsersController::class, 'createSix'])->name('hnd.create.step.six');
+            Route::post('/validate-step-six', [HndUsersController::class, 'validateSix'])->name('hnd.validate.step.six');
+            Route::get('print/form',[HndHomeController::class,'printForm'])->name('hnd.print.form');
+            Route::get('/dashboard', [HndHomeController::class, 'index'])->name('hnd.dashboard');
+
+                  //Payment Controller
+          Route::get('/invoice', [HndPaymentController::class, 'invoice'])->name('hnd.invoice');
+          Route::get('/admission/payment', [HndPaymentController::class, 'makeAdmissionPayment'])->name('hnd.payment');
+          Route::get('/screening/status/{rrr}', [HndPaymentController::class, 'checkTransactionStatus'])->name('hnd.screening.status');
+          Route::post('/remita-invoice', [HndPaymentController::class, 'generateInvoice'])->name('hnd.remita.invoice');
+
+            Route::get('/get-courses/{department_id}', [HndUsersController::class, 'getCourses']);
+            Route::get('/get-lgas/{state_id}', [HndUsersController::class, 'getLgas']);
+
+        });
     // HND Students
     Route::prefix('hnd')->middleware('hnd')->group(function(){
         Route::get('/index', [HndUsersController::class, 'index']);
