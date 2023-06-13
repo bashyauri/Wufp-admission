@@ -14,10 +14,13 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\Nds\{UsersController,HomeController, NdsPaymentController};
+use App\Http\Controllers\Nd\{NdUsersController,NdHomeController, NdPaymentController};
+
 use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\UsersController as ControllersUsersController;
+use App\Http\Middleware\Nd;
 use App\Models\User;
 
 /*
@@ -175,20 +178,20 @@ Route::group(['middleware' => 'auth','prefix' => 'student'], function () {
     Route::view('/login', 'dashboards/default')->name('sign-up');
         // ND Students
         Route::prefix('nd')->middleware('nd')->group(function(){
-            Route::get('/index', [HndUsersController::class, 'index']);
-            Route::post('/validate-step-one', [HndUsersController::class, 'validateOne'])->name('hnd.validate.step.one');
-            Route::post('/validate-step-two', [HndUsersController::class, 'validateTwo'])->name('hnd.validate.step.two');
-            Route::get('/hnd-create-step-two', [HndUsersController::class, 'createTwo'])->name('hnd.create.step.two');
-            Route::get('/hnd-create-step-three', [HndUsersController::class, 'createThree'])->name('hnd.create.step.three');
-            Route::post('/validate-step-three', [HndUsersController::class, 'validateThree'])->name('hnd.validate.step.three');
-            Route::get('/hnd-create-step-four', [HndUsersController::class, 'createFour'])->name('hnd.create.step.four');
-            Route::post('/validate-step-four', [HndUsersController::class, 'validateFour'])->name('hnd.validate.step.four');
-            Route::post('/validate-step-five', [HndUsersController::class, 'validateFive'])->name('hnd.validate.step.five');
-            Route::get('/hnd-create-step-five', [HndUsersController::class, 'createFive'])->name('hnd.create.step.five');
-            Route::get('/hnd-create-step-six', [HndUsersController::class, 'createSix'])->name('hnd.create.step.six');
-            Route::post('/validate-step-six', [HndUsersController::class, 'validateSix'])->name('hnd.validate.step.six');
-            Route::get('print/form',[HndHomeController::class,'printForm'])->name('hnd.print.form');
-            Route::get('/dashboard', [HndHomeController::class, 'index'])->name('hnd.dashboard');
+            Route::get('/index', [NdUsersController::class, 'index']);
+            Route::post('/validate-step-one', [NdUsersController::class, 'validateOne'])->name('nd.validate.step.one');
+            Route::post('/validate-step-two', [NdUsersController::class, 'validateTwo'])->name('nd.validate.step.two');
+            Route::get('/hnd-create-step-two', [NdUsersController::class, 'createTwo'])->name('nd.create.step.two');
+            Route::get('/hnd-create-step-three', [NdUsersController::class, 'createThree'])->name('nd.create.step.three');
+            Route::post('/validate-step-three', [NndUsersController::class, 'validateThree'])->name('nd.validate.step.three');
+            Route::get('/hnd-create-step-four', [NdUsersController::class, 'createFour'])->name('nd.create.step.four');
+            Route::post('/validate-step-four', [NdUsersController::class, 'validateFour'])->name('nd.validate.step.four');
+            Route::post('/validate-step-five', [NdUsersController::class, 'validateFive'])->name('nd.validate.step.five');
+            Route::get('/hnd-create-step-five', [NdUsersController::class, 'createFive'])->name('nd.create.step.five');
+            Route::get('/hnd-create-step-six', [NdUsersController::class, 'createSix'])->name('nd.create.step.six');
+            Route::post('/validate-step-six', [NdUsersController::class, 'validateSix'])->name('nd.validate.step.six');
+            Route::get('print/form',[NdHomeController::class,'printForm'])->name('nd.print.form');
+            Route::get('/dashboard', [NdHomeController::class, 'index'])->name('nd.dashboard');
 
                   //Payment Controller
           Route::get('/invoice', [HndPaymentController::class, 'invoice'])->name('hnd.invoice');
