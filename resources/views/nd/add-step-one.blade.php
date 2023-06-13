@@ -58,7 +58,7 @@
                     </div>
                     </div>
                 </div>
-            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('hnd.validate.step.one')}}" enctype="multipart/form-data">
+            <form class="multisteps-form__form mb-8 add-edit-user" method="POST" action="{{route('nd.validate.step.one')}}" enctype="multipart/form-data">
               @csrf
 
 
@@ -88,14 +88,11 @@
 
                         <label>Department</label>
                         <select class="multisteps-form__input form-control" id="department" name = "department">
-                            @if (auth()->user()->department_id)
-                            <option value="{{ $studentDepartment->id}}">{{$studentDepartment->name}}</option>
-                            @endif
+
                             <option value="">-- Select Department--</option>
 
                             @foreach ($programs->departments as $department)
-                            <option value="{{ $department->id}}">{{$department->name}}</option>
-
+                            <option value="{{ $department->id}}" {{ old('department') == $department->id ? 'selected' : ''}} >{{$department->name}}</option>
 
                           @endforeach
                         </select>
@@ -110,6 +107,7 @@
                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <label>Course</label>
                         <select class="multisteps-form__input form-control field" id="courses" name="courses">
+
 
                            @if ($studentCourse)
                            <option value="{{ $studentCourse->id}}">{{$studentCourse->name}}</option>
@@ -126,7 +124,9 @@
                     <div class="col-12 col-sm-6">
 
                         <label>Phone Number</label>
-                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no" value="{{ auth()->user()->phone_no ? auth()->user()->phone_no : old('phone_no') ?? ''}}" ?? '' placeholder="eg. 08038272560"/>
+                        <input class="multisteps-form__input form-control field"  type="text" name="phone_no" id="phone_no"
+                        value="{{ old('phone_no', auth()->user()->phone_no ?? '') }}" placeholder="eg. 08038272560"/>
+
                         @error('phone_no')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -137,7 +137,7 @@
                             value="{{ old('email', auth()->user()->email ?? '') }}"
                             type="email" id="email" name="email"
                             placeholder="eg. basharu@screening.com" />
-                        {{-- <input class="multisteps-form__input form-control" value="{{  auth()->user()->email ? auth()->user()->email : old('email') ?? ''}}" ?? '' type="text" id="email" type="email" name="email" placeholder="eg. basharu@screening.com" /> --}}
+
                         @error('email')
                             <p class="text-danger text-xs mt-2 mb-2">{{ $message }}</p>
                         @enderror
@@ -151,6 +151,7 @@
                             <option value="{{auth()->user()->gender}}">{{auth()->user()->gender}}</option>
                             @endif
                             <option value="">-- Select Gender--</option>
+                            <option value="{{ auth()->user()->gender}}" {{ old('gender') == auth()->user()->gender ? 'selected' : ''}} >{{auth()->user()->gender}}</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
 
