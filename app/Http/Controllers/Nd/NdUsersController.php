@@ -74,7 +74,7 @@ class NdUsersController extends Controller
 
         $user = $request->session()->get('user');
 
-        return view('hnd/add-step-two')->with($data);
+        return view('nd/add-step-two')->with($data);
     }
 
     public function validateTwo(validateTwoRequest $request)
@@ -82,13 +82,13 @@ class NdUsersController extends Controller
         $validatedData = $request->validated();
         try {
             $this->userService->validateTwo($validatedData);
-            return redirect()->route('hnd.create.step.three')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('nd.create.step.three')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
         }
 
-        return redirect()->route('hnd.create.step.three');
+        return redirect()->route('nd.create.step.three');
     }
 
     public function createThree(Request $request)
@@ -99,7 +99,7 @@ class NdUsersController extends Controller
         }
         $school = User::find(auth()->user()->id)->attendedSchool;
 
-        return view('hnd/add-step-three')->with(['school'=>$school]);
+        return view('nd/add-step-three')->with(['school'=>$school]);
     }
 
     public function validateThree(validateThreeRequest $request)
@@ -109,7 +109,7 @@ class NdUsersController extends Controller
 
         try {
             $this->userService->validateThree($validatedData);
-            return redirect()->route('hnd.create.step.four')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('nd.create.step.four')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -124,7 +124,7 @@ class NdUsersController extends Controller
             return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
 
-        return view('hnd/add-step-four');
+        return view('nd/add-step-four');
     }
     public function validateFour(validateFourRequest $request)
     {
@@ -134,7 +134,7 @@ class NdUsersController extends Controller
 
         try {
             $this->userService->validateFour($validatedData);
-            return redirect()->route('hnd.create.step.five')->with(['success'=>'Your account details have been saved/updated.']);
+            return redirect()->route('nd.create.step.five')->with(['success'=>'Your account details have been saved/updated.']);
         } catch (\Exception $ex) {
             Log::alert($ex->getMessage());
             return redirect()->back()->withErrors(['msgError' => 'Something went wrong']);
@@ -177,7 +177,7 @@ class NdUsersController extends Controller
             return redirect()->back()->withErrors(['msgError' => 'Some Fields have not been added']);
         }
 
-        return view('hnd/add-step-six');
+        return view('nd/add-step-six');
     }
     public function validateSix(validateSixRequest $request)
     {
