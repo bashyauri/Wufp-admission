@@ -172,7 +172,7 @@
                     <span class="text-secondary text-xs font-weight-normal">{{$payment->amount}}</span>
                   </td>
                   <td class="align-middle">
-                    <a href="{{route('hnd.screening.status',['rrr'=>$payment->RRR])}}" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                    <a href="{{route('nd.screening.status',['rrr'=>$payment->RRR])}}" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
                       Check Status
                     </a>
                   </td>
